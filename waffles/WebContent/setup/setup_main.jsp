@@ -39,22 +39,41 @@
 	
 	div.content>section:nth-child(3), div.content>section:nth-child(4) {
 		width : 45%;
-		margin : 10px 27px;
+		margin : 10px 25px;
 		border : 1px solid red;
 		float : left;
-		height : 500px;
+		height : 700px;
+	}
+
+	
+	div.content>section:nth-child(3) div:nth-child(2), div.content>section:nth-child(3) div:nth-child(4),
+	div.content>section:nth-child(4) div:nth-child(2), div.content>section:nth-child(4) div:nth-child(4) {
+		text-align : left;
+		font-size : 24px;
+		font-weight : 700;
+		padding : 30px 30px 15px 30px;
+		margin : 10px 20px;
 	}
 	
-	div.content>section:nth-child(3) div, div.content>section:nth-child(4) div {
-		padding : 60px 40px;
-		color : beige;
-		font-size : 28px;
-		font-weight : bolder;
-		text-align : center;
+	div.content>section:nth-child(3) div:nth-child(3), div.content>section:nth-child(3) div:nth-child(5),
+	div.content>section:nth-child(4) div:nth-child(3), div.content>section:nth-child(4) div:nth-child(5) {
 		border : 1px solid blue;
-		background-image : url("../images/setup/와플대학.png");
-
+		text-align : left;
+		font-size : 16px;
+		font-weight : 400;
+		padding : 15px 30px 15px 30px;
+		color : dimgray;
+		margin : 10px 20px;
 	}
+	
+	.btn_style {
+		background-color : black;
+		color : white;
+		width : 300px;
+		font-size : 18px;
+		margin-top : 30px;
+	}
+	
 </style>
 </head>
 <body>
@@ -83,24 +102,22 @@
 		
 		
 		<section>
-				<div> 와플대학 메뉴가 맛있는 이유 </div><br>
-				<span> 1. 차별화 된 맛있는 와플을 위한 전용믹스와 자체 생산 크림 </span> <br>
-				<span> - 차별화 된 와플의 맛과 향의 전용 믹스와 초코, 요거트 등 10가지 자체 생산 전용 크림과 10가지 젤라토 등의 재료를 이용하여 주문과 동시에 와플을 구워 차별화된 맛을 제공합니다. </span><br>
-				<span> 2. 와플과 가장 잘 어울리는 커피 </span> <br>
-				<span> - 세계적으로 주목받는 레인 포레스트와 UTZ 인증을 획득한 친환경 농법의 스페셜 티 원두를 주원료로 하여 고소한 향과 깊고 풍부한 단맛 그리고 다크 초콜릿 같은 쌉싸름한 맛을 더해 와플과 함께 먹었을 때 가장 맛있는 커피입니다. </span>
+				<img src = "../images/setup/와플대학3.PNG">
+				<div> 1. 차별화 된 맛있는 와플을 위한 전용믹스와 자체 생산 크림 </div>
+				<div> - 차별화 된 와플의 맛과 향의 전용 믹스와 초코, 요거트 등 10가지 자체 생산 전용 크림과 10가지 젤라토 등의 재료를 이용하여 주문과 동시에 와플을 구워 차별화된 맛을 제공합니다. </div>
+				<div> 2. 와플과 가장 잘 어울리는 커피 </div>
+				<div> - 세계적으로 주목받는 레인 포레스트와 UTZ 인증을 획득한 친환경 농법의 스페셜 티 원두를 주원료로 하여 고소한 향과 깊고 풍부한 단맛 그리고 다크 초콜릿 같은 쌉싸름한 맛을 더해 와플과 함께 먹었을 때 가장 맛있는 커피입니다. </div>
 		</section>
 		
 		<section>
-				<div> 와플대학이 경쟁력 있는 이유 </div><br>
-				<span> 1. 고객 대기 시간은 Down 판매 회전율은 Up </span> <br>
-				<span> - 고객이 직접 주문하는 주문/결제 시스템인 키오스크 시스템과 짧은 조리 시간으로 고객별  <br>
-				응대시간을 최소화하고, 테이크 아웃 형태로 판매 회전율을 극대화하여 높은 수익율을 확보하였습니다. </span> <br>
-				<span> 2. 창업 경험이 없는 여성, 청년의 창업자를 위한 창업 지원 </span> <br>
-				<span> - 창업 경험이 없는 여성 또는 청년 창업자분들도 매장 운영애 문제가 없도록 본사  교육을 지원하며, <br>
-				다년간의 매장 운영 경험을 가진 슈퍼 바이져 지원을 통해 매장을 운영하실 수 있도록 지원합니다. </span>
+				<img src = "../images/setup/와플대학4.PNG">
+				<div> 1. 고객 대기 시간은 Down 판매 회전율은 Up </div>
+				<div> - 고객이 직접 주문하는 주문/결제 시스템인 키오스크 시스템과 짧은 조리 시간으로 고객별 응대시간을 최소화하고, 테이크 아웃 형태로 판매 회전율을 극대화하여 높은 수익율을 확보하였습니다. </div>
+				<div> 2. 창업 경험이 없는 여성, 청년의 창업자를 위한 창업 지원 </div>
+				<div> - 창업 경험이 없는 여성 또는 청년 창업자분들도 매장 운영애 문제가 없도록 본사  교육을 지원하며, 다년간의 매장 운영 경험을 가진 슈퍼 바이져 지원을 통해 매장을 운영하실 수 있도록 지원합니다. </div>
 		</section>
 		
-		<a href = "setup_counsel.jsp"><button type = "button" class = "btn_style">창업 상담 바로가기</button></a>
+		<a href = "setup_counsel.jsp"><button type = "button" class = "btn_style"> < 창업 상담 바로가기 > </button></a>
 		
 	</div>		
 	
