@@ -37,11 +37,17 @@ window.onload = function(){
 		<a href="#"><label class="star1">☆ </label><label>커피 / 라떼</label></a>
 		<a href="#"><label class="star1">☆ </label><label>쥬스 / 차</label></a>
 	</div>
+	<div class="detail-menu">
+		<a href="#"><label class="star2">☆ </label><label>베이직 와플</label></a>
+		<a href="#"><label class="star2">☆ </label><label>스페셜 와플</label></a>
+		<a href="#"><label class="star2">☆ </label><label>과일 / 누텔라 와플</label></a>
+		<a href="#"><label class="star2">☆ </label><label>아이스크림 와플</label></a>
+	</div>
 	<div class="p1">
-		<p style="color: blue">※ 가맹점의 판매 가격은 매장의 임차조건이나 상권에 따라서 다소 차이가 있을 수 있습니다.</p>
+		<p>※ 가맹점의 판매 가격은 매장의 임차조건이나 상권에 따라서 다소 차이가 있을 수 있습니다.</p>
 	</div>
 	<div class="p2">
-		<p style="color: gray">※ 포장 및 배달로 간단하게 주문하여 드실 수 있습니다. (일부매장 제외)</p>
+		<p>※ 포장 및 배달로 간단하게 주문하여 드실 수 있습니다. (일부매장 제외)</p>
 	</div>
 	
 	<!-- content -->

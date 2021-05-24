@@ -1,3 +1,8 @@
+* {
+	margin:0;
+	font-family:"맑은고딕";
+}
+
 header>div>nav>ul {
 	border: 1px solid red;
 }
@@ -11,13 +16,13 @@ header>div>nav>ul {
 /* 
 	menu-bar 
 */
-.menu-bar {
+.menu-bar, .detail-menu {
 	width:100%;
 	margin-top:0;
-	padding:21px;
-	background-color:#f6bd22;
+	padding:15px;
 	display:inline-block;
 	text-align:center;
+	background-color:#f6bd22;
 }
 .menu-bar >a {
 	text-decoration:none;
@@ -29,11 +34,43 @@ header>div>nav>ul {
 	font-size:13px;
 	font-weight:bold;
 }
-.p >p {
-	text-align:center;
+.menu-bar >a>label {
+	cursor:pointer;
+}
+.detail-menu {
+	background-color:#FDE488;
+}
+.detail-menu a{
+	text-decoration:none;
+	color:black;
+	margin:0 2px;
 	font-size:12px;
 }
-
+.detail-menu >a>label {
+	cursor:pointer;
+}
+.star1 {
+	color:#FF6833;
+	font-size:14px;
+	font-weight:bold;
+	cursor:pointer;
+}
+.star2 {
+	color:#f6bd22;
+	font-size:14px;
+	font-weight:bold;
+	cursor:pointer;
+}
+.p1, .p2 {
+	text-align:center;
+	padding-top: 15px;
+	font-size:12px;
+	color:blue;
+}
+.p2 {
+	padding-bottom: 15px;
+	color:gray;
+}
 /* 
 	all_menu - content 
 */
@@ -46,4 +83,13 @@ header>div>nav>ul {
 	width:200px; height:200px;
 	display:inline-block;
 	text-align:center;
+	color:#333; 
+}
+.hover:hover {
+	transition:all 0.9s, color 0.3;
+	box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+}
+.hover {
+	width:200px; height:200px;
+	
 }
