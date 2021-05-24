@@ -26,7 +26,7 @@ window.onload = function(){
 	}
 }
 </script>
-<link rel="stylesheet" href="http://localhost:10000/waffles/css/menu.css">
+<link rel="stylesheet" href="http://localhost:10000/waffles/css/waffles.css">
 </head>
 <body>
 	<!-- header -->
