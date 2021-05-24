@@ -117,7 +117,7 @@
 				<div> - 창업 경험이 없는 여성 또는 청년 창업자분들도 매장 운영애 문제가 없도록 본사  교육을 지원하며, 다년간의 매장 운영 경험을 가진 슈퍼 바이져 지원을 통해 매장을 운영하실 수 있도록 지원합니다. </div>
 		</section>
 		
-		<a href = "setup_counsel.jsp"><button type = "button" class = "btn_style"> < 창업 상담 바로가기 > </button></a>
+		<a href = "setup_counsel.jsp"><button type = "button" class = "btn_style"> 창업 상담 바로가기 </button></a>
 		
 	</div>		
 	
