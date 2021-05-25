@@ -17,16 +17,16 @@
 			<div class="nationwide-top">
 				<img src="http://localhost:10000/waffles/images/campus/학사모.png">
 				<h1>전국캠퍼스현황</h1>
-				<p>Waffle universities nationwide</p>
+				<div class="nationwide-line">
+					<div id="before"></div><p>Waffle universities nationwide</p><div id="after"></div>
+				</div>
 			</div>
 			
 			<!-- 검색창 -->
 			<div class="nationwide-search">
 				<div>
-					<p>
-						<img src="http://localhost:10000/waffles/images/campus/와플대학로고.png">
-						전국의 와플대학을 검색해 보실 수 있습니다.
-					</p>
+					<img src="http://localhost:10000/waffles/images/campus/와플대학로고.png">
+					<p>전국의 와플대학을 검색해 보실 수 있습니다.</p>
 				</div>
 				<div>
 					<select>
@@ -46,7 +46,7 @@
 			
 			<!-- 페이지수 -->
 			<div class="page">
-				
+					
 			</div>
 		</div>
 	</div>
