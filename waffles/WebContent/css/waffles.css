@@ -109,7 +109,6 @@ header>div>nav>ul {
 	border:1px solid red;
 	width:50%; height:550px;
 	float:left;
-	
 }
 .menu-right {
 	border:1px solid blue;
@@ -126,8 +125,59 @@ header>div>nav>ul {
 }
 .menu-right3 {
 	border:1px solid red;
+	height:20px;
+}
+.menu-right4 {
+	border:1px solid red;
 	height:200px;
 }
+/*
+	nationwide
+*/
+.nationwide {
+	width:80%;
+	margin:auto;
+	display:inline-block;
+}
+.nationwide-top {
+	border:1px solid red;
+	height:150px;
+	text-align:center;
+}
+.nationwide-top >img {
+	width:45px; height:30px;
+	padding:7px 0;
+}
+.nationwide-search {
+	border:1px solid red;
+	height:100px;
+	text-align:center;
+}
+.nationwide-search div:first-child {
+	padding:10px 0;
+}
+.nationwide-search div:first-child >p >img {
+	width:25px; height:20px;
+} 
+.nationwide-search div:last-child >input {
+	width:200px;
+	margin-left:9px;
+}
+.campus-list {
+	border:1px solid red;
+	height:600px;
+}
+.page{
+	border:1px solid red;
+	height:50px;
+}
+
+
+
+
+
+
+
 
 
 
