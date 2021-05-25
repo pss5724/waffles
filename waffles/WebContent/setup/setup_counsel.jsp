@@ -84,9 +84,14 @@
 	}
 	
 	.content_layout_setup_counsel>ul>li:first-child input, .content_layout_setup_counsel>ul>li:nth-child(2) input, 
-	.content_layout_setup_counsel>ul>li:nth-child(3) input, .content_layout_setup_counsel>ul>li:nth-child(5) input,
-	.content_layout_setup_counsel>ul>li:nth-child(6) textarea {
+	.content_layout_setup_counsel>ul>li:nth-child(3) input, .content_layout_setup_counsel>ul>li:nth-child(5) input {
 		width : 20%;
+		height : 30px;
+	}
+	
+	.content_layout_setup_counsel>ul>li:nth-child(6) textarea {
+		vertical-align : middle;
+		width : 60%; height : 100px;
 	}
 	
 	.content_layout_setup_counsel>ul>li:last-child {
