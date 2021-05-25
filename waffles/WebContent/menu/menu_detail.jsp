@@ -7,31 +7,37 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://localhost:10000/waffles/css/waffles.css">
 </head>
-<body class="menu-detail-body">
+<body>
 	<!-- header -->
 	<%-- <jsp:include page="header.jsp"></jsp:include> --%>
 	
 	<!-- content -->
-	<div class="menu-detail">
-		<!-- 메뉴 이미지 -->
-		<div class="menu-left">
-		
-		</div>
-		
-		<div class="menu-right">
-			<!-- 메뉴명 -->
-			<div class="menu-right1">
-				
+	<div class="menu-detail-body">
+		<div class="menu-detail">
+			<!-- 메뉴 이미지 -->
+			<div class="menu-left">
+			
 			</div>
 			
-			<!-- 메뉴 설명 -->
-			<div class="menu-right2">
+			<div class="menu-right">
+				<!-- 메뉴명 -->
+				<div class="menu-right1">
+					
+				</div>
 				
-			</div>
-			
-			<!-- 메뉴 성분표 -->
-			<div class="menu-right3">
+				<!-- 메뉴 설명 -->
+				<div class="menu-right2">
+					
+				</div>
 				
+				<div class="menu-right3">
+					<p>1회제공분</p>
+				</div>
+				
+				<!-- 메뉴 성분표 -->
+				<div class="menu-right4">
+					
+				</div>
 			</div>
 		</div>
 	</div>
