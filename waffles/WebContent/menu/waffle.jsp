@@ -37,7 +37,7 @@ window.onload = function(){
 		<a href="#"><label class="star1">☆ </label><label>커피 / 라떼</label></a>
 		<a href="#"><label class="star1">☆ </label><label>쥬스 / 차</label></a>
 	</div>
-	<div class="detail-menu">
+	<div class="sub-menu-bar">
 		<a href="#"><label class="star2">☆ </label><label>베이직 와플</label></a>
 		<a href="#"><label class="star2">☆ </label><label>스페셜 와플</label></a>
 		<a href="#"><label class="star2">☆ </label><label>과일 / 누텔라 와플</label></a>

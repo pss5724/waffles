@@ -16,7 +16,7 @@ header>div>nav>ul {
 /* 
 	menu-bar 
 */
-.menu-bar, .detail-menu {
+.menu-bar, .sub-menu-bar {
 	width:100%;
 	margin-top:0;
 	padding:15px;
@@ -37,16 +37,16 @@ header>div>nav>ul {
 .menu-bar >a>label {
 	cursor:pointer;
 }
-.detail-menu {
+.sub-menu-bar {
 	background-color:#FDE488;
 }
-.detail-menu a{
+.sub-menu-bar a{
 	text-decoration:none;
 	color:black;
 	margin:0 2px;
 	font-size:12px;
 }
-.detail-menu >a>label {
+.sub-menu-bar >a>label {
 	cursor:pointer;
 }
 .star1 {
@@ -93,3 +93,47 @@ header>div>nav>ul {
 	width:200px; height:200px;
 	
 }
+/* 
+	waffle - content 
+*/
+.menu-detail-body {
+	text-align:center;
+}
+.menu-detail {
+	width:80%;
+	margin:auto;
+	display:inline-block;
+}
+.menu-left {
+	display:inline-block;
+	border:1px solid red;
+	width:50%; height:550px;
+	float:left;
+	
+}
+.menu-right {
+	border:1px solid blue;
+	width:48%; height:550px;
+	float:left;
+}
+.menu-right1 {
+	border:1px solid red;
+	height:150px;
+}
+.menu-right2 {
+	border:1px solid red;
+	height:150px;
+}
+.menu-right3 {
+	border:1px solid red;
+	height:200px;
+}
+
+
+
+
+
+
+
+
+
