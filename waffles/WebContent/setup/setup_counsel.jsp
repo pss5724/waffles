@@ -7,67 +7,124 @@
 <title>창업안내 - 창업상담 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles.css">
 <style>
-	div.content {
+	div.content_setup_counsel {
 		width : 1200px;
 		margin : auto;
 		text-align : center;
 		border : 1px solid green;
 	}
 	
-	div.content>section.setup_counsel {
+	div.content_setup_counsel>section.setup_counsel {
 		width : 90%;
 		margin : auto;
 	}
 	
-	div.content>section:first-child div:nth-child(2) {
+	div.content_setup_counsel>section:first-child div:nth-child(2) {
 		font-size : 40px;
 		font-weight : 400;
 	}
 	
-	div.content>section:first-child>div:nth-child(3), div.content>section:first-child>div:nth-child(5) {
+	div.content_setup_counsel>section:first-child>div:nth-child(3), div.content_setup_counsel>section:first-child>div:nth-child(5) {
 		background-color : lightgray;
 		width : 70px; height : 2px;
 		display : inline-block;
 		
 	} 
 	
-	div.content>section:first-child>div:nth-child(4) {
+	div.content_setup_counsel>section:first-child>div:nth-child(4) {
 		display : inline-block;
 		font-size : 20px;
 		margin : 10px 15px;
 	}
 	
-	div.content>section:nth-child(2)>textarea.initial {
+	div.content_setup_counsel>section:nth-child(2)>h3 {
+		text-align : left;
+		margin-left : 5px;
+	}
+	
+	div.content_setup_counsel>section:nth-child(2)>textarea.initial {
 		width : 100%;
 		height : 300px;
-		border : 5px solid yellow;
 	}
 	
-	div.content>section:nth-child(2)>div:nth-child(3) {
-		float : right;
-		margin : 10px 0 40px 0;
-		border : 1px solid red;
+	div.content_setup_counsel>section:nth-child(2)>div:nth-child(3) {
+		margin : 10px 0;
+		text-align : right;
 	}
 	
-	div.content>section:nth-child(2)>div:nth-child(4) {
-		float : left;
+	div.content_setup_counsel>section:nth-child(2)>div:nth-child(4) {
 		font-size : 16px;
-		font-weight : 400;
-		margin : 40px 0 20px 0;
-		border : 1px solid red;
+		font-weight : 700;
+		margin : 20px 0;
+		text-align : left;
 	}
 	
-	div.content>section:nth-child(2)>div.line {
+	div.content_setup_counsel>section:nth-child(2)>div.line {
 		background-color : gold;
 		width : 100%; height : 2px;
-		border : 1px solid red;
-		margin-top : 85px;
 	}
 	
-	div.content>section:nth-child(2)>form.content_layout {
-		border : 1px solid red;
+	.content_layout_setup_counsel {
 		margin-top : 20px;
 	}
+	
+	.content_layout_setup_counsel>ul {
+		list-style-type : none;
+	}
+	
+	.content_layout_setup_counsel>ul>li {
+		text-align : left;
+		margin : 15px 0;
+	}
+	
+	.content_layout_setup_counsel>ul>li label {
+		display : inline-block;
+		width : 15%;
+		font-weight : 700;
+	}
+	
+	.content_layout_setup_counsel>ul>li:first-child input, .content_layout_setup_counsel>ul>li:nth-child(2) input, 
+	.content_layout_setup_counsel>ul>li:nth-child(3) input, .content_layout_setup_counsel>ul>li:nth-child(5) input,
+	.content_layout_setup_counsel>ul>li:nth-child(6) textarea {
+		width : 20%;
+	}
+	
+	.content_layout_setup_counsel>ul>li:last-child {
+		text-align : right;
+		
+	}
+	
+	.content_layout_setup_counsel li>div {
+		background-color : lightgray;
+		width : 100%; height : 1px;
+		margin-top : 15px;
+	}
+	
+	.content_layout_setup_counsel li:last-child>a>button {
+		margin : 10px 5px;
+		background-color : gray;
+		width : 120px; height : 50px;
+		font-size : 18px;
+		font-weight : 700;
+		border : 1px solid gray;
+		border-radius : 4px;
+		color : white;
+	}
+	
+	.content_layout_setup_counsel li:last-child button {
+		margin : 10px 10px;
+		background-color : #404040;
+		width : 120px; height : 50px;
+		font-size : 18px;
+		font-weight : 700;
+		border : 1px solid #404040;
+		border-radius : 4px;
+		color : white;
+	}
+	
+	
+	
+	
 	
 </style>
 </head>
@@ -77,7 +134,7 @@
 	
 	
 	<!-- content -->
-	<div class = "content">
+	<div class = "content_setup_counsel">
 		<section>
 			<img src = "../images/setup/step1.PNG">
 			<div> 창업상담 </div>
@@ -100,15 +157,16 @@
 			<div> * 표시는 필수 입력사항입니다.</div>
 			<div class = "line"></div>
 			
-			<form name = "join_form" action = "#" method = "get" class = "content_layout">
+			<form name = "join_form" action = "#" method = "get" class = "content_layout_setup_counsel">
 				<ul>
 					<li>
 						<label> 이름 * </label>
 						<input type = "text" name = "name" class = "i1">
+						<div></div>
 					</li>
 					
 					<li>
-						<label> 핸드폰 </label>
+						<label> 핸드폰 * </label>
 						<select name = "hp1" id = "hp1">
 							<option value = "choice">선택</option>
 							<option value = "010">010</option>
@@ -118,6 +176,7 @@
 						</select>
 						-<input type = "text" name = "hp2" maxlength = "4" class = "i2" id = "hp2">
 						-<input type = "text" name = "hp3" maxlength = "4" class = "i2" id = "hp3">
+						<div></div>
 					</li>
 					
 					<li>
@@ -131,6 +190,7 @@
 							<option value = "hanmail.net">hanmail.net</option>
 							<option value = "gmail.com">gmail.com</option>
 						</select>
+						<div></div>
 					</li>
 					
 					<li>
@@ -140,16 +200,19 @@
 						<input type = "checkbox" name = "route" value = "지인 추천">지인 추천
 						<input type = "checkbox" name = "route" value = "가맹점 방문">가맹점 방문
 						<input type = "checkbox" name = "route" value = "기타">기타
+						<div></div>
 					</li>
 					
 					<li>
 						<label> 창업 희망 지역 * </label>
 						<input type = "text" name = "local" class = "i1">
+						<div></div>
 					</li>
 					
 					<li>
 						<label> 기타 문의사항 </label>
 						<textarea></textarea>
+						<div></div>
 					</li>
 					
 					
@@ -165,15 +228,7 @@
 		
 		
 		</section>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	</div>
 	
