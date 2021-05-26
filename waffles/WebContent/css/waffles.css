@@ -16,7 +16,7 @@
 **/
 header {
 	height: 250px;
-	background:url("http://localhost:10000/waffles/images/header/sub_visual01.jpg");
+	background:url("http://localhost:9000/waffles/images/header/sub_visual01.jpg");
 	background-repeat: no-repeat;
     background-size: cover;
 }
@@ -109,7 +109,6 @@ header>div>div>p.p2 {
 }
 
 
-<<<<<<< HEAD
 
 /****************** 
 	menu-bar 
