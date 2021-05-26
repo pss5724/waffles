@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="http://localhost:10000/waffles/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
+
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<script>
 	$(document).ready(function(){
 		
 		$("#main-li li:nth-child(1),li:nth-child(2),li:nth-child(3),li:nth-child(4),li:nth-child(5)").mouseenter(function() {
@@ -26,6 +27,7 @@
 		
 	});
 </script>
+<link rel="stylesheet" href="http://localhost:9000/waffles/css/waffles.css">
 </head>
 <body>
 	<header>

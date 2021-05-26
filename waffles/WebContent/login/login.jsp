@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 화면 | 와플대학</title>
-<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles.css">
+<link rel = "stylesheet" href = "http://localhost:10000/waffles/css/waffles.css">
 </head>
 <body>
 	<!-- header -->
