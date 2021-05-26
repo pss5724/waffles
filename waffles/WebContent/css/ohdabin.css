@@ -11,109 +11,10 @@
 	margin:auto;
 }
 
-/******************
-    header
-**/
-header {
-	height: 250px;
-	background:url("http://localhost:10000/waffles/images/header/sub_visual01.jpg");
-	background-repeat: no-repeat;
-    background-size: cover;
-}
-header>div>nav>ul {
-	color: white;
-	float: right;
-	
-}
-header>div>nav>ul>li {
-	/*border: 2px solid red;*/
-	list-style-type: none;
-	float: left;
-	margin-top: 20px;
-	filter: none;
-	height: 20px;
-}
-header>div>nav>ul>li>div {
-	padding: 10px 20px 10px 20px;
-	font-size: 19px;
-	letter-spacing: -1px;
-	text-align: center;
-}
-header>div>nav>ul>li:nth-child(1),li:nth-child(2),li:nth-child(3),li:nth-child(4),li:nth-child(5) {
-	margin-top: 23px;
-} 
-header>div>nav>ul>li>div>button {
-	height: 28px;
-	border-radius: 5px;
-	font-size: 13px;
-	color: white;
-	padding: 0 12px 3px 12px; 
-	letter-spacing: -1px;
-}
-header>div>nav>ul>li>div>button.login_btn {
-	border: 1px solid #c59d5f;
-	background-color: #c59d5f;
-	margin-right:-15px;
-}
-header>div>nav>ul>li>div>button.join_btn {
-	border: 1px solid #404040;
-	background-color: #404040;
-	margin-left:-15px;
-}
-
-header img {
-	margin: 35px;
-	margin-bottom:0;
-	margin-top: 25px;
-}
-
-header>div>div>p.p1 {
-	text-align: center;
-	color: white;
-	font-size: 45px;
-	margin-bottom: 20px;
-	padding-bottom: 20px;
-	letter-spacing: -2px;
-}
-header>div>div>p.p2 {
-	float: right;
-	color: white;
-	padding-right: 500px;
-}
-#sub-menu {
-	border : 1px solid #2c2c2c;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	background: #4b280a; 
-	position: absolute;
-	font-weight: 700;
-	display: none;
-}
-#sub-menu>li#topdeco {
-	background: #c68a12;
-	height: 2px;
-	width: 200px;
-	padding: 0 10px 0 10px;
-	margin: 0;
-}
-#sub-menu li {
-	margin: 0;
-	padding: 10px;
-	width: 200px;
-}
-#sub-menu li a {
-	text-decoration: none;
-	color: #a9a9a9;
-	font-size: 14px;
-}
-
-
-<<<<<<< HEAD
-
-/****************** 
+/************	메뉴소개	************/
+/*
 	menu-bar 
-**/
+*/
 .menu-bar, .sub-menu-bar {
 	width:100%;
 	margin-top:0;
@@ -229,6 +130,8 @@ header>div>div>p.p2 {
 	border:1px solid red;
 	height:200px;
 }
+
+/************	캠퍼스안내		************/
 /*
 	nationwide
 */
