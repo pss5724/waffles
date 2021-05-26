@@ -83,9 +83,9 @@
 		font-weight : 700;
 	}
 	
-	.content_layout_setup_counsel>ul>li:first-child input, .content_layout_setup_counsel>ul>li:nth-child(2) input, 
-	.content_layout_setup_counsel>ul>li:nth-child(3) input, .content_layout_setup_counsel>ul>li:nth-child(5) input {
-		width : 20%;
+	.content_layout_setup_counsel>ul>li:first-child input, .content_layout_setup_counsel>ul>li:nth-child(2) select, .content_layout_setup_counsel>ul>li:nth-child(2) input, 
+	.content_layout_setup_counsel>ul>li:nth-child(3) select, .content_layout_setup_counsel>ul>li:nth-child(3) input, .content_layout_setup_counsel>ul>li:nth-child(5) input {
+		width : 16%;
 		height : 30px;
 	}
 	
@@ -179,14 +179,14 @@
 							<option value = "016">016</option>
 							<option value = "017">017</option>
 						</select>
-						-<input type = "text" name = "hp2" maxlength = "4" class = "i2" id = "hp2">
-						-<input type = "text" name = "hp3" maxlength = "4" class = "i2" id = "hp3">
+						- <input type = "text" name = "hp2" maxlength = "4" class = "i2" id = "hp2">
+						- <input type = "text" name = "hp3" maxlength = "4" class = "i2" id = "hp3">
 						<div></div>
 					</li>
 					
 					<li>
 						<label> 이메일 * </label>
-						<input type = "text" name = "email1">@
+						<input type = "text" name = "email1"> @ 
 						<input type = "text" name = "email2">
 						<select>
 							<option value = "choice">선택</option>

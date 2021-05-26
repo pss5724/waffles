@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>창업안내 - 창업FAQ | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles.css">
+
 <style>
 	
 	div.content_setup_faq {
