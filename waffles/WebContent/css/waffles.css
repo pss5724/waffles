@@ -206,7 +206,6 @@ header>div>div>p.p2 {
 	border:1px solid red;
 	width:50%; height:550px;
 	float:left;
-	
 }
 .menu-right {
 	border:1px solid blue;
@@ -223,8 +222,88 @@ header>div>div>p.p2 {
 }
 .menu-right3 {
 	border:1px solid red;
+	height:20px;
+}
+.menu-right4 {
+	border:1px solid red;
 	height:200px;
 }
+/*
+	nationwide
+*/
+.nationwide {
+	width:80%;
+	margin:auto;
+}
+.nationwide-top {
+	border:1px solid red;
+	height:130px;
+	text-align:center;
+}
+.nationwide-top >img {
+	width:45px; height:30px;
+	padding:7px 0;
+}
+.nationwide-line {
+	display:inline-block;
+	height:30px;
+}
+.nationwide-line p {
+	width:210px;
+	float:left;
+}
+div#before, div#after {
+    border-bottom:2px solid #244394;
+    width:30px;
+    margin-top:7px;
+}
+div#before {
+	float:left;
+	margin-left:15px;
+}
+div#after {
+	float:left;
+	margin-right:15px;
+}
+.nationwide-search {
+	border:1px solid red;
+	background-color:#244394;
+	height:90px;
+	text-align:center;
+}
+.nationwide-search div:first-child {
+	display:inline-block;
+	padding-top:15px;
+}
+.nationwide-search div:first-child img {
+	width:25px; height:20px;
+	float:left;
+} 
+.nationwide-search div:first-child p {
+	width:300px; height:20px;
+	color:white;
+	margin-top:2px;
+} 
+.nationwide-search div:last-child {
+	padding-top:15px;
+}
+.nationwide-search div:last-child >input {
+	width:200px;
+	margin-left:9px;
+}
+.campus-list {
+	border:1px solid red;
+	height:600px;
+}
+.page{
+	border:1px solid red;
+	height:50px;
+}
+
+
+
+
+
 
 
 
