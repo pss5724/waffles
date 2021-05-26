@@ -21,7 +21,7 @@
 		});
 		
 		$("#main-li li").mouseleave(function() {
-			$(this).parent().parent().find("div").css("background-color","rgba( 255, 255, 255, 0)").css("color","white");
+			$(this).parent().parent().find("div").css("background-color","rgba(255, 255, 255, 0)").css("color","white");
 		});
 		
 	});
