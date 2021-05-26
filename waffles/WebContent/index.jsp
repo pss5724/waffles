@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="http://localhost:9000/waffles/css/waffles.css">
+<link rel="stylesheet" href="http://localhost:10000/waffles/css/waffles.css">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
