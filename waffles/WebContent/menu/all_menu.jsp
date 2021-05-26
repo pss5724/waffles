@@ -6,14 +6,14 @@
 <meta charset="UTF-8">
 <title>메뉴소개</title>
 <script>
-var menulist = ["http://localhost:10000/waffles/images/waffle/딸기듬뿍와플.jpg",
-				"http://localhost:10000/waffles/images/waffle/딸기와플.png",
-				"http://localhost:10000/waffles/images/waffle/망고범벅와플.jpg",
-				"http://localhost:10000/waffles/images/waffle/메이플시나몬와플.png",
-				"http://localhost:10000/waffles/images/waffle/밀크카라멜와플.png",
-				"http://localhost:10000/waffles/images/waffle/바나나누텔라와플.jpg",
-				"http://localhost:10000/waffles/images/waffle/베리베리와플.jpg",
-				"http://localhost:10000/waffles/images/waffle/스노우와플.jpg"
+var menulist = ["http://localhost:9000/waffles/images/waffle/딸기듬뿍와플.jpg",
+				"http://localhost:9000/waffles/images/waffle/딸기와플.png",
+				"http://localhost:9000/waffles/images/waffle/망고범벅와플.jpg",
+				"http://localhost:9000/waffles/images/waffle/메이플시나몬와플.png",
+				"http://localhost:9000/waffles/images/waffle/밀크카라멜와플.png",
+				"http://localhost:9000/waffles/images/waffle/바나나누텔라와플.jpg",
+				"http://localhost:9000/waffles/images/waffle/베리베리와플.jpg",
+				"http://localhost:9000/waffles/images/waffle/스노우와플.jpg"
 				];
 var i;
 text = "";
@@ -24,7 +24,7 @@ window.onload = function(){
 	}
 }
 </script>
-<link rel="stylesheet" href="http://localhost:10000/waffles/css/waffles.css">
+<link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
 </head>
 <body>
 	<!-- header -->

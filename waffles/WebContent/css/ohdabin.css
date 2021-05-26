@@ -1,6 +1,20 @@
-/****************** 
+
+* {
+	margin:0;
+	font-family: '맑은 고딕';
+}
+
+
+.content {
+	border:1px solid red;
+	width:80%;
+	margin:auto;
+}
+
+/************	메뉴소개	************/
+/*
 	menu-bar 
-**/
+*/
 .menu-bar, .sub-menu-bar {
 	width:100%;
 	margin-top:0;
@@ -116,6 +130,8 @@
 	border:1px solid red;
 	height:200px;
 }
+
+/************	캠퍼스안내		************/
 /*
 	nationwide
 */
