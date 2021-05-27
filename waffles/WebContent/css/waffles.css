@@ -1,10 +1,7 @@
-
 * {
 	margin:0;
 	font-family: '맑은 고딕';
 }
-
-
 .content {
 	border:1px solid red;
 	width:80%;
@@ -25,7 +22,7 @@ header>div>nav>ul {
 	float: right;
 	
 }
-header>div>nav>ul>li {
+header>div>nav>ul>li{
 	/*border: 2px solid red;*/
 	list-style-type: none;
 	float: left;
@@ -33,13 +30,17 @@ header>div>nav>ul>li {
 	filter: none;
 	height: 20px;
 }
-header>div>nav>ul>li>div {
+header>div>nav>ul>li>div{
 	padding: 10px 20px 10px 20px;
 	font-size: 19px;
 	letter-spacing: -1px;
 	text-align: center;
 }
-header>div>nav>ul>li:nth-child(1),li:nth-child(2),li:nth-child(3),li:nth-child(4),li:nth-child(5) {
+header>div>nav>ul>li>div>a{
+	color: white;
+	text-decoration: none;
+}
+header>div>nav>ul>li:nth-child(1),header>div>nav>ul>li:nth-child(2),header>div>nav>ul>li:nth-child(3),header>div>nav>ul>li:nth-child(4),header>div>nav>ul>li:nth-child(5) {
 	margin-top: 23px;
 } 
 header>div>nav>ul>li>div>button {
@@ -67,18 +68,21 @@ header img {
 	margin-top: 25px;
 }
 
-header>div>div>p.p1 {
+header>div>div>p.mainLabel{
 	text-align: center;
 	color: white;
 	font-size: 45px;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 	letter-spacing: -2px;
+	margin-top: 15px;
 }
-header>div>div>p.p2 {
+header>div>div>p.subLabel{
 	float: right;
 	color: white;
-	padding-right: 500px;
+	padding-right: 480px;
+	font-size : 12px;
+	margin-top: 20px;
 }
 #sub-menu {
 	border : 1px solid #2c2c2c;
@@ -107,8 +111,57 @@ header>div>div>p.p2 {
 	color: #a9a9a9;
 	font-size: 14px;
 }
+/******************
+    footer
+**/
+footer {
+	background-image:url("http://localhost:9000/waffles/images/footer/foot_bg01.jpg");
+	text-align: center;
+	margin:0;
+	padding:0;
+}
 
-
+footer>div:nth-child(1)>img {
+	margin-top: 40px;
+}
+footer>div:nth-child(2)>img {
+	margin-top: 20px;
+}
+footer>ul:nth-child(3) , ul:nth-child(4){
+	list-style-type: none;
+	margin:0;
+	padding:0;
+}
+footer>ul:nth-child(3)>li{
+	display: inline-block;
+	margin:0;
+	padding:0;
+	font-size: 12px;
+	margin-top: 20px;
+}
+footer>ul:nth-child(3)>li>div {
+	display: inline-block;
+	height: 10px;
+	width: 1px; 
+	background-color : rgba(0,0,0,0.3);
+}
+footer>ul:nth-child(4)>li>div {
+	display: inline-block;
+	height: 10px;
+	width: 1px; 
+	background-color : rgba(0,0,0,0.3);
+}
+footer>ul:nth-child(4)>li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	margin-bottom: 20px;
+}
+footer>div:nth-child(5)>p {
+	font-size: 12px; 
+	padding-bottom: 40px;
+}
 
 /****************** 
 	menu-bar 

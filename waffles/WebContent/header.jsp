@@ -5,11 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function(){
-		
 		$("#main-li li:nth-child(1),li:nth-child(2),li:nth-child(3),li:nth-child(4),li:nth-child(5)").mouseenter(function() {
 			$(this).children("div").css("color","#00498c").css("background-color","rgba(241,241,241, 0.8)");
 		});
@@ -24,7 +22,6 @@
 		$("#main-li li").mouseleave(function() {
 			$(this).parent().parent().find("div").css("background-color","rgba(255, 255, 255, 0)").css("color","white");
 		});
-		
 	});
 </script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/waffles.css">
@@ -35,17 +32,21 @@
 			<nav>
 				<ul id="main-li">
 					<li>
-						<div id="d1">와플대학스토리</div>
+						<div id="d1">
+						<a href="http://localhost:9000/waffles/wafflestory/sayHello.jsp">와플대학스토리</a>
+						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
-							<li><a href="#">인사말</a></li>
-							<li><a href="#">브랜드스토리</a></li>
-							<li><a href="#">와플대학협동조합</a></li>
-							<li><a href="#">오시는 길</a></li>
+							<li><a href="http://localhost:9000/waffles/wafflestory/sayHello.jsp">인사말</a></li>
+							<li><a href="http://localhost:9000/waffles/wafflestory/brand.jsp">브랜드스토리</a></li>
+							<li><a href="http://localhost:9000/waffles/wafflestory/union.jsp">와플대학협동조합</a></li>
+							<li><a href="http://localhost:9000/waffles/wafflestory/map.jsp">오시는 길</a></li>
 						</ul>
 					</li>
 					<li>
-						<div>메뉴소개</div>
+						<div>
+						<a href="#">메뉴소개</a>
+						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
 							<li><a href="#">와플</a></li>
@@ -54,7 +55,9 @@
 						</ul>
 					</li>
 					<li>
-						<div>캠퍼스안내</div>
+						<div>
+						<a href="#">캠퍼스안내</a>
+						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
 							<li><a href="#">캠퍼스 창업 성공스토리</a></li>
@@ -62,7 +65,9 @@
 						</ul>
 					</li>
 					<li>
-						<div>창업안내</div>
+						<div>
+						<a href="#">창업안내</a>
+						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
 							<li><a href="#">창업 경쟁력</a></li>
@@ -72,7 +77,9 @@
 						</ul>
 					</li>
 					<li>
-						<div>고객문의</div>
+						<div>
+						<a href="#">고객문의</a>
+						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
 							<li><a href="#">공지사항</a></li>
@@ -84,13 +91,15 @@
 				</ul>
 			</nav>
 			<div>
-				<img src="http://localhost:9000/waffles/images/header/logo.png">
+				<a href="http://localhost:9000/waffles/index.jsp">
+					<img src="http://localhost:9000/waffles/images/header/logo.png">
+				</a>
 			</div>
 			<div>
-				<p class="p1">와플대학스토리</p>
+				<p class="mainLabel"><%= request.getParameter("mainlabel") %></p>
 			</div>
 			<div>
-			    <p class="p2">Home > 와플대학스토리 > 인사말</p>
+			    <p class="subLabel"><%= request.getParameter("sublabel") %></p>
 			</div>
 	 	</div>
 	</header>
