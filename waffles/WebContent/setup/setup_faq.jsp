@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>창업안내 - 창업FAQ | 와플대학</title>
-<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles.css">
+<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 
 <style>
 	
@@ -36,29 +36,7 @@
 		margin : auto;
 	}
 	
-	.content_layout {
-		/* border : 1px solid blue; */
-		width : 90%;
-		margin : auto;
-		border-collapse : collapse;
-	}
-	
-	div.content_setup_faq>section.setup_faq_list>table tr {
-		height : 40px;
-	}
-	
-	section.setup_faq_search {
-		/* border : 1px solid red; */
-		display : inline-block;
-		width : 80%;
-		margin : auto;
-	}
-	
-	section.setup_faq_search>select, section.setup_faq_search>input, section.setup_faq_search>button {
-		float : left;
-		margin : 5px;
-		font-size : 14px;
-	}
+
 	
 
 </style>
@@ -162,18 +140,7 @@
 			</table>
 		</section>
 		
-		<section class = "setup_faq_search">
-			<select class = "search">
-				<option value = "title">제목</option>
-				<option value = "content">내용</option>
-				<option value = "title+content">제목+내용</option>
-				<option value = "writer">글쓴이</option>
-			</select>
-			
-			<input type = "text" name = "search_text" id = "search_text">
-			<button type = "button">검색</button>
 		
-		</section>
 		
 	</div>	
 	

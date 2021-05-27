@@ -5,123 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>창업안내 - 창업절차 및 비용 | 와플대학</title>
-<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles.css">
-<style>
-	div.content_setup_step {
-		width : 1200px;
-		margin : auto;
-		text-align : center;
-		margin-top : 50px;
-		/* border : 1px solid green; */
-	}
-	
-	div.content_setup_step>section:first-child div {
-		font-size : 40px;
-		font-weight : 400;
-	}
+<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 
-	div.content_setup_step>section:nth-child(2) {
-		/* border : 1px solid red; */
-		display : inline-block;
-		width : 44%;
-		height : 630px;
-	}
-	
-	div.content_setup_step>section:nth-child(3) {
-		/* border : 1px solid red; */
-		float : right;
-		margin-right : 30px;
-		height : 630px;
-		width : 44%;
-	}
-	
-	div.content_setup_step>section:nth-child(2) img, div.content_setup_step>section:nth-child(3) img {
-		/* border : 1px solid yellow; */
-		margin : 20px 0;
-		float : left;
-	}
-	
-	.setup2_info {
-		/* border : 1px solid green; */
-		display : inline-block;
-		font-size : 14px;
-		width : 75%;
-	}
-	
-	.setup2_info>p:nth-child(2) {
-		/* border : 1px solid red; */
-		margin : 20px 20px;
-		width : 60%;
-		float : left;
-		text-align : left;
-		font-weight : bold;
-		color : #404040;
-	}
-	
-	.setup2_info>p:nth-child(3) {
-		/* border : 1px solid red; */
-		margin : 10px 20px;
-		width : 60%;
-		float : left;
-		text-align : left;
-		font-weight : bold;
-		color : gray;
-	}
-	
-	.line {
-		background-color : lightgray;
-		width : 100%; height : 1px;
-		margin-bottom : 30px;
-	}
-	
-	.content_setup_step>section:nth-child(5)>div:first-child {
-		font-size : 36px;
-		font-weight : bolder;
-	}
-	
-	.content_setup_step>section:nth-child(5)>table {
-		width : 80%;
-		font-size : 22px;
-		text-align : center;
-		border-collapse : collapse; 
-		margin : auto;
-		margin-top : 20px;
-		
-	}
-	
-	.content_setup_step>section:nth-child(5)>table th, .content_setup_step>section:nth-child(5)>table td {
-		border : 1px solid gray;
-		color : #404040;
-		padding : 5px;
-	}
-	
-	.content_setup_step>section:nth-child(5)>table th {
-		background-color : #ffff66;
-		font-weight : bold;
-	}
-	
-	 .content_setup_step>section:nth-child(5)>table tr:last-child {
-	 	font-size : 26px;
-		font-weight : bolder;
-	 }
-	 
-	 .content_setup_step>section:nth-child(5)>div:nth-child(3), .content_setup_step>section:nth-child(5)>div:nth-child(4),
-	 .content_setup_step>section:nth-child(5)>div:nth-child(5), .content_setup_step>section:nth-child(5)>div:nth-child(6) {
-	 	text-align : left;
-	 	color : #404040;
-	 	padding : 3px;
-	 	margin-left : 120px;
-	 }
-	 
-	 .btn_style {
-		background-color : black;
-		color : white;
-		width : 300px;
-		font-size : 18px;
-		margin-top : 30px;
-	}
-
-</style>
 </head>
 <body>
 	<!-- header -->
@@ -263,7 +148,7 @@
 			<div>부가세 별도(이행 보증금 제외) 입니다.</div>
 		</section>
 		
-		<a href = "setup_counsel.jsp"><button type = "button" class = "btn_style"> 창업 상담 바로가기 </button></a>
+		<a href = "setup_counsel.jsp"><button type = "button" class = "btn_setup_counsel_style"> 창업 상담 바로가기 </button></a>
 	
 	</div>
 	

@@ -5,101 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>창업안내 - 창업경쟁력 | 와플대학</title>
-<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles.css">
-<style>
-	
-	div.content_setup_main {
-		/* border : 1px solid green; */
-		width : 1200px;
-		margin : auto;
-		text-align : center;
-		margin-top : 50px;
-	}
-	
-	div.content_setup_main>section:first-child {
-		font-size : 40px;
-		font-weight : 700;
-		margin-bottom : 50px;
-	}
-	
-	div.content_setup_main>section:nth-child(3) div {
-		text-align : center;
-	}
-	
-	div.content_setup_main>section:nth-child(3) div:nth-child(1) {
-		color : orange;
-		font-weight : bold;
-	}
-	
-	div.content_setup_main>section:nth-child(3) div:nth-child(2) {
-		font-size : 26px;
-		font-weight : 700;
-		color : dimgray;
-		margin : 10px 0;
-	}
-	
-	div.content_setup_main>section:nth-child(3) div:nth-child(3), div.content_setup_main>section:nth-child(3) div:nth-child(4) {
-		color : dimgray;
-		font-size : 20px;
-		font-weight : bold;
-	}
-	
-	div.content_setup_main>section:nth-child(4) {
-		/* border : 1px solid red; */
-		width : 45%;
-		margin : 10px 25px;
-		float : left;
-		height : 700px;
-		background-color : lightgray;
-	}
-	
-	div.content_setup_main>section:nth-child(5) {
-		/* border : 1px solid red; */
-		width : 45%;
-		margin : 10px 25px;
-		float : left;
-		height : 700px;
-		background-color : lightpink;
-	}
+<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 
-	
-	div.content_setup_main>section:nth-child(4) div:nth-child(1), div.content_setup_main>section:nth-child(4) div:nth-child(3),
-	div.content_setup_main>section:nth-child(5) div:nth-child(1), div.content_setup_main>section:nth-child(5) div:nth-child(3) {
-		text-align : left;
-		font-size : 20px;
-		font-weight : 700;
-		padding : 30px 30px 15px 30px;
-		margin : 5px 20px;
-	}
-	
-	div.content_setup_main>section:nth-child(4) div:nth-child(2), div.content_setup_main>section:nth-child(4) div:nth-child(4),
-	div.content_setup_main>section:nth-child(5) div:nth-child(2), div.content_setup_main>section:nth-child(5) div:nth-child(4) {
-		/* border : 1px solid blue; */
-		text-align : left;
-		font-size : 16px;
-		font-weight : 400;
-		padding : 10px 30px 15px 30px;
-		color : dimgray;
-		margin : 10px 20px;
-	}
-	
-	div.content_setup_main>section:nth-child(4)>article, div.content_setup_main>section:nth-child(5)>article {
-		border : 1px solid lightgray;
-		border-radius : 10px;
-		margin : 17px;
-		background-color : white;
-		height : 470px;
-	}
-	
-	.btn_style {
-		background-color : black;
-		color : white;
-		width : 300px;
-		font-size : 18px;
-		margin-top : 30px;
-	}
-	
-</style>
 </head>
 <body>
 	<!-- header -->
@@ -152,7 +59,7 @@
 			</article>	
 		</section>
 		
-		<a href = "setup_counsel.jsp"><button type = "button" class = "btn_style"> 창업 상담 바로가기 </button></a>
+		<a href = "setup_counsel.jsp"><button type = "button" class = "btn_setup_counsel_style"> 창업 상담 바로가기 </button></a>
 		
 	</div>		
 	
