@@ -203,3 +203,71 @@ div#after {
 	border:1px solid red;
 	height:50px;
 }
+/*
+	campus-information
+*/
+.information {
+	border:1px solid red;
+}
+.information-top {
+	border:1px solid red;
+	height:130px;
+	text-align:center;
+}
+.information-top >img {
+	width:45px; height:40px;
+	padding:7px 0;
+}
+#information img{
+	border:1px solid red;
+	width:65px; height:65px;
+	margin-right:5px;
+	float:left;
+}
+.campus-photo {
+	border:1px solid red;
+	clear:left;
+	text-align:center;
+	margin-bottom:50px;
+}
+.campus-photo2 {
+	display:inline-block;
+}
+.photo-line {
+	border:1px solid red;
+	padding:30px 0;
+}
+.photo-line p {
+	width:110px;
+	float:left;
+}
+div#before, div#after {
+    border-bottom:2px solid #244394;
+    width:30px;
+    margin-top:7px;
+}
+div#before {
+	float:left;
+}
+div#after {
+	float:left;
+	margin-right:15px;
+}
+.campus-img img{
+	width:200px; height:200px;
+	text-align:center;
+}
+.btnList {
+	border:none;
+	background-color:gray;
+	color:white;
+	width:20px;
+}
+#map{
+	border:1px solid red;
+}
+
+
+
+
+
