@@ -84,7 +84,7 @@
 				</ul>
 			</nav>
 			<div>
-				<img src="http://localhost:10000/waffles/images/header/logo.png">
+				<img src="http://localhost:9000/waffles/images/header/logo.png">
 			</div>
 			<div>
 				<p class="p1">와플대학스토리</p>
