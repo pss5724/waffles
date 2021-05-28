@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,10 @@
 </head>
 <body>
 	<!-- header -->
-	<jsp:include page = "../header.jsp"></jsp:include>
+	<jsp:include page = "../header.jsp">
+	<jsp:param name="mainlabel" value="창업절차 및 비용" />
+	<jsp:param name="sublabel" value=" Home > 창업안내 > 창업절차 및 비용 "/>
+	</jsp:include>
 	
 	
 	<!-- content -->

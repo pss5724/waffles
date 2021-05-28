@@ -1,15 +1,14 @@
 /****** login ******/
 	.content_login {
-		border : 1px solid rgb(245,245,245);
-		/* width : 1200px; */
+		/* border : 1px solid green; */
+		width : 1200px;
 		margin : auto;
 		text-align : center;
-		height : 400px;
-		background-color : rgb(245,245,245);		
+		height : 400px;		
 	}
 	
 	.content_login>section {
-		/* border : 1px solid red; */
+		/* border : 1px solid red; */ 
 		width : 56%;
 		margin : auto;
 		margin-top : 50px;
@@ -19,7 +18,7 @@
 	
 	.content_login>section>div {
 		/* border : 1px solid red; */
-		margin : 5px 0 10px 290px;
+		margin : 5px 0 10px 0;
 		font-size : 24px;
 		font-weight : 400;
 		width : 20%;
@@ -36,28 +35,26 @@
 	}
 	
 	.content_layout_login>ul>li {
-		text-align : center;
 		margin : 15px 0;
 	}
 	
 	.content_layout_login>ul>li label {
 		/* border : 1px solid red; */
 		display : block;
-		width : 20%;
+		width : 30%;
 		font-weight : 700;
 		color : gray;
-		margin-bottom : 5px;
+		margin : 0 0 5px 95px;
 		font-size : 20px;
-		margin-left : 310px;
 		text-align : left;
 	}
 	
 	.content_layout_login>ul>li input {
-		width : 40%; height : 25px;
+		width : 72%; height : 30px;
 	}
 	
 	.btn_login {
-		width : 423px; height : 25px;
+		width : 73%; height : 25px;
 		background-color : rgb(173,130,85);
 		border : 1px solid rgb(173,130,85);
 		color : white;
@@ -65,13 +62,127 @@
 	}
 	
 	.btn_login_op {
-		width : 209px; height : 28px;
+		width : 36%; height : 28px;
 		background-color : white;
 		border : 2px solid rgb(173,130,85);
 		color : rgb(173,130,85);
 		font-size : 14px;
 		font-weight : 400;
 	}
+	
+	
+/****** join ******/
+	.content_join {
+		/* border : 1px solid green; */
+		width : 1200px;
+		margin : auto;
+		text-align : center;		
+		margin-top : 50px;
+	}
+	
+	.content_join>section {
+		/* border : 1px solid red; */
+		width : 90%;
+		margin : auto;
+	}
+	
+	.content_join>section>div.title {
+		/* border : 1px solid red; */
+		font-size : 30px;
+		font-weight : 700;
+		text-align : left;
+		margin : 5px 0 5px 0;
+	}
+	
+	.content_join>section>h3 {
+		/* border : 1px solid red; */
+		text-align : left;
+		margin : 5px 0 15px 0;
+	}
+	
+	.content_join>section>textarea.initial {
+		/* border : 1px solid blue; */
+		width : 95%;
+		height : 300px;
+	}
+	
+	.content_join>section>div:nth-child(4) {
+		margin : 10px 5px;
+		text-align : right;
+	}
+	
+	.content_join>section>div:nth-child(5) {
+		font-size : 16px;
+		font-weight : 700;
+		margin : 20px 5px;
+		text-align : left;
+	}
+	
+	.hr {
+		background-color : gold;
+		width : 100%; height : 2px;
+		
+	}
+	
+	/* form */
+	.content_layout_join {
+		margin-top : 20px;
+	}
+	
+	.content_layout_join>ul {
+		list-style-type : none;
+	}
+	
+	.content_layout_join>ul>li {
+		text-align : left;
+		margin : 12px 0;
+	}
+	
+	.content_layout_join>ul>li label {
+		display : inline-block;
+		width : 15%;
+		font-weight : 700;
+	}
+	
+	.content_layout_join>ul>li .name, .content_layout_join>ul>li .email1, .content_layout_join>ul>li .email2, 
+	.content_layout_join>ul>li .email3, .content_layout_join>ul>li .id, .content_layout_join>ul>li .pass, .content_layout_join>ul>li .cpass {
+		/* border : 1px solid red; */
+		width : 16%;
+		height : 30px;
+	}
+	
+	.content_layout_join>ul>li:last-child {
+		text-align : right;
+		
+	}
+	
+	.content_layout_join li>div.line {
+		background-color : lightgray;
+		width : 100%; height : 1px;
+		margin-top : 15px;
+	}
+	
+	.btn_join_1 {
+		margin : 10px 0;
+		background-color : gray;
+		width : 100px; height : 45px;
+		font-size : 18px;
+		font-weight : 700;
+		border : 1px solid gray;
+		border-radius : 7px;
+		color : white;
+	}
+	
+	.btn_join_2 {
+		margin : 10px 5px;
+		background-color : #404040;
+		width : 130px; height : 45px;
+		font-size : 18px;
+		font-weight : 700;
+		border : 1px solid #404040;
+		border-radius : 7px;
+		color : white;
+	}		
 
 
 /****** setup_main ******/
@@ -387,7 +498,7 @@
 		margin-top : 15px;
 	}
 	
-	.content_layout_setup_counsel li:last-child>a>button {
+	.content_layout_setup_counsel .btn_counsel_1 {
 		margin : 10px 5px;
 		background-color : gray;
 		width : 120px; height : 50px;
@@ -398,7 +509,7 @@
 		color : white;
 	}
 	
-	.content_layout_setup_counsel li:last-child button {
+	.content_layout_setup_counsel .btn_counsel_2 {
 		margin : 10px 10px;
 		background-color : #404040;
 		width : 120px; height : 50px;

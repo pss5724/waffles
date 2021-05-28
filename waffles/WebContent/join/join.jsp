@@ -1,25 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>       
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원가입 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
+
 </head>
 <body>
 	<!-- header -->
-	<jsp:include page = "../header.jsp"></jsp:include>
-	
-	
+	<jsp:include page = "../header.jsp">
+	<jsp:param name="mainlabel" value="회원가입" />
+	<jsp:param name="sublabel" value=" Home > 회원가입 "/>
+	</jsp:include>
 	
 	<!-- content -->
-	<div class = "content">
-		<section class = "join">
-			<h1 class = "title"> 회원가입 </h1>
+	<div class = "content_join">
+		<section>
+			<div class = "title"> 회원가입 </div>
 			<h3> 개인정보수집 및 이용에 대한 안내 </h3>
 			
-			<textarea name = "initial">
+			<textarea class = "initial">
 	와플대학은 주문을 위하여 아래와 같이 개인정보를 수집·이용하는 내용을 관계 법령에 따라 알리오니, 동의해 주시기를 바랍니다.
 
 	■ 개인정보의 수집·이용 항목
@@ -98,50 +103,55 @@
 	이메일 : waffleuniv@waffleuniv.com
 	이상의 변경된 와플대학의 개인정보보호정책은 2007년 01월 01일부터 시행합니다.
 			</textarea>
-			<input type = "checkbox" name = "initial_check">
-			<label> 개인정보수집 및 이용에 동의합니다. </label> <br></br>
-			<label> * 표시는 필수 입력사항입니다. 반드시 입력해주세요. </label>
+			<div> <input type = "checkbox" name = "initial_check"> 개인정보수집 및 이용에 동의합니다. </div>
+			<div> * 표시는 필수 입력사항입니다.</div>
+			<div class = "hr"></div>
 			
-			<form name = "join_form" action = "#" method = "get" class = "content_layout">
+			<form name = "join_form" action = "#" method = "get" class = "content_layout_join">
 				<ul>
 					<li>
 						<label> 이름 * </label>
-						<input type = "text" name = "name" class = "i1">
+						<input type = "text" name = "name" class = "name">
+						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 이메일 * </label>
-						<input type = "text" name = "email1">@
-						<input type = "text" name = "email2">
-						<select>
+						<input type = "text" name = "email1" class = "email1"> @ 
+						<input type = "text" name = "email2" class = "email2">
+						<select class = "email3">
 							<option value = "choice">선택</option>
 							<option value = "naver.com">naver.com</option>
 							<option value = "daum.net">daum.net</option>
 							<option value = "hanmail.net">hanmail.net</option>
 							<option value = "gmail.com">gmail.com</option>
 						</select>
+						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 아이디 * </label>
-						<input type = "text" name = "id" class = "i1">
+						<input type = "text" name = "id" class = "id">
 						<button type = "button">중복체크</button>
+						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 비밀번호 * </label>
-						<input type = "password" name = "pass" class = "i1">
+						<input type = "password" name = "pass" class = "pass">
+						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 비밀번호 확인 * </label>
-						<input type = "password" name = "cpass" class = "i1">
+						<input type = "password" name = "cpass" class = "cpass">
+						<div class = "line"></div>
 					</li>
 					
 					
 					<li>
-						<a href = "../login/login.jsp"><button type = "button" class = "btn_style">취소</button></a>
-						<button type = "button" class = "btn_style">회원가입</button>
+						<a href = "../login/login.jsp"><button type = "button" class = "btn_join_1">취소</button></a>
+						<button type = "button" class = "btn_join_2">회원가입</button>
 					</li>
 				
 				</ul>
