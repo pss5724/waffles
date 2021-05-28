@@ -33,7 +33,7 @@ window.onload = function(){
 	<!-- header -->
 	<jsp:include page="../header.jsp">
 		<jsp:param name="mainlabel" value="와플대학스토리" />
-		<jsp:param name="sublabel" value=" Home > 와플대학스토리 > 메뉴소개 > 와플 " />
+		<jsp:param name="sublabel" value=" Home > 메뉴소개 > 와플 " />
 	</jsp:include>
 	
 	<!-- menu-bar -->
