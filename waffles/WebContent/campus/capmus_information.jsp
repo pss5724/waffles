@@ -14,7 +14,7 @@
 </head>
 <body>
 	<!-- header -->
-	<%-- <jsp:include page="header.jsp"></jsp:include> --%>
+	<jsp:include page="../header.jsp"></jsp:include>
 	
 	<!--  -->
 	
@@ -32,7 +32,7 @@
 					<img src="http://localhost:9000/waffles/images/campus/와플대학로고.png">
 					<div>
 						<h4>주소</h4>
-						<p>경기도 평택시 이충로</p>
+						<p>경기도 평택시 이충로 경기도 평택시 이충로</p>
 					</div>
 				</div>
 				<div class="col-4" id="tel">
@@ -66,8 +66,8 @@
 			</div>
 			
 			<!-- 목록으로 돌아가는 버튼 -->
-			<div>
-				<button class="btnList">목록</button>	
+			<div class="btnList">
+				<a href="http://localhost:9000/waffles/campus/nationwide.jsp" class="btn btn-dark">목록</a>
 			</div>
 		</div>
 	</div>
@@ -89,6 +89,6 @@
 	</script>
 	
 	<!-- footer -->
-	<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
