@@ -61,7 +61,7 @@
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
 							<li><a href="http://localhost:9000/waffles/campus/nationwide.jsp">전국 캠퍼스 현황</a></li>
-							<li><a href="#">캠퍼스 창업 성공스토리</a></li>
+							<li><a href="http://localhost:9000/waffles/campus/success_story.jsp">캠퍼스 창업 성공스토리</a></li>
 						</ul>
 					</li>
 					<li>
