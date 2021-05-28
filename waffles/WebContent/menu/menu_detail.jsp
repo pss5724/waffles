@@ -14,7 +14,7 @@
 	<!-- header -->
 	<jsp:include page="../header.jsp">
 		<jsp:param name="mainlabel" value="와플대학스토리" />
-		<jsp:param name="sublabel" value=" Home > 와플대학스토리 > Brand Story > 와플대학이걸어온길 " />
+		<jsp:param name="sublabel" value=" Home > 와플대학스토리 > 메뉴소개 >  " />
 	</jsp:include>
 	
 	<!-- content -->

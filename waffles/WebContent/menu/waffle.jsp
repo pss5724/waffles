@@ -33,12 +33,12 @@ window.onload = function(){
 	<!-- header -->
 	<jsp:include page="../header.jsp">
 		<jsp:param name="mainlabel" value="와플대학스토리" />
-		<jsp:param name="sublabel" value=" Home > 와플대학스토리 > Brand Story > 와플대학이걸어온길 " />
+		<jsp:param name="sublabel" value=" Home > 와플대학스토리 > 메뉴소개 > 와플 " />
 	</jsp:include>
 	
 	<!-- menu-bar -->
 	<div class="menu-bar">
-		<a href="http://localhost:9000/waffles/menu/all_menu.jsp"><label>전체</label></a>
+		<a href="http://localhost:9000/waffles/menu/menu.jsp"><label>전체</label></a>
 		<a href="http://localhost:9000/waffles/menu/waffle.jsp"><label class="star1">☆ </label><label>와플</label></a>
 		<a href="#"><label class="star1">☆ </label><label>커피 / 라떼</label></a>
 		<a href="#"><label class="star1">☆ </label><label>쥬스 / 차</label></a>

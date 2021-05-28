@@ -45,7 +45,7 @@
 					</li>
 					<li>
 						<div>
-						<a href="http://localhost:9000/waffles/menu/all_menu.jsp">메뉴소개</a>
+						<a href="http://localhost:9000/waffles/menu/menu.jsp">메뉴소개</a>
 						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
