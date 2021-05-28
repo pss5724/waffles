@@ -45,23 +45,23 @@
 					</li>
 					<li>
 						<div>
-						<a href="#">메뉴소개</a>
+						<a href="http://localhost:9000/waffles/menu/all_menu.jsp">메뉴소개</a>
 						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
-							<li><a href="#">와플</a></li>
+							<li><a href="http://localhost:9000/waffles/menu/waffle.jsp">와플</a></li>
 							<li><a href="#">커피 / 라떼</a></li>
 							<li><a href="#">주스 / 차</a></li>
 						</ul>
 					</li>
 					<li>
 						<div>
-						<a href="#">캠퍼스안내</a>
+						<a href="http://localhost:9000/waffles/campus/nationwide.jsp">캠퍼스안내</a>
 						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
+							<li><a href="http://localhost:9000/waffles/campus/nationwide.jsp">전국 캠퍼스 현황</a></li>
 							<li><a href="#">캠퍼스 창업 성공스토리</a></li>
-							<li><a href="#">전국 캠퍼스 현황</a></li>
 						</ul>
 					</li>
 					<li>
