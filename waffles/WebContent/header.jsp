@@ -78,12 +78,12 @@
 					</li>
 					<li>
 						<div>
-						<a href="#">고객문의</a>
+						<a href="http://localhost:9000/waffles/support/notice/notice_board.jsp">고객문의</a>
 						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
-							<li><a href="#">공지사항</a></li>
-							<li><a href="#">문의 게시판</a></li>
+							<li><a href="http://localhost:9000/waffles/support/notice/notice_board.jsp">공지사항</a></li>
+							<li><a href="http://localhost:9000/waffles/support/FAQ/faq_board.jsp">문의 게시판</a></li>
 						</ul>
 					</li>
 					<li><div><button class="login_btn">로그인</button></div></li>
