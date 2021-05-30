@@ -179,7 +179,7 @@
 			<p>'와플대학 캠퍼스'를 찾아보세요.</p>
 			<div>
 				<input type="text" name="id" id="id" placeholder="매장이나 시/군 명 입력">
-				<a href="#"><img src="http://localhost:9000/waffles/images/index/section/search.png"></a>
+				<a href="#"><img src="http://localhost:9000/waffles/images/index/section/search.png"></a> 
 			</div>
 		</div>
 	</div>
