@@ -10,6 +10,26 @@
 <title>창업안내 - 창업FAQ - 글쓰기 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<script>
+	
+	$(document).ready(function() {
+		
+		$("#faqwriteBtn").click(function() {
+			
+			if($("#ftitle").val() == "") {
+				alert("제목을 입력해주세요");
+				$("#ftitle").focus();
+				return false;
+			}else if($("#fcontent").val() == "") {
+				alert("내용을 입력해주세요");
+				$("#fcontent").focus();
+				return false;
+			}else {
+				faq_write.submit();
+			}
+		});
+	});
+</script>
 </head>
 <body>
 
@@ -33,12 +53,12 @@
 					
 					<tr>
 						<th>내용</th>
-						<td><textarea name = "fcontent"></textarea></td>
+						<td><textarea name = "fcontent" id = "fcontent"></textarea></td>
 					</tr>
 					
 					<tr>
 						<td colspan = "2">
-							<button type = "button" class = "btn_setup_faq">글쓰기</button>
+							<button type = "button" id = "faqwriteBtn" class = "btn_setup_faq">글쓰기</button>
 							<button type = "reset" class = "btn_setup_faq">초기화</button>
 							<a href = "setup_faq.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
 							<a href = "../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>

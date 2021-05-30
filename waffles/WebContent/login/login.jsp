@@ -10,6 +10,27 @@
 <title>로그인 화면 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<script>
+
+	$(document).ready(function() {
+		
+		$("#loginBtn").click(function() {
+			
+			if($("#id").val() == "") {
+				alert("아이디를 입력해주세요");
+				$("#id").focus();
+				return false;
+			} else if ($("#pass").val() == "") {
+				alert("패스워드를 입력해주세요");
+				$("#pass").focus();
+				return false;
+			} else {
+				login_form.submit();
+			}
+		});
+	});
+
+</script>
 </head>
 <body>
 	<!-- header -->
@@ -27,16 +48,16 @@
 				<ul>
 					<li>
 						<label> 아이디 </label>
-						<input type = "text" name = "id">
+						<input type = "text" name = "id" id = "id">
 					</li>
 					
 					<li>
 						<label> 비밀번호 </label>
-						<input type = "password" name = "pass">
+						<input type = "password" name = "pass" id = "pass">
 					</li>
 					
 					<li>
-						<button type = "button" class = "btn_login">로그인</button>
+						<button type = "button" id = "loginBtn" class = "btn_login">로그인</button>
 					</li>
 					
 					<li>
