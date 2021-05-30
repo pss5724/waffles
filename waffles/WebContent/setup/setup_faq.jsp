@@ -1,62 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>창업안내 - 창업FAQ | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
-
-<style>
-	
-	div.content_setup_faq {
-		width : 1200px;
-		margin : auto;
-		text-align : center;
-	}
-	
-	div.content_setup_faq>section.setup_faq {
-		width : 90%;
-		margin : auto;
-	}
-	
-	div.content_setup_faq>section:first-child div:nth-child(2) {
-		font-size : 40px;
-		font-weight : 400;
-	}
-	
-	div.content_setup_faq>section:first-child div:nth-child(3) {
-		background-color : gold;
-		width : 100%; height : 2px;
-		margin : 20px 0;
-	}
-	
-	div.content_setup_faq>section.setup_faq_list {
-		width : 90%;
-		margin : auto;
-	}
-	
-
-	
-
-</style>
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<!-- header -->
-	<jsp:include page = "../header.jsp"></jsp:include>
+	<jsp:include page = "../header.jsp">
+	<jsp:param name="mainlabel" value="창업 FAQ" />
+	<jsp:param name="sublabel" value=" Home > 창업안내 > 창업 FAQ "/>
+	</jsp:include>
 	
 	
 	<!-- content -->
 	<div class = "content_setup_faq">
 	
-		<section class = "setup_faq">
+		<section class = "section_setup_faq">
 			<img src = "../images/setup/step1.PNG">
 			<div> 창업FAQ </div>
 			<div></div>
 		</section>
 		
 		<section class ="setup_faq_list">
-			<table class = "content_layout">
+			<table class = "content_layout_setup_faq">
 				
 				<tr>
 					<th> 번호 </th>
@@ -65,13 +38,15 @@
 					<th> 날짜 </th>
 					<th> 조회수 </th>
 				</tr>
+				
 				<tr>
 					<td>1</td>
-					<td><a href = "#">푸드트럭 및 1톤 트럭으로 와플대학 창업이 가능한가요?</a></td>
+					<td><a href = "setup_faq_content.jsp">푸드트럭 및 1톤 트럭으로 와플대학 창업이 가능한가요?</a></td>
 					<td>와플대학관리자</td>
 					<td>21/05/06</td>
 					<td>2</td>
 				</tr>
+				
 				<tr>
 					<td>2</td>
 					<td><a href = "#">가맹 계약부터 오픈까지 얼마나 소요되나요? </a></td>
@@ -140,7 +115,19 @@
 			</table>
 		</section>
 		
-		
+		<section class = "setup_faq_search">
+			<select class = "search">
+				<option value = "title">제목</option>
+				<option value = "content">내용</option>
+				<option value = "title+content">제목+내용</option>
+				<option value = "writer">글쓴이</option>
+			</select>
+			
+			<input type = "text" name = "search_text" class = "search_text">
+			<button type = "button" class = "btn_search">검색</button>
+			
+			<a href = "setup_faq_write.jsp"><button type = "button" class = "btn_setup_faq_write">글쓰기</button></a>
+		</section>
 		
 	</div>	
 	

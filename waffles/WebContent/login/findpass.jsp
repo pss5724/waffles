@@ -1,36 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>        
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>아이디/비밀번호 찾기 - 새비밀번호 설정 | 와플대학</title>
-<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles.css">
+<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<!-- header -->
-	<jsp:include page = "../header.jsp"></jsp:include>
+	<jsp:include page = "../header.jsp">
+	<jsp:param name="mainlabel" value="새 비밀번호 설정" />
+	<jsp:param name="sublabel" value=" Home > 아이디 / 비밀번호 찾기 > 새 비밀번호 설정"/>
+	</jsp:include>
 	
 	<!-- content --> 
-		<div class = "content">
-			<section class = "findpass">
-				<h1 class = "title"> 새 비밀번호 설정 </h1>
-				<form name = "findpass_form" action = "#" method = "get" class = "content_layout">
-
-
-								<label> 비밀번호 </label> <br>
-								<input type = "password" name = "pass" class = "i1"> <br>
-
+		<div class = "content_findpass">
+			<section>
+				<div class = "title"> 새 비밀번호 설정 </div>
+				<form name = "findpass_form" action = "#" method = "get" class = "content_layout_findpass">
+					<ul>
+						<li>
+							<label> 새 비밀번호 </label>
+							<input type = "password" name = "pass">
+						</li>
 					
+						<li>
+							<label> 새 비밀번호 확인 </label>
+							<input type = "password" name = "cpass">
+						</li>	
 
-								<label> 비밀번호 확인 </label> <br>
-								<input type = "password" name = "cpass" class = "i1"> <br>
-
-
-							<button type = "button" class = "btn_style">비밀번호 설정</button>
-
+						<li>
+							<button type = "button" class = "btn_findpass">비밀번호 설정</button>
+						</li>
 					
-				
+					</ul>
 				</form>
 			</section>
 			

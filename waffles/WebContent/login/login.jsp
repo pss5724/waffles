@@ -10,7 +10,6 @@
 <title>로그인 화면 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
-
 </head>
 <body>
 	<!-- header -->

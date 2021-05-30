@@ -66,14 +66,14 @@
 					</li>
 					<li>
 						<div>
-						<a href="#">창업안내</a>
+						<a href="http://localhost:9000/waffles/setup/setup_main.jsp">창업안내</a>
 						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
-							<li><a href="#">창업 경쟁력</a></li>
-							<li><a href="#">창업 절차 및 비용</a></li>
-							<li><a href="#">창업상담</a></li>
-							<li><a href="#">자주 묻는 질문</a></li>
+							<li><a href="http://localhost:9000/waffles/setup/setup_main.jsp">창업 경쟁력</a></li>
+							<li><a href="http://localhost:9000/waffles/setup/setup_step.jsp">창업 절차 및 비용</a></li>
+							<li><a href="http://localhost:9000/waffles/setup/setup_counsel.jsp">창업상담</a></li>
+							<li><a href="http://localhost:9000/waffles/setup/setup_faq.jsp">자주 묻는 질문</a></li>
 						</ul>
 					</li>
 					<li>

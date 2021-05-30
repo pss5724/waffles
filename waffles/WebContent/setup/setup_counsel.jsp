@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>창업안내 - 창업상담 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
-
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -30,7 +30,7 @@
 		<section class = "setup_counsel">
 			<h3> 개인정보수집 및 이용에 대한 안내 </h3>
 			
-			<textarea class = "initial"> 
+			<textarea class = "initial" disabled> 
 	와플대학은 주문을 위하여 아래와 같이 개인정보를 수집·이용하는 내용을 관계 법령에 따라 알리오니, 동의해 주시기를 바랍니다.
 
 	■ 개인정보의 수집·이용 항목
