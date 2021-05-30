@@ -8,11 +8,11 @@
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$("#main-li li:nth-child(1),li:nth-child(2),li:nth-child(3),li:nth-child(4),li:nth-child(5)").mouseenter(function() {
+		$("#main-li li:nth-child(1),#main-li li:nth-child(2),#main-li li:nth-child(3),#main-li li:nth-child(4),#main-li li:nth-child(5)").mouseenter(function() {
 			$(this).children("div").css("color","#00498c").css("background-color","rgba(241,241,241, 0.8)");
 		});
 		
-		$("#main-li li:nth-child(1),li:nth-child(2),li:nth-child(3),li:nth-child(4),li:nth-child(5)").mouseenter(function() {
+		$("#main-li li:nth-child(1),#main-li li:nth-child(2),#main-li li:nth-child(3),#main-li li:nth-child(4),#main-li li:nth-child(5)").mouseenter(function() {
 			$(this).find("#sub-menu").fadeIn(250);
 		}).mouseleave(function() {
 			$(this).find("#sub-menu:visible").fadeOut(250, function() {
