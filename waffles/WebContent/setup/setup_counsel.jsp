@@ -9,7 +9,65 @@
 <meta charset="UTF-8">
 <title>창업안내 - 창업상담 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+		
+		/* 폼체크 */
+		$("#counselBtn").click(function() {
+			if($("input[name = 'initial_check']:checked").length == 0) {
+				alert("개인정보수집 및 이용에 동의해주세요");
+				$("input[name = 'initial_check']").focus();
+				return false;
+			} else if($("#name").val() == "") {
+				alert("이름을 입력해주세요");
+				$("#name").focus();
+				return false;
+			} else if ($("#hp1").val() == "choice") {
+				alert("핸드폰1 번호를 입력해주세요");
+				$("#hp1").focus();
+				return false;
+			} else if($("#hp2").val() == "") {
+				alert("핸드폰2 번호를 입력해주세요");
+				$("#hp2").focus();
+				return false;
+			} else if($("#hp3").val() == "") {
+				alert("핸드폰3 번호를 입력해주세요");
+				$("#hp3").focus();
+				return false;	
+			} else if($("#email1").val() == "") {
+				alert("email1을 입력해주세요");
+				$("#email1").focus();
+				return false;
+			} else if ($("#email2").val() == "") {
+				alert("email2,3을 입력해주세요");
+				$("#email3").focus();
+				return false;
+			} else if($("#local").val() == "") {
+				alert("창업 희망 지역을 입력해주세요");
+				$("#local").focus();
+				return false;
+			} else {
+				setup_counsel_form.submit();
+			}
+		});
+		
+		/* 이메일 체크 */
+		$("#email3").change(function() {
+			if($("#email3").val() == "선택") {
+				alert("주소 선택해주세요");
+				$("#email2").val("");
+				$("#email3").focus();
+				return false;
+			} else {
+				$("#email2").val($("#email3").val());
+			}
+		});
+			
 
+	});
+
+</script>
 </head>
 <body>
 	<!-- header -->
@@ -30,7 +88,7 @@
 		<section class = "setup_counsel">
 			<h3> 개인정보수집 및 이용에 대한 안내 </h3>
 			
-			<textarea class = "initial"> 
+			<textarea class = "initial" disabled> 
 	와플대학은 주문을 위하여 아래와 같이 개인정보를 수집·이용하는 내용을 관계 법령에 따라 알리오니, 동의해 주시기를 바랍니다.
 
 	■ 개인정보의 수집·이용 항목
@@ -114,11 +172,11 @@
 			<div> * 표시는 필수 입력사항입니다.</div>
 			<div class = "line"></div>
 			
-			<form name = "join_form" action = "#" method = "get" class = "content_layout_setup_counsel">
+			<form name = "setup_counsel_form" action = "#" method = "get" class = "content_layout_setup_counsel">
 				<ul>
 					<li>
 						<label> 이름 * </label>
-						<input type = "text" name = "name" class = "i1">
+						<input type = "text" name = "name" id = "name">
 						<div></div>
 					</li>
 					
@@ -138,9 +196,9 @@
 					
 					<li>
 						<label> 이메일 * </label>
-						<input type = "text" name = "email1"> @ 
-						<input type = "text" name = "email2">
-						<select>
+						<input type = "text" name = "email1" id = "email1"> @ 
+						<input type = "text" name = "email2" id = "email2">
+						<select id = "email3">
 							<option value = "choice">선택</option>
 							<option value = "naver.com">naver.com</option>
 							<option value = "daum.net">daum.net</option>
@@ -162,7 +220,7 @@
 					
 					<li>
 						<label> 창업 희망 지역 * </label>
-						<input type = "text" name = "local" class = "i1">
+						<input type = "text" name = "local" id = "local">
 						<div></div>
 					</li>
 					
@@ -175,7 +233,7 @@
 					
 					<li>
 						<a href = "setup_main.jsp"><button type = "button" class = "btn_counsel_1">취소</button></a>
-						<button type = "button" class = "btn_counsel_2">확인</button>
+						<button type = "button" id = "counselBtn" class = "btn_counsel_2">확인</button>
 					</li>
 				
 				</ul>

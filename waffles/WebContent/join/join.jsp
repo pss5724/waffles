@@ -9,7 +9,79 @@
 <meta charset="UTF-8">
 <title>회원가입 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<script>
 
+	$(document).ready(function() {
+		
+		/* 폼체크 */
+		$("#joinBtn").click(function() {
+			if($("input[name = 'initial_check']:checked").length == 0) {
+				alert("개인정보수집 및 이용에 동의해주세요");
+				$("input[name = 'initial_check']").focus();
+				return false;
+			} else if($("#name").val() == "") {
+				alert("이름을 입력해주세요");
+				$("#name").focus();
+				return false;
+			} else if($("#email1").val() == "") {
+				alert("email1을 입력해주세요");
+				$("#email1").focus();
+				return false;
+			} else if ($("#email2").val() == "") {
+				alert("email2,3을 입력해주세요");
+				$("#email3").focus();
+				return false;
+			} else if($("#id").val() == "") {
+				alert("아이디를 입력해주세요");
+				$("#id").focus();
+				return false;
+			} else if ($("#pass").val() == "") {
+				alert("패스워드를 입력해주세요");
+				$("#pass").focus();
+				return false;
+			} else if ($("#cpass").val() == "") {
+				alert("패스워드 확인을 입력해주세요");
+				$("#cpass").focus();
+				return false;	
+			} else {
+				join_form.submit();
+			}
+
+		});
+		
+		/* 이메일 체크 */
+		$("#email3").change(function() {
+			if($("#email3").val() == "선택") {
+				alert("주소 선택해주세요");
+				$("#email2").val("");
+				$("#email3").focus();
+				return false;
+			} else {
+				$("#email2").val($("#email3").val());
+			}
+		});
+		
+		/* 패스워드 체크 */
+		$("#cpass").blur(function() {
+			if($("#pass").val() != "" && $("#cpass").val() != "") {
+				if($("#pass").val() == $("#cpass").val()) {
+					$("#msg").text("패스워드가 동일합니다").css("color", "blue");
+					return true;
+				}else {
+					$("#msg").text("패스워드가 다릅니다").css("color", "red");
+					$("#pass").val("");
+					$("#cpass").val("").focus();
+					return false;
+				}
+			}	
+		});	
+		
+	});
+	
+
+
+</script>
 </head>
 <body>
 	<!-- header -->
@@ -24,7 +96,7 @@
 			<div class = "title"> 회원가입 </div>
 			<h3> 개인정보수집 및 이용에 대한 안내 </h3>
 			
-			<textarea class = "initial">
+			<textarea class = "initial" disabled>
 	와플대학은 주문을 위하여 아래와 같이 개인정보를 수집·이용하는 내용을 관계 법령에 따라 알리오니, 동의해 주시기를 바랍니다.
 
 	■ 개인정보의 수집·이용 항목
@@ -111,15 +183,15 @@
 				<ul>
 					<li>
 						<label> 이름 * </label>
-						<input type = "text" name = "name" class = "name">
+						<input type = "text" name = "name" id = "name" class = "name">
 						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 이메일 * </label>
-						<input type = "text" name = "email1" class = "email1"> @ 
-						<input type = "text" name = "email2" class = "email2">
-						<select class = "email3">
+						<input type = "text" name = "email1" id = "email1" class = "email1"> @ 
+						<input type = "text" name = "email2" id = "email2" class = "email2">
+						<select id = "email3" class = "email3">
 							<option value = "choice">선택</option>
 							<option value = "naver.com">naver.com</option>
 							<option value = "daum.net">daum.net</option>
@@ -131,27 +203,28 @@
 					
 					<li>
 						<label> 아이디 * </label>
-						<input type = "text" name = "id" class = "id">
+						<input type = "text" name = "id" id = "id" class = "id">
 						<button type = "button">중복체크</button>
 						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 비밀번호 * </label>
-						<input type = "password" name = "pass" class = "pass">
+						<input type = "password" name = "pass" id = "pass" class = "pass">
 						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 비밀번호 확인 * </label>
-						<input type = "password" name = "cpass" class = "cpass">
+						<input type = "password" name = "cpass" id = "cpass" class = "cpass">
+						<div id = "msg"></div>
 						<div class = "line"></div>
 					</li>
 					
 					
 					<li>
 						<a href = "../login/login.jsp"><button type = "button" class = "btn_join_1">취소</button></a>
-						<button type = "button" class = "btn_join_2">회원가입</button>
+						<button type = "button" id = "joinBtn" class = "btn_join_2">회원가입</button>
 					</li>
 				
 				</ul>
