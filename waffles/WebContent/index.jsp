@@ -26,6 +26,27 @@
 	});
 </script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/waffles_sg.css">
+<script>
+window.onload = function(){
+	var speed = 8000
+	var Pic = new Array()
+
+	Pic[0] = 'http://localhost:9000/waffles/images/index/header/1.jpg'
+	Pic[1] = 'http://localhost:9000/waffles/images/index/header/2.jpg'
+	Pic[2] = 'http://localhost:9000/waffles/images/index/header/3.jpg'
+	Pic[3] = 'http://localhost:9000/waffles/images/index/header/4.jpg'
+	Pic[4] = 'http://localhost:9000/waffles/images/index/header/5.jpg'
+	document.getElementById("header").style.backgroundImage = "url("+Pic[0]+")";
+	var i = 0
+	var p = Pic.length
+	playAlert = setInterval(function() {
+		document.getElementById("header").style.backgroundImage = "url("+Pic[i]+")";
+		i = i+1;
+		if(i>(p-1)) i=0;
+	}, speed);
+
+}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -36,8 +57,8 @@
 			</a>
 		</p>
 		<div id="headbtn">
-			<button class="login_btn">로그인</button>
-			<button class="join_btn">회원가입</button>
+			<button class="login_btn" onclick="location.href='http://localhost:9000/waffles/login/login.jsp'">로그인</button>
+			<button class="join_btn" onclick="location.href='http://localhost:9000/waffles/join/join.jsp'">회원가입</button>
 		</div>
 		<div>
 			<nav>

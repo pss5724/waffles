@@ -23,6 +23,7 @@
 			$(this).parent().parent().find("div").css("background-color","rgba(255, 255, 255, 0)").css("color","white");
 		});
 	});
+	
 </script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/waffles.css">
 </head>
