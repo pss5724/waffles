@@ -68,6 +68,7 @@
 					<li>
 						<a href = "../index.jsp"><button type = "button" class = "btn_modify_1">취소</button></a>
 						<button type = "button" class = "btn_modify_2">정보수정</button>
+						<button type = "button" class = "btn_modify_2">회원탈퇴</button>
 					</li>
 				
 				</ul>
