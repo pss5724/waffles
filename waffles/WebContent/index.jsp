@@ -23,11 +23,35 @@
 		$("#main-li li").mouseleave(function() {
 			$(this).parent().parent().find("div").css("background-color","rgba(255, 255, 255, 0)").css("color","white");
 		});
+		
+		/** 백그라운드 페이드인 아웃 **/
+		var check = 0;
+		setInterval(function() {
+			check += 1;
+			if(check>5) check=0;
+			if(check == 0){
+				$("div#bgImage>ul>li:nth-child(5)").animate({opacity:0},2500);
+				$("div#bgImage>ul>li:nth-child(1)").animate({opacity:1},2500);
+			}else if(check == 1){
+				$("div#bgImage>ul>li:nth-child(1)").animate({opacity:0},2500);
+				$("div#bgImage>ul>li:nth-child(2)").animate({opacity:1},2500);
+			}else if(check == 2){
+				$("div#bgImage>ul>li:nth-child(2)").animate({opacity:0},2500);
+				$("div#bgImage>ul>li:nth-child(3)").animate({opacity:1},2500);
+			}else if(check == 3){
+				$("div#bgImage>ul>li:nth-child(3)").animate({opacity:0},2500);
+				$("div#bgImage>ul>li:nth-child(4)").animate({opacity:1},2500);
+			}else if(check == 4){
+				$("div#bgImage>ul>li:nth-child(4)").animate({opacity:0},2500);
+				$("div#bgImage>ul>li:nth-child(5)").animate({opacity:1},2500);
+			}
+		},6000);
+		
 	});
 </script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/waffles_sg.css">
 <script>
-window.onload = function(){
+/*window.onload = function(){
 	var speed = 8000
 	var Pic = new Array()
 
@@ -45,11 +69,20 @@ window.onload = function(){
 		if(i>(p-1)) i=0;
 	}, speed);
 
-}
+}*/
 </script>
 <title>Insert title here</title>
 </head>
 <body>
+	<div id="bgImage">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
 	<div id="header">
 		<p>
 			<a href="http://localhost:9000/waffles/index.jsp">
