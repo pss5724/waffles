@@ -87,8 +87,8 @@
 							<li><a href="http://localhost:9000/waffles/support/FAQ/faq_board.jsp">문의 게시판</a></li>
 						</ul>
 					</li>
-					<li><div><button class="login_btn">로그인</button></div></li>
-					<li><div><button class="join_btn">회원가입</button></div></li>
+					<li><div><button class="login_btn" onclick="location.href='http://localhost:9000/waffles/login/login.jsp'">로그인</button></div></li>
+					<li><div><button class="join_btn" onclick="location.href='http://localhost:9000/waffles/join/join.jsp'">회원가입</button></div></li>
 				</ul>
 			</nav>
 			<div>
