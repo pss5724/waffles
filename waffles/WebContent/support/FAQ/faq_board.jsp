@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel = "stylesheet" href = "http://localhost:9000/test/css/waffles_ss.css">
+<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles_ss.css">
 </head>
 <body>
 <!-- header -->
