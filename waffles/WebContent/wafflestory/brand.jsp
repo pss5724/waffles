@@ -20,9 +20,6 @@
 			<img src="http://localhost:9000/waffles/images/story/brand/brand1.JPG">
 		</div>
 		<div>
-			<button type="button">와플대학이걸어온길</button>
-		</div>
-		<div>
 			<img src="http://localhost:9000/waffles/images/story/brand/brand2.JPG">
 			<div></div>
 		</div>

@@ -7,6 +7,9 @@
 <html>
 <head>
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/waffles/plugin/owl.carousel.min.css">
+<link rel="stylesheet" href="http://localhost:9000/waffles/plugin/owl.theme.default.min.css">
+<script src="http://localhost:9000/waffles/plugin/owl.carousel.js"></script>
 <script>
 	$(document).ready(function(){
 		$("#main-li li:nth-child(1),#main-li li:nth-child(2),#main-li li:nth-child(3),#main-li li:nth-child(4),#main-li li:nth-child(5)").mouseenter(function() {
@@ -185,21 +188,65 @@
 	<div class="indexMenu">
 		<div>
 			<img src="http://localhost:9000/waffles/images/index/section/베스트메뉴.JPG">
-			<div><a href="#">ALL</a> <a href="#"><font color="red">☆ </font>WAFFLE</a> <a href="#"><font color="red">☆ </font>COFFEE</a> <a href="#"><font color="red">☆ </font>JUICE/BEVERAGE</a> <a href="#"><font color="red">☆ </font>ICE-CREAM</a></div>
-			<ul>
-			<li>
-			<img src="http://localhost:9000/waffles/images/index/section/12312123121.png">
-			</li>
-			<li>
-			<img src="http://localhost:9000/waffles/images/index/section/67Kg66as67Kg66as.jpg">
-			</li>
-			<li>
-			<img src="http://localhost:9000/waffles/images/index/section/67O17JWE.jpg">
-			</li>
-			<li>
-			<img src="http://localhost:9000/waffles/images/index/section/7J6Q66q97JeQ7J2065Oc.jpg">
-			</li>
-			</ul>
+			<div><a href="#">ALL</a> <a href="#"><font color="red">☆ </font>WAFFLE</a> <a href="#"><font color="red">☆ </font>COFFEE</a> <a href="#"><font color="red">☆ </font>JUICE/BEVERAGE</a></div>
+			<div class="owl-carousel owl-theme owl-loaded">
+				<div class="owl-stage-outer">
+					<div class="owl-stage">
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/waffle1.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/waffle2.png"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/waffle3.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/waffle4.png"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/coffee1.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/coffee2.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/coffee3.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/coffee4.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/juice1.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/juice2.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/juice3.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+						<div class="owl-item">
+							<img src="http://localhost:9000/waffles/images/index/carosel/juice4.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						</div>
+					</div>
+				</div>
+			</div>
+						<script type="text/javascript">
+							$(document).ready(function() {
+								var owl = $('.owl-carousel');
+					
+								owl.owlCarousel({
+									items : 4,
+									loop : true,
+									margin : 30,
+									autoplay : true,
+									autoplayTimeout : 8000,
+									autoplaySpeed : 2000,
+									autoplayHoverPause : true,
+									mergeFit:true
+								});
+							});
+						</script>
 		</div>
 	</div>
 	<div class="indexBot">
