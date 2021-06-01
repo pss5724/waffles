@@ -101,9 +101,9 @@
 		margin : 5px 0 15px 0;
 	}
 	
-	.content_join>section>textarea.initial {
+	.content_join>section:first-child>.initial {
 		/* border : 1px solid blue; */
-		width : 95%;
+		width : 100%;
 		height : 300px;
 	}
 	

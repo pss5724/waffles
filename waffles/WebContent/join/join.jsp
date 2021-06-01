@@ -179,7 +179,7 @@
 			<div> * 표시는 필수 입력사항입니다.</div>
 			<div class = "hr"></div>
 			
-			<form name = "join_form" action = "#" method = "get" class = "content_layout_join">
+			<form name = "join_form" action = "joinProcess.jsp" method = "post" class = "content_layout_join">
 				<ul>
 					<li>
 						<label> 이름 * </label>

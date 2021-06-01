@@ -44,7 +44,7 @@
 	<div class = "content_login">
 		<section>
 			<div class = "title"> 회원로그인 </div>
-			<form name = "login_form" action = "#" method = "get" class = "content_layout_login">
+			<form name = "login_form" action = "loginProcess.jsp" method = "post" class = "content_layout_login">
 				<ul>
 					<li>
 						<label> 아이디 </label>
