@@ -485,27 +485,37 @@ section.index>div.indexBot>div#p2>div>a>img{
 /**********************
 	index-carousel
 	***/
-.indexMenu>div>div{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
+.owl-carousel {
+	width: 55%;
 }
 .owl-stage {
 	height: 250px;
+	
 }
-
 .owl-stage-outer {
 	height: 250px;
 	width: 100%;
 }
 
-
+.owl-item{
+	z-index:0;
+	position: relative;
+}
+.owl-item>div{
+	position: absolute;
+	overflow: hidden;
+}
+.indexMenu>div>div{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 .owl-item img {
 	height: 100%;
 	position: relative;
 	z-index: 1;
 }
-.owl-item span {
+.owl-item>div>span {
 	position: absolute;
 	z-index: 51;
 	background-color: #2b2d2f;
@@ -517,10 +527,10 @@ section.index>div.indexBot>div#p2>div>a>img{
 	border: 0px solid red;
 	border-radius:0 0 15px 15px;
 }
-.owl-item div {
+.owl-item>div>div {
 	text-align: center;
 }
-.owl-item p {
+.owl-item>div>div>p {
 	position: absolute;
 	color:white;
 	font-size: 20px;
@@ -531,14 +541,47 @@ section.index>div.indexBot>div#p2>div>a>img{
 	width: 200px;
 	latter-spacing: -1;
 }
+.owl-item>div>div>button {
+position: absolute;
+	z-index: 51;
+	left: 50%;
+	/**top: 80%;**/
+	top: 130%;
+	transform: translate(-50%,-50%);
+	background-color: rgba(0,0,0,0);
+	color: orange;
+	font-size: 20px;
+	border-radius: 10px;
+	border: 2px solid orange;
+	width: 80px;
+	height: 35px;
+	padding-bottom: 10px;
+}	
+.owl-item>div>div>div {
+	position: absolute;
+	z-index: 51;
+	left: 50%;
+	top: 110%;
+	transform:translate(-50%,-50%);
+	height: 40px;
+	width: 50px;
+}  
+.owl-item>p {
+	position: absolute;
+	z-index: 100;
+	left: 50%;
+	transform:translate(-50%,550%);
+	height: 35px;
+	width: 120px;
+	border: 0px solid red;
+	border-radius: 10px;
+	background-color: orange;
+	color: white;
+	padding-top: 5px;
+	font-size: 13px;
+	letter-spacing: -1;
+}
 
-.owl-item {
-	width: 95%;
-	z-index:0;
-}
-.owl-carousel {
-	width: 55%;
-}
 }
 
 

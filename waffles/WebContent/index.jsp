@@ -27,7 +27,7 @@
 			$(this).parent().parent().find("div").css("background-color","rgba(255, 255, 255, 0)").css("color","white");
 		});
 		
-		/** 백그라운드 페이드인 아웃 **/
+		/** 백그라운드 페이드인 아웃 전환 **/
 		$("div#bgImage>ul>li:nth-child(1)").animate({opacity:0},2500);
 		$("div#bgImage>ul>li:nth-child(2)").animate({opacity:1},2500);
 		var check = 1;
@@ -51,6 +51,29 @@
 				$("div#bgImage>ul>li:nth-child(5)").animate({opacity:1},2500);
 			}
 		},6000);
+		/**메뉴 오버레이**/
+		$(".owl-stage").children().mouseenter(function() {
+			$(this).children().children("span").animate({
+										  height:'100%', 
+										  'border-top-left-radius': '15px',
+									      'border-top-right-radius': '15px',
+										  },300);
+			$(this).children().children().children("p").animate({top:'35%'},300);
+			$(this).find("button").animate({top:'80%'},300);
+			$(this).children().children().children("div").animate({top:'58%'},300);
+		});
+		$(".owl-stage").children().mouseleave(function() {
+			$(this).children().children("span").animate({
+										  height:'40%',
+										  'border-top-left-radius': 0,
+									      'border-top-right-radius': 0,
+										  },300);
+			$(this).children().children().children("p").animate({top:'75%'},300);
+			$(this).find("button").animate({top:'130%'},300);
+			$(this).children().children().children("div").animate({top:'110%'},300);
+		});
+		
+		
 		
 	});
 </script>
@@ -193,40 +216,148 @@
 				<div class="owl-stage-outer">
 					<div class="owl-stage">
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/waffle1.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+							<p>WAFFLE</p>
+							<div>
+								<img src="http://localhost:9000/waffles/images/index/carosel/waffle1.jpg">
+								<span></span>
+								<div>
+									<p>초코범벅젤라또와플</p>
+									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+									<button>view</button>
+								</div>
+							</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/waffle2.png"><span></span><div><p>초코범벅젤라또와플</p></div>
+							<p>WAFFLE</p>
+							<div>
+								<img src="http://localhost:9000/waffles/images/index/carosel/waffle2.png">
+								<span></span>
+								<div>
+									<p>초코범벅젤라또와플</p>
+									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+									<button>view</button>
+								</div>
+							</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/waffle3.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>WAFFLE</p>
+						<div>
+							<img src="http://localhost:9000/waffles/images/index/carosel/waffle3.jpg">
+							<span></span>
+							<div>
+								<p>초코범벅젤라또와플</p>
+								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+								<button>view</button>
+							</div>
+						</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/waffle4.png"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>WAFFLE</p>
+							<div>
+								<img src="http://localhost:9000/waffles/images/index/carosel/waffle4.png">
+								<span></span>
+								<div>
+									<p>초코범벅젤라또와플</p>
+									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+									<button>view</button>
+								</div>
+							</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/coffee1.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>COFFEE</p>
+							<div>
+								<img src="http://localhost:9000/waffles/images/index/carosel/coffee1.jpg">
+								<span></span>
+								<div>
+									<p>초코범벅젤라또와플</p>
+									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+									<button>view</button>
+								</div>
+							</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/coffee2.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>COFFEE</p>
+							<div>
+								<img src="http://localhost:9000/waffles/images/index/carosel/coffee2.jpg">
+								<span></span>
+								<div>
+									<p>초코범벅젤라또와플</p>
+									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+									<button>view</button>
+								</div>
+							</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/coffee3.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>COFFEE</p>
+							<div>
+								<img src="http://localhost:9000/waffles/images/index/carosel/coffee3.jpg">
+								<span></span>
+								<div>
+									<p>초코범벅젤라또와플</p>
+									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+									<button>view</button>
+								</div>
+							</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/coffee4.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>COFFEE</p>
+							<div>
+								<img src="http://localhost:9000/waffles/images/index/carosel/coffee4.jpg">
+								<span></span>
+								<div>
+									<p>초코범벅젤라또와플</p>
+									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+									<button>view</button>
+								</div>
+							</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/juice1.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>JUICE/BEVERAGE</p>
+							<div>
+								<img src="http://localhost:9000/waffles/images/index/carosel/juice1.jpg">
+								<span></span>
+								<div>
+									<p>초코범벅젤라또와플</p>
+									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+									<button>view</button>
+								</div>
+							</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/juice2.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>JUICE/BEVERAGE</p>
+						<div>
+							<img src="http://localhost:9000/waffles/images/index/carosel/juice2.jpg">
+							<span></span>
+							<div>
+								<p>초코범벅젤라또와플</p>
+								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+								<button>view</button>
+							</div>
+						</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/juice3.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>JUICE/BEVERAGE</p>
+						<div>
+							<img src="http://localhost:9000/waffles/images/index/carosel/juice3.jpg">
+							<span></span>
+							<div>
+								<p>초코범벅젤라또와플</p>
+								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+								<button>view</button>
+							</div>
+						</div>
 						</div>
 						<div class="owl-item">
-							<img src="http://localhost:9000/waffles/images/index/carosel/juice4.jpg"><span></span><div><p>초코범벅젤라또와플</p></div>
+						<p>JUICE/BEVERAGE</p>
+						<div>
+							<img src="http://localhost:9000/waffles/images/index/carosel/juice4.jpg">
+							<span></span>
+							<div>
+								<p>초코범벅젤라또와플</p>
+								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
+								<button>view</button>
+							</div>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -237,13 +368,14 @@
 					
 								owl.owlCarousel({
 									items : 4,
-									loop : true,
+									loop : false,
+									rewind: true,
 									margin : 30,
 									autoplay : true,
-									autoplayTimeout : 8000,
-									autoplaySpeed : 2000,
+									autoplaySpeed: 1000,
+									autoplayTimeout : 3500,
 									autoplayHoverPause : true,
-									mergeFit:true
+									dotsSpeed : 200,
 								});
 							});
 						</script>
