@@ -1,8 +1,8 @@
-package waffles.vo;
+package com.waffles.vo;
 
 public class CampusVO {
 
-private	String loction, name, hp, address;
+private	String loction, name, tel, address; //지역, 캠퍼스명, 전화번호, 주소(도로명)
 
 public String getLoction() {
 	return loction;
@@ -20,12 +20,12 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public String getHp() {
-	return hp;
+public String getTel() {
+	return tel;
 }
 
-public void setHp(String hp) {
-	this.hp = hp;
+public void setTel(String tel) {
+	this.tel = tel;
 }
 
 public String getAddress() {
@@ -35,6 +35,7 @@ public String getAddress() {
 public void setAddress(String address) {
 	this.address = address;
 }
+
 
 
 }

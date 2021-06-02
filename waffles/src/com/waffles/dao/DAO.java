@@ -1,4 +1,4 @@
-package waffles.dao;
+package com.waffles.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -47,7 +47,6 @@ public abstract class DAO {
 			if (conn != null) {
 				conn.close();
 			}
-			System.out.println("6: Terminate OracleDB connection ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

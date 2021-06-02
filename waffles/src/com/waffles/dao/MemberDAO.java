@@ -1,10 +1,10 @@
-package waffles.dao;
+package com.waffles.dao;
 
-import waffles.vo.MemberVO;
+import com.waffles.vo.MemberVO;
 
 public class MemberDAO extends DAO {
 
-	/* ·Î±×ÀÎ Ã³¸® */
+	/* ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ */
 	public boolean getLogin(String id, String pass) {
 		boolean result = false;
 		
@@ -29,7 +29,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* È¸¿ø°¡ÀÔ Ã³¸® */
+	/* È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ */
 	public boolean getJoin(MemberVO member) {
 		boolean result = false;
 		
@@ -52,5 +52,5 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* ¾ÆÀÌµð Áßº¹Ã¼Å©, ºñ¹Ð¹øÈ£ Ã£±â - »õ ºñ¹Ð¹øÈ£ (update), È¸¿øÁ¤º¸¼öÁ¤ (update - ¾ÆÀÌµð, ÀÌ¸§ »©°í) */
+	/* ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å©, ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½ - ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ (update), È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (update - ï¿½ï¿½ï¿½Ìµï¿½, ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½) */
 }

@@ -1,4 +1,4 @@
-package waffles.vo;
+package com.waffles.vo;
 
 public class MemberVO {
 
