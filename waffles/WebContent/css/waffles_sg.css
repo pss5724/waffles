@@ -234,20 +234,58 @@ div#header>div>div.mainLabel>p:nth-child(3) {
 section.index>div.indexMid {
 	position: relative;
 	height: 700px;
-	margin-top: 80px;
+	margin-top: 130px;
 }
 section.index>div.indexMid>div:nth-child(1){
 	display: inline-block;
 	position: absolute;
 	top: 20px;
 	right: 52.5%;
+	height: 50%;
 }
-section.index>div.indexMid>div:nth-child(1)>img{
-	max-width: 100%; 
-	height: auto; 
-	border:0px solid red; 
-	border-radius: 20px;
-	padding: 0px; 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 70px;
+  width: 70px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 35px;
+  color: rgba:(0,0,0,0);
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 35px;
+  color: rgba:(0,0,0,0);
+}
+.carousel-item,
+.carousel-inner,
+.carousel-inner img {
+  height: 100%;
+  width: auto;
+}
+.carousel-inner img {
+	border: 0px solid red;
+	border-radius: 20px;	
+}
+
+.carousel-item {
+  text-align: center;
+}
+.carousel {
+  position: absolute;
+  height: 430px;
+  width: 485px;
+  right: 52.5%;
+  
+  
 }
 section.index>div.indexMid>div:nth-child(2){
 	border:0px solid red; 
@@ -292,10 +330,6 @@ section.index>div.indexMid>div:nth-child(3){
 	position: absolute;
 	left: 48.7%;
 	top: 20px;
-	border:0px solid red; 
-	border-radius: 20px;
-}
-section.index>div.indexMid>div:nth-child(3){
 	background:url("http://localhost:9000/waffles/images/index/section/floorimage.jpg");
 	border:0px solid red; 
 	border-radius: 20px;
@@ -311,10 +345,11 @@ section.index>div.indexMid>div:nth-child(3)>p:nth-child(1){
 section.index>div.indexMid>div:nth-child(3)>p:nth-child(2){
 	text-align: right;
 	color: white;
-	padding-top: 120px;
-	padding-right: 25px;
+	padding-top: 100px;
+	padding-right: 30px;
 	padding-bottom: 7px;
 	letter-spacing: -1px;
+	margin-bottom: -5px;
 }
 section.index>div.indexMid>div:nth-child(3)>p:nth-child(3){
 	text-align: right;
@@ -323,7 +358,6 @@ section.index>div.indexMid>div:nth-child(3)>p:nth-child(3){
 	font-weight: 700;
 	padding-right: 25px;
 	letter-spacing: -1px;
-	
 }
 section.index>div.indexMid>div:nth-child(4){
 	border:0px solid red; 
@@ -352,9 +386,11 @@ section.index>div.indexMid>div:nth-child(4)>ul>li{
 }
 section.index>div.indexMid>div:nth-child(4)>ul>li>img{
 	padding: 20px;
+	margin-bottom: 70px;
+	width: 130px; height: 120px;
 }
-section.index>div.indexMid>div:nth-child(4)>ul>li:first-child>img{
-	padding-top: 30px;
+section.index>div.indexMid>div:nth-child(4)>ul>li>img#im2{
+	margin-bottom: 100px;	
 }
 section.index>div.indexMid>div:nth-child(4)>ul>li>div{
 	text-align: right;
@@ -363,11 +399,19 @@ section.index>div.indexMid>div:nth-child(4)>ul>li>div{
 section.index>div.indexMid>div:nth-child(4)>ul>li>div>p{
 	position: relative;
 	text-align: left;
-	width: 450px;
+	width: 465px;
 	padding: 10px;
 	padding-top: 0;
-	bottom: 34px;
 }
+section.index>div.indexMid>div:nth-child(4)>ul>li>div>p:nth-child(1){
+	top: 5px;
+}
+section.index>div.indexMid>div:nth-child(4)>ul>li:nth-child(3)>div>p:nth-child(1){
+	top: -10px;
+}
+section.index>div.indexMid>div:nth-child(4)>ul>li:nth-child(3)>div>p:nth-child(2){
+	bottom: 20px;
+	}
 section.index>div.indexMid>div:nth-child(4)>ul>li:nth-child(2) {
 	height:30px;
 	margin:0;
@@ -401,6 +445,7 @@ section.index>div.indexMenu>div>div{
 }
 section.index>div.indexMenu>div>div>a {
 	text-decoration: none;
+	color: black;
 }
 section.index>div.indexMenu>div>ul {
 	margin: 0;
@@ -446,7 +491,7 @@ section.index>div.indexBot>div#p1>p:nth-child(2){
 }
 section.index>div.indexBot>div#p2{
 	position: relative;
-	top: 28px;
+	top: 22px;
 	background: url("http://localhost:9000/waffles/images/index/section/campbg.jpg");
 	border: 0px solid red;
 	border-radius: 15px;
@@ -462,7 +507,7 @@ section.index>div.indexBot>div#p2>div{
 	padding-top: 5px;
 }
 section.index>div.indexBot>div#p2>div>input{
-	padding:10px 0 10px 10px;
+	padding:15px 0 15px 10px;
 	width: 220px;
 	height: 20px;
 }
@@ -471,15 +516,17 @@ section.index>div.indexBot>div#p2>div>input:focus {
 }
 section.index>div.indexBot>div#p2>div>a{
 	position: relative;
-	top: 15.98px;
-	right:6px;
+	top: -2px;
+	right:7px;
 }
 section.index>div.indexBot>div#p2>div>a>img{
-	width:20px;
-	height:22.5px;
-	background-color: orange;
-	padding: 10px;
-	
+	width:33px;
+	height:33px;
+	background-color: orange;		
+	padding: 4px;
+}
+.indexfooter {
+	margin-bottom: -16px;
 }
 
 /**********************
@@ -570,7 +617,7 @@ position: absolute;
 	position: absolute;
 	z-index: 100;
 	left: 50%;
-	transform:translate(-50%,550%);
+	transform:translate(-50%,600%);
 	height: 35px;
 	width: 120px;
 	border: 0px solid red;

@@ -6,6 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/plugin/owl.carousel.min.css">
 <link rel="stylesheet" href="http://localhost:9000/waffles/plugin/owl.theme.default.min.css">
@@ -17,9 +21,9 @@
 		});
 		
 		$("#main-li li:nth-child(1),#main-li li:nth-child(2),#main-li li:nth-child(3),#main-li li:nth-child(4),#main-li li:nth-child(5)").mouseenter(function() {
-			$(this).find("#sub-menu").fadeIn(250);
+			$(this).find("#sub-menu").stop().fadeIn(250);
 		}).mouseleave(function() {
-			$(this).find("#sub-menu:visible").fadeOut(250, function() {
+			$(this).find("#sub-menu:visible").stop().fadeOut(250, function() {
 			});
 		});
 		
@@ -53,24 +57,24 @@
 		},6000);
 		/**메뉴 오버레이**/
 		$(".owl-stage").children().mouseenter(function() {
-			$(this).children().children("span").animate({
+			$(this).children().children("span").stop().animate({
 										  height:'100%', 
 										  'border-top-left-radius': '15px',
 									      'border-top-right-radius': '15px',
 										  },300);
-			$(this).children().children().children("p").animate({top:'35%'},300);
-			$(this).find("button").animate({top:'80%'},300);
-			$(this).children().children().children("div").animate({top:'58%'},300);
+			$(this).children().children().children("p").stop().animate({top:'35%'},300);
+			$(this).find("button").stop().animate({top:'80%'},300);
+			$(this).children().children().children("div").stop().animate({top:'58%'},300);
 		});
 		$(".owl-stage").children().mouseleave(function() {
-			$(this).children().children("span").animate({
+			$(this).children().children("span").stop().animate({
 										  height:'40%',
 										  'border-top-left-radius': 0,
 									      'border-top-right-radius': 0,
 										  },300);
-			$(this).children().children().children("p").animate({top:'75%'},300);
-			$(this).find("button").animate({top:'130%'},300);
-			$(this).children().children().children("div").animate({top:'110%'},300);
+			$(this).children().children().children("p").stop().animate({top:'75%'},300);
+			$(this).find("button").stop().animate({top:'130%'},300);
+			$(this).children().children().children("div").stop().animate({top:'110%'},300);
 		});
 		
 		
@@ -171,7 +175,41 @@
 	</div>
 <section class="index">
 	<div class="indexMid">
-		<div><img src="http://localhost:9000/waffles/images/index/section/300exceed.jpg"></div>
+		<!-- 캐로셀 2 위치  -->
+		<div>
+			<div id="carouselExampleIndicators" class="carousel slide"
+			data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0"
+					class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100"
+						src="http://localhost:9000/waffles/images/index/carosel2/1.jpg" alt="First slide">
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100"
+						src="http://localhost:9000/waffles/images/index/carosel2/2.jpg" alt="Second slide">
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100"
+						src="http://localhost:9000/waffles/images/index/carosel2/3.jpg" alt="Third slide">
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators"
+				role="button" data-slide="prev"> <span
+				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
+				role="button" data-slide="next"> <span
+				class="carousel-control-next-icon" aria-hidden="true"></span> <span
+				class="sr-only">Next</span>
+			</a>
+		   </div>
+		</div>
 		<div>
 			<div>
 				<span>공지사항</span>
@@ -199,7 +237,7 @@
 				</li>
 				<li><div></div></li>
 				<li style="cursor:pointer" onclick="window.location.href='#';">
-					<img src="http://localhost:9000/waffles/images/index/section/blog.jpg">
+					<img src="http://localhost:9000/waffles/images/index/section/blog.jpg" id="im2">
 					<div>
 					<p>와플대학 메뉴 추천: 치즈범벅 생딸기와플 베리베리좋아요</p>
 					<p>실패 없는 크림이라 취향따라 입맛따라 가는것도 좋습니다 와플대학에서 추천하는 조합말고 나만의 메뉴...</p>
@@ -398,6 +436,8 @@
 		</div>
 	</div>
 </section>
-<jsp:include page="footer.jsp"></jsp:include>
+<div class="indexfooter">
+	<jsp:include page="footer.jsp"></jsp:include>
+</div>
 </body>
 </html>
