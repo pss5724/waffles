@@ -470,13 +470,14 @@ section.index>div.indexBot{
 }
 section.index>div.indexBot>div{
 	display: inline-block;
-	width: 600px; height: 400px;
+	width: 550px; height: 400px;
 	margin: 10px;
 }
 section.index>div.indexBot>div#p1{
 	background: url("http://localhost:9000/waffles/images/index/section/changbg.jpg");
 	border: 0px solid red;
 	border-radius: 15px;
+	
 }
 section.index>div.indexBot>div#p1>p{
 	color: white;
@@ -491,7 +492,7 @@ section.index>div.indexBot>div#p1>p:nth-child(2){
 }
 section.index>div.indexBot>div#p2{
 	position: relative;
-	top: 22px;
+	top: 28px;
 	background: url("http://localhost:9000/waffles/images/index/section/campbg.jpg");
 	border: 0px solid red;
 	border-radius: 15px;
@@ -636,6 +637,10 @@ position: absolute;
 /**********************
 	sayHello
 	***/
+section.sayHello {
+	
+	text-align: center;
+}
 section.sayHello div:nth-child(1){
 	text-align: center;
 	margin-top: 50px;
