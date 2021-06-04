@@ -4,13 +4,39 @@ import com.waffles.vo.MemberVO;
 
 public class MemberDAO extends DAO {
 
-	/* ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ */
-	public boolean getLogin(String id, String pass) {
+	
+	/* È¸¿ø°¡ÀÔ Ã³¸® */
+	public boolean getInsertResult(MemberVO vo) {
 		boolean result = false;
+		String sql = " insert into waffle_member values(?, ?, ?, ?, sysdate, 0) ";
+		getPreparedStatement(sql);
 		
 		try {
-			String sql = " select count(*) member where id=? and pass=? ";
-			getPreparedStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getEmail());
+			pstmt.setString(3, vo.getId());
+			pstmt.setString(4, vo.getPass());
+
+			int value = pstmt.executeUpdate();
+			
+			if(value != 0) result = true;
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+		
+		return result;
+	}
+	
+	/* ·Î±×ÀÎ Ã³¸® */
+	public boolean getLoginResult(String id, String pass) {
+		boolean result = false;
+		
+		String sql = " select count(*) from waffle_member where id = ? and pass = ? ";
+		getPreparedStatement(sql);
+		
+		try {
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, pass);
@@ -18,33 +44,63 @@ public class MemberDAO extends DAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				if(rs.getInt(1)==1) result = true;
+				if(rs.getInt(1) == 1) result = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+		
+		return result;
+	}
+	
+	/* ºñ¹Ð¹øÈ£ Ã£±â - ÀÎÁõ */
+	public boolean getFindpass(String id, String name, String email) {
+		boolean result = false;
+		
+		try {
+			String sql = " select count(*) cnt from waffle_member where id = ? and name = ? and email = ? ";
+			getPreparedStatement(sql);
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int cnt = rs.getInt(1);
+				System.out.println(cnt);
+				if(cnt>0) {
+					result =  true;
+				}
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		
 		return result;
 	}
 	
-	/* È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ */
-	public boolean getJoin(MemberVO member) {
+	/* ºñ¹Ð¹øÈ£ Ã£±â - »õºñ¹Ð¹øÈ£·Î º¯°æ */
+	public boolean getFindpassUpdate(String pass, String id) {
 		boolean result = false;
 		
 		try {
-			String sql = " insert into member values(?,?,?,?,sysdate) ";
+			String sql = " update waffle_member set pass = ? where id = ? ";
 			getPreparedStatement(sql);
 			
-			pstmt.setString(1, member.getName());
-			pstmt.setString(2, member.getEmail());
-			pstmt.setString(3, member.getId());
-			pstmt.setString(4, member.getPass());
-
+			pstmt.setString(1, pass);
+			pstmt.setString(2, id);
+			//pstmt.setString(3, name);
+			//pstmt.setString(4, email);
+			
 			int val = pstmt.executeUpdate();
-			if(val != 0) result = true;
-					
+			
+			if(val != 0 ) result = true;
+			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,5 +108,5 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å©, ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½ - ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ (update), È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (update - ï¿½ï¿½ï¿½Ìµï¿½, ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½) */
+	/* ¾ÆÀÌµð Áßº¹Ã¼Å©, ºñ¹Ð¹øÈ£ Ã£±â - »õ ºñ¹Ð¹øÈ£ (update), È¸¿øÁ¤º¸¼öÁ¤ (update - ¾ÆÀÌµð, ÀÌ¸§ »©°í) */
 }
