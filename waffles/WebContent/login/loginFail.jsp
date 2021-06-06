@@ -21,12 +21,13 @@
 	
 	
 	<!-- content -->
-	<div class = "content">
+	<div class = "content_loginsuccess">
 		<section class = "login_success">
+		<img src = "../images/setup/step1.PNG">
 			<h1 class = "title_login_success"> 로그인 실패!! </h1>
 			<h3> 로그인에 실패하셨습니다 </h3>
-			<button type = "button">다시 로그인하기</button>
-			<button type = "button">아이디 / 패스워드 찾기</button>
+			<a href = "login.jsp"><button type = "button" class = "btn_loginsuccess">다시 로그인하기</button></a>
+			<a href = "find.jsp"><button type = "button" class = "btn_loginsuccess">아이디 / 패스워드 찾기</button></a>
 		</section>
 		
 	</div>

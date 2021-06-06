@@ -14,14 +14,18 @@
 </head>
 <body>
 	<!-- header -->
-	<jsp:include page = "../header.jsp"></jsp:include>
+	<jsp:include page = "../header.jsp">
+	<jsp:param name="mainlabel" value="회원가입" />
+	<jsp:param name="sublabel" value=" Home > 회원가입 "/>
+	</jsp:include>
 	
 	<!-- content -->
-	<div class = "content_join">
-		<section>
-			<div class = "title"> 회원가입 결과 </div>
+	<div class = "content_joinsuccess">
+		<section class = "join_success">
+			<img src = "../images/setup/step1.PNG">
+			<h1 class = "title_join_success"> 회원가입 성공!! </h1>
 			<h3> 회원가입에 성공하셨습니다. </h3>
-			<a href = "../login/login.jsp"><button type = "button"> 로그인하기 </button></a>
+			<a href = "../login/login.jsp"><button type = "button" class = "btn_joinsuccess">로그인하기</button></a>
 		</section>
 		
 	</div>

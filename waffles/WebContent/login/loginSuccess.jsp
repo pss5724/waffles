@@ -21,10 +21,12 @@
 	
 	
 	<!-- content -->
-	<div class = "content">
+	<div class = "content_loginsuccess">
 		<section class = "login_success">
+			<img src = "../images/setup/step1.PNG">
 			<h1 class = "title_login_success"> 로그인 성공!! </h1>
 			<h3> 로그인에 성공하셨습니다. </h3>
+			<a href = "../index.jsp"><button type = "button" class = "btn_loginsuccess">홈으로</button></a>
 		</section>
 		
 	</div>
