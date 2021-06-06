@@ -26,6 +26,7 @@
 <meta charset="UTF-8">
 <title>메뉴소개</title>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function(){
 		/**메뉴 오버레이**/
