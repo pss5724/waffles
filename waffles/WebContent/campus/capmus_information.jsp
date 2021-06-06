@@ -1,10 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, com.waffles.dao.CampusDAO, com.waffles.vo.CampusVO, com.page.Paging" %>    
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<%  //캠퍼스 상세정보 가져오기
+	String name = request.getParameter("name");
+
+	CampusDAO cdao = new CampusDAO();
+	CampusVO vo = cdao.getCampusInformation(name);
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><%= name %></title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=cayrl604ux"></script>
@@ -26,7 +37,7 @@
 		<div class="campus-information">
 			<div class="information-top">
 				<img src="http://localhost:9000/waffles/images/campus/학사모.png">
-				<h1>평택이충캠퍼스</h1>
+				<h1><%= name %></h1>
 			</div>
 			
 			<!-- 캠퍼스 정보 -->
@@ -35,14 +46,14 @@
 					<img src="http://localhost:9000/waffles/images/campus/와플대학로고.png">
 					<div>
 						<h4>주소</h4>
-						<p>경기도 평택시 이충로 경기도 평택시 이충로</p>
+						<p><%= vo.getAddress() %></p>
 					</div>
 				</div>
 				<div class="col-4" id="tel">
 					<img src="http://localhost:9000/waffles/images/campus/와플대학로고.png">
 					<div>
 						<h4>전화번호</h4>
-						<p>Tel : 031</p>
+						<p>Tel : <%= vo.getTel() %></p>
 					</div>
 				</div>
 				<div class="col-4" id="time">
@@ -64,7 +75,7 @@
 					</div>
 				</div>
 				<div class="campus-img">
-					<img src="http://localhost:9000/waffles/images/campus/평택이충.png">
+					<img src="http://localhost:9000/waffles/images/campus/<%= vo.getImg() %>">
 				</div>
 			</div>
 			
@@ -81,12 +92,12 @@
 
 	<script>
 	var map = new naver.maps.Map('map', {
-	    center: new naver.maps.LatLng(37.06055913523058, 127.06648471296293),
+	    center: new naver.maps.LatLng(<%= vo.getCoordinates() %>),
 	    zoom: 17
 	});
 
 	var marker = new naver.maps.Marker({
-	    position: new naver.maps.LatLng(37.06055913523058, 127.06648471296293),
+	    position: new naver.maps.LatLng(<%= vo.getCoordinates() %>),
 	    map: map
 	});
 	</script>

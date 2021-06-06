@@ -276,6 +276,7 @@ div#after {
 	background-color:#FDE488;
 	height:10%;
 	text-align:center;
+	margin-bottom:40px;
 }
 .nationwide-search div:first-child {
 	display:inline-block;
@@ -296,11 +297,11 @@ div#after {
 	width:200px;
 	margin-left:9px;
 }
-.campus-list >tr:first-child {
-	border-top : 2px solid #e9c232;
+.table {
+	border-top : 3px solid #e9c232;
 }
 .page {
-	border:1px solid red;
+	/*border:1px solid red;*/
 	height:50px;
 	text-align:center;
 }
