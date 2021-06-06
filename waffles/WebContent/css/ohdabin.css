@@ -3,12 +3,11 @@
 	margin:0;
 	font-family: '맑은 고딕';
 }
-
-
 .content {
 	border:1px solid red;
 	width:80%;
 	margin:auto;
+	padding-bottom:50px;
 }
 
 /************	메뉴소개	************/
@@ -71,12 +70,13 @@
 	color:gray;
 }
 /* 
-	all_menu - content 
+	menu 
 */
 .menu {
 	border:1px solid blue;
-	width:80%;
+	/*width:80%;*/
 	margin:auto;
+	padding-bottom:50px;
 }
 .menu >img {
 	width:200px; height:200px;
@@ -84,21 +84,103 @@
 	text-align:center;
 	color:#333; 
 }
-.hover:hover {
-	transition:all 0.9s, color 0.3;
-	box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+/*메뉴 hover 넣기 */
+.owl-stage {
+	display:inline-block;
 }
-.hover {
-	width:200px; height:200px;
-	
+.owl-item{
+	z-index:0;
+	position: relative;
+	float:left;
 }
+.owl-item>div{
+	position: absolute;
+	overflow: hidden;
+}
+.indexMenu>div>div{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.owl-item img {
+	height: 100%;
+	position: relative;
+	z-index: 1;
+}
+.owl-item>div>span {
+	position: absolute;
+	z-index: 51;
+	background-color: #2b2d2f;
+	left:0;
+	bottom:0;
+	opacity: 0.7;
+	height:40%;
+	width:100%;
+	border: 0px solid red;
+	border-radius:0 0 15px 15px;
+}
+.owl-item>div>div {
+	text-align: center;
+}
+.owl-item>div>div>p {
+	position: absolute;
+	color:white;
+	font-size: 20px;
+	z-index: 51;
+	left: 50%;
+	top: 75%;
+	transform: translate(-50%,-50%);
+	width: 200px;
+	latter-spacing: -1;
+}
+.owl-item>div>div>button {
+position: absolute;
+	z-index: 51;
+	left: 50%;
+	/**top: 80%;**/
+	top: 130%;
+	transform: translate(-50%,-50%);
+	background-color: rgba(0,0,0,0);
+	color: orange;
+	font-size: 20px;
+	border-radius: 10px;
+	border: 2px solid orange;
+	width: 80px;
+	height: 35px;
+	padding-bottom: 10px;
+}	
+.owl-item>div>div>div {
+	position: absolute;
+	z-index: 51;
+	left: 50%;
+	top: 110%;
+	transform:translate(-50%,-50%);
+	height: 40px;
+	width: 50px;
+}  
+.owl-item>p {
+	position: absolute;
+	z-index: 100;
+	left: 50%;
+	transform:translate(-50%,600%);
+	height: 35px;
+	width: 120px;
+	border: 0px solid red;
+	border-radius: 10px;
+	background-color: orange;
+	color: white;
+	padding-top: 5px;
+	font-size: 13px;
+	letter-spacing: -1;
+}
+
 /* 
-	waffle - content 
+	menu-information
 */
-.menu-detail-body {
+.menu-information-body {
 	text-align:center;
 }
-.menu-detail {
+.menu-information {
 	width:80%;
 	margin:auto;
 	display:inline-block;
@@ -108,6 +190,10 @@
 	border:1px solid red;
 	width:50%; height:550px;
 	float:left;
+}
+.menu-left img {
+	width:350px; height:350px;
+	padding-top:100px;
 }
 .menu-right {
 	border:1px solid blue;
@@ -121,6 +207,7 @@
 .menu-right2 {
 	border:1px solid red;
 	height:150px;
+	clear:left;
 }
 .menu-right3 {
 	border:1px solid red;
@@ -130,23 +217,23 @@
 	border:1px solid red;
 	height:200px;
 }
-
 /************	캠퍼스안내		************/
 /*
 	nationwide
 */
 .nationwide {
 	width:80%;
+	height:900px;
 	margin:auto;
 }
 .nationwide-top {
-	border:1px solid red;
-	height:130px;
+	height:16%;
+	margin-top:35px;
 	text-align:center;
 }
 .nationwide-top >img {
-	width:45px; height:30px;
-	padding:7px 0;
+	width:45px; height:37px;
+	margin-bottom:7px;
 }
 .nationwide-line {
 	display:inline-block;
@@ -170,9 +257,8 @@ div#after {
 	margin-right:15px;
 }
 .nationwide-search {
-	border:1px solid red;
-	background-color:#244394;
-	height:90px;
+	background-color:#FDE488;
+	height:10%;
 	text-align:center;
 }
 .nationwide-search div:first-child {
@@ -185,44 +271,50 @@ div#after {
 } 
 .nationwide-search div:first-child p {
 	width:300px; height:20px;
-	color:white;
-	margin-top:2px;
+	margin:auto;
 } 
 .nationwide-search div:last-child {
-	padding-top:15px;
+	padding-top:10px;
 }
 .nationwide-search div:last-child >input {
 	width:200px;
 	margin-left:9px;
 }
-.campus-list {
-	border:1px solid red;
-	height:600px;
+.campus-list >tr:first-child {
+	border-top : 2px solid #e9c232;
 }
-.page{
+.page {
 	border:1px solid red;
 	height:50px;
+	text-align:center;
 }
 /*
 	campus-information
 */
-.information {
-	border:1px solid red;
+.campus-information {
+	
 }
 .information-top {
 	border:1px solid red;
 	height:130px;
 	text-align:center;
 }
-.information-top >img {
+.information-top img {
 	width:45px; height:40px;
 	padding:7px 0;
 }
+#information {
+	height:200px;	
+	background-image:url("http://localhost:9000/waffles/images/campus/certification.jpg");
+}
 #information img{
 	border:1px solid red;
-	width:65px; height:65px;
+	width:70px; height:70px;
 	margin-right:5px;
 	float:left;
+}
+#addr, #tel, #time {
+	margin-top:60px;
 }
 .campus-photo {
 	border:1px solid red;
@@ -258,16 +350,57 @@ div#after {
 	text-align:center;
 }
 .btnList {
-	border:none;
-	background-color:gray;
-	color:white;
-	width:20px;
+	text-align:center;
+	margin-bottom:20px;
 }
 #map{
 	border:1px solid red;
 }
+/*
+	success story
+*/
+.success-story {
+	width:80%;
+	margin:auto;
+}
+.story-top {
+	border:1px solid red;
+	height:130px;
+	text-align:center;
+}
+.story-top >img {
+	width:45px; height:30px;
+	padding:7px 0;
+}
+.story-line {
+	display:inline-block;
+	height:30px;
+}
+.story-line p {
+	width:110px;
+	float:left;
+}
+div#before, div#after {
+    border-bottom:2px solid #244394;
+    width:30px;
+    margin-top:7px;
+}
+div#before {
+	float:left;
+	margin-left:15px;
+}
+div#after {
+	float:left;
+	margin-right:15px;
+}
 
-
-
-
+.story-list {
+	border:1px solid red;
+	width:80%;
+	margin:auto;
+	
+}
+/*
+	
+*/
 

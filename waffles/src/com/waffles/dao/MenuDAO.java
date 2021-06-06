@@ -13,14 +13,14 @@ public class MenuDAO extends DAO {
 	}
 
 	// Method
-	//메뉴
+	//메뉴(menu.jsp)
 	public ArrayList<MenuVO> getMenuList() {
 		ArrayList<MenuVO> list = new ArrayList<MenuVO>();
 		 
+		String sql = "select * from menu";
+		getPreparedStatement(sql);
+		
 		try {
-			String sql = "select * from menu";
-			getPreparedStatement(sql);
-			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -35,10 +35,35 @@ public class MenuDAO extends DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return list;
+		return list;
 	}
 	
-	//상세 메뉴
+	//메뉴 상세정보(menu_detail.jsp)
+	public MenuVO getMenuDetail(String name) {
+		MenuVO vo = new MenuVO(); 
+		
+		String sql = "select * from menu where name=?"; 
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, name);
+			rs=pstmt.executeQuery();
+
+			if(rs.next()) {
+				vo.setKind(rs.getString(1));
+				vo.setName(rs.getString(2));
+				vo.setImg(rs.getString(3));
+				vo.setExplain(rs.getString(4));
+				vo.setIngredient(rs.getString(5));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
+	
+	
 	
 	
 	
