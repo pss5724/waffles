@@ -91,7 +91,7 @@
 							<div>
 								<p><%= vo.getName() %></p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<a type="button" class="btn btn-outline-secondary" href="menu_information.jsp?name=<%= vo.getName() %>">VIEW</a>
+								<a type="button" class="btn btn-outline-secondary" href="menu_information.jsp?kind=<%= kind %>&name=<%= vo.getName() %>">VIEW</a>
 							</div>
 						</div> 
 					</div>

@@ -14,7 +14,7 @@ public class MenuDAO extends DAO {
 	public ArrayList<MenuVO> getMenuList() {
 		ArrayList<MenuVO> list = new ArrayList<MenuVO>();
 		 
-		String sql = "SELECT IMG, NAME FROM MENU";
+		String sql = "SELECT KIND, IMG, NAME FROM MENU";
 		getPreparedStatement(sql);
 		
 		try {
@@ -22,8 +22,9 @@ public class MenuDAO extends DAO {
 			
 			while(rs.next()) {
 				MenuVO menu = new MenuVO();
-				menu.setImg(rs.getString(1));
-				menu.setName(rs.getString(2));
+				menu.setKind(rs.getString(1));
+				menu.setImg(rs.getString(2));
+				menu.setName(rs.getString(3));
 				list.add(menu);
 			}
 		} catch (Exception e) {

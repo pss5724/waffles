@@ -5,6 +5,7 @@
 	request.setCharacterEncoding("utf-8");
 %>  
 <%	//메뉴 상세정보 가져오기
+	String kind = request.getParameter("kind");
 	String name = request.getParameter("name");
 
 	MenuDAO mdao = new MenuDAO();
@@ -21,8 +22,8 @@
 <body>
 	<!-- header -->
 	<jsp:include page="../header.jsp">
-		<jsp:param name="mainlabel" value="와플대학스토리" />
-		<jsp:param name="sublabel" value=" Home > 메뉴소개 > " />
+		<jsp:param name="mainlabel" value="메뉴소개" />
+		<jsp:param name="sublabel" value=" Home > 메뉴소개" />
 	</jsp:include>
 	
 	<!-- content -->
@@ -36,20 +37,23 @@
 			<div class="menu-right">
 				<!-- 메뉴명 -->
 				<div class="menu-right1">
+				<% if(kind.equals("와플")){ %>
 					<label><%= name %></label>
+				<% }else{ %>
+					<label><%= name %> ( HOT / ICE )</label>
+				<% } %>
 				</div>
-				
 				<!-- 메뉴 설명 -->
 				<div class="menu-right2">
-					<label><%= vo.getExplain() %></label>
+					<p><%= vo.getExplain() %></p>
 				</div>
 				
 				<!-- 메뉴 성분표 -->
 				<div class="menu-right3">
-					<p>1회제공분</p>
+					<p>1회 제공 영양성분</p>
 				</div>
 				<div class="menu-right4">
-					<img src="http://localhost:9000/waffles/images/ingredient/<%= vo.getIngredient() %>"  style="width:480px">
+					<img src="http://localhost:9000/waffles/images/ingredient/<%= vo.getIngredient() %>">
 				</div>
 			</div>
 		</div>
