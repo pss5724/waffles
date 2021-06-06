@@ -75,13 +75,13 @@
 	
 	<!-- content -->
 	<div class="content">
-		<div class="owl-carousel owl-theme owl-loaded">
+		<div class="menu-content">
 			<div class="owl-stage-outer">
 				<div class="owl-stage">
 					<% for(MenuVO vo : menu){ %>
 					<div class="owl-item">
 						<div>
-							<img src="http://localhost:9000/waffles/images/menu/<%= vo.getImg() %>" style="width:100px">
+							<img src="http://localhost:9000/waffles/images/menu/<%= vo.getImg() %>" style="width:200px">
 							<span></span>
 							<div>
 								<p><%= vo.getName() %></p>
