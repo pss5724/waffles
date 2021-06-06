@@ -1,23 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, com.waffles.dao.MenuDAO, com.waffles.vo.MenuVO"%>
+<%@ page import="java.util.*, com.waffles.dao.*, com.waffles.vo.MenuVO" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>  
-<%	//메뉴명, 이미지 가져오기
+<%	//DB에서 메뉴명, 이미지 가져오기
 	MenuDAO mdao = new MenuDAO();
 	ArrayList<MenuVO> menu = mdao.getMenuList();
-
-	String kind = request.getParameter("kind");
-	if(kind == "all"){
-		
-	}else if(kind == "와플"){
-		
-	}else if(kind == "커피/라떼"){
-		
-	}else if(kind == "쥬스/차"){
-		
-	}
+	
+	String[] menu_bar = {"전체","와플","커피","라떼","쥬스","차"};
 
 %>
 <!DOCTYPE html>
@@ -62,10 +53,10 @@
 	
 	<!-- menu-bar -->
 	<div class="menu-bar">
-		<a href="menu.jsp?kind=all"><label>전체</label></a>
-		<a href="menu.jsp?kind=와플"><label class="star1">☆ </label><label>와플</label></a>
-		<a href="menu.jsp?kind=커피/라떼"><label class="star1">☆ </label><label>커피 / 라떼</label></a>
-		<a href="menu.jsp?kind=쥬스/차"><label class="star1">☆ </label><label>쥬스 / 차</label></a>
+		<a href="menu.jsp?kind=<%= menu_bar[0] %>"><label><%= menu_bar[0] %></label></a>
+		<a href="menu.jsp?kind=<%= menu_bar[1] %>"><label class="star1">☆ </label><label><%= menu_bar[1] %></label></a>
+		<a href="menu.jsp?kind=<%= menu_bar[2] %>/<%=menu_bar[3] %>"><label class="star1">☆ </label><label><%= menu_bar[2] %> / <%=menu_bar[3] %></label></a>
+		<a href="menu.jsp?kind=<%= menu_bar[4] %>/<%=menu_bar[5] %>"><label class="star1">☆ </label><label><%= menu_bar[4] %> / <%=menu_bar[5] %></label></a>
 	</div>
 	<div class="p1">
 		<p style="color: blue">※ 가맹점의 판매 가격은 매장의 임차조건이나 상권에 따라서 다소 차이가 있을 수 있습니다.</p>
@@ -97,7 +88,7 @@
 		</div>
 	</div> 
 	
-	<!-- footer -->
+	<!— footer —>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

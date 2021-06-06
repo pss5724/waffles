@@ -598,12 +598,12 @@ position: absolute;
 	transform: translate(-50%,-50%);
 	background-color: rgba(0,0,0,0);
 	color: orange;
-	font-size: 20px;
+	font-size: 17px;
 	border-radius: 10px;
-	border: 2px solid orange;
+	border: 1px solid orange;
 	width: 80px;
 	height: 35px;
-	padding-bottom: 10px;
+	padding: 6px;	
 }	
 .owl-item>div>div>div {
 	position: absolute;
