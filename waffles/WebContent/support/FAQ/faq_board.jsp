@@ -1,115 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
+<%
 	request.setCharacterEncoding("utf-8");
 %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles_ss.css">
+<title>고객센터 - 문의사항 | 와플대학</title>
+<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<!-- header -->
-	<jsp:include page="../../header.jsp">
-	<jsp:param name="mainlabel" value="와플대학스토리"/>
-	<jsp:param name="sublabel" value=" Home > 고객센터 > 문의 게시판 " />
+	<!-- header -->
+	<jsp:include page = "../../header.jsp">
+	<jsp:param name="mainlabel" value="문의사항" />
+	<jsp:param name="sublabel" value=" Home > 고객센터 > 문의사항 "/>
 	</jsp:include>
-<!-- header end -->
 	
-<!-- content  -->
-	<div class="content_notice">
 	
-		<section class="notice_board">
-			<img src="../../images/setup/step1.PNG">
-			<p> 문의 게시판 </p>
+	<!-- content -->
+	<div class = "content_setup_faq">
+	
+		<section class = "section_setup_faq">
+			<img src = "../../images/setup/step1.PNG">
+			<div> 문의사항 </div>
+			<div></div>
 		</section>
 		
-		<section class="notice_board_list">
-			<table class="notice_table">
+		<section class ="setup_faq_list">
+			<table class = "content_layout_setup_faq">
+				
 				<tr>
-					<th class="notice_table_num">번호</th>
-					<th class="notice_table_title">제목</th>
-					<th class="notice_table_date">날짜</th>
-					<th class="notice_table_hits">조회</th>
-				</tr>		
+					<th> 번호 </th>
+					<th> 제목 </th>
+					<th> 글쓴이 </th>
+					<th> 날짜 </th>
+					<th> 조회수 </th>
+				</tr>
+				
 				<tr>
 					<td>1</td>
-					<td><a href = "http://localhost:9000/test/support/FAQ/faq_content.jsp">관리자님 문의 사항 입니다 ~~~~~</a></td>
-					<td>05-30</td>
-					<td>10</td>
-				</tr>	
-				<tr>
+					<td><a href = "notice_content.jsp">1번 문의사항입니다.</a></td>
+					<td>테스터</td>
+					<td>21/05/06</td>
 					<td>2</td>
-					<td><a href = "#">관리자님 문의 사항 입니다 ~~~~~</a></td>
-					<td>05-30</td>
-					<td>10</td>
-				</tr>	
-				<tr>
-					<td>3</td>
-					<td><a href = "#">관리자님 문의 사항 입니다 ~~~~~</a></td>
-					<td>05-30</td>
-					<td>10</td>
-				</tr>	
-				<tr>
-					<td>4</td>
-					<td><a href = "#">관리자님 문의 사항 입니다 ~~~~~</a></td>
-					<td>05-30</td>
-					<td>10</td>
-				</tr>	
-				<tr>
-					<td>5</td>
-					<td><a href = "#">관리자님 문의 사항 입니다 ~~~~~</a></td>
-					<td>05-30</td>
-					<td>10</td>
-				</tr>	
-				<tr>
-					<td>6</td>
-					<td><a href = "#">관리자님 문의 사항 입니다 ~~~~~</a></td>
-					<td>05-30</td>
-					<td>10</td>
-				</tr>	
-				<tr>
-					<td>7</td>
-					<td><a href = "#">관리자님 문의 사항 입니다 ~~~~~</a></td>
-					<td>05-30</td>
-					<td>10</td>
-				</tr>	
-				<tr>
-					<td>8</td>
-					<td><a href = "#">관리자님 문의 사항 입니다 ~~~~~</a></td>
-					<td>05-30</td>
-					<td>10</td>
-				</tr>		
+				</tr>
+				
+				
+				
+				
 			</table>
-			
-			<div class="notice_search">
-			<select>
-				<option value="제목">제목
-				<option value="내용">내용
-				<option value="제목+내용">제목+내용
-				<option value="회원아이디">회원아이디
-				<option value="글쓴이">글쓴이
-			</select>
-			<input type="text" class="input_text">
-			<button type="button" class="searchbtn">검색</button>
-			<div class="notice_board_writebtn">
-				<a href="http://localhost:9000/test/support/FAQ/faq_write.jsp"><button type="button" class="writebtn">글쓰기</button></a>
-			</div>
-			</div>
-			<div class="notice_page">
-			<button type="button" class="pagebtn">1</button>
-			<button type="button" class="pagebtn">2</button>
-			<button type="button" class="pagebtn">3</button>
-			<button type="button" class="pagebtn">4</button>
-			</div>
 		</section>
-	</div>
-<!-- content end -->
-
-<!-- footer -->
-	<jsp:include page="../../footer.jsp"></jsp:include>
-<!-- footer end -->	
+		
+		<section class = "setup_faq_search">
+			<select class = "search">
+				<option value = "title">제목</option>
+				<option value = "content">내용</option>
+				<option value = "title+content">제목+내용</option>
+				<option value = "writer">글쓴이</option>
+			</select>
+			
+			<input type = "text" name = "search_text" class = "search_text">
+			<button type = "button" class = "btn_search">검색</button>
+			
+			<a href = "faq_write.jsp"><button type = "button" class = "btn_setup_faq_write">글쓰기</button></a>
+		</section>
+		
+	</div>	
+	
+	
+	<!-- footer -->
+	<jsp:include page = "../../footer.jsp"></jsp:include>
+	
+	
 </body>
 </html>

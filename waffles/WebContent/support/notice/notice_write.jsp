@@ -1,64 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-      <%
+<%
 	request.setCharacterEncoding("utf-8");
-%>   
+%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/waffles_ss.css">
+<title>고객센터 - 공지사항 - 글쓰기 | 와플대학</title>
+<link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
+<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<script>
+	
+	$(document).ready(function() {
+		
+		$("#faqwriteBtn").click(function() {
+			
+			if($("#ftitle").val() == "") {
+				alert("제목을 입력해주세요");
+				$("#ftitle").focus();
+				return false;
+			}else if($("#fcontent").val() == "") {
+				alert("내용을 입력해주세요");
+				$("#fcontent").focus();
+				return false;
+			}else {
+				faq_write.submit();
+			}
+		});
+	});
+</script>
 </head>
 <body>
-	<jsp:include page="../../header.jsp">
-	<jsp:param name="mainlabel" value="와플대학스토리"/>
-	<jsp:param name="sublabel" value=" Home > 고객센터 > 공지사항 > 게시물작성 " />
+
+	<!-- header -->
+	<jsp:include page = "../../header.jsp">
+	<jsp:param name="mainlabel" value="공지사항 " />
+	<jsp:param name="sublabel" value=" Home > 고객센터 > 공지사항 > 글쓰기 "/>
 	</jsp:include>
 	
 	<!-- content -->
-	<div class="notice_write_content">
-	
-		
-		<section class="notice_content">
-			<img src="../../images/setup/step1.PNG">
-			<p> 공지사항 </p>
+	<div class = "content_setup_faq_write">
+		<section>
+			<div class = "title">공지사항</div>
+			<form name = "faq_write" action = "#" method = "get">
+				<table class = "content_layout_setup_faq_write">
+				
+					<tr>
+						<th>제목</th>
+						<td><input type = "text" name = "ftitle" id = "ftitle"></td>
+					</tr>
+					
+					<tr>
+						<th>내용</th>
+						<td><textarea name = "fcontent" id = "fcontent"></textarea></td>
+					</tr>
+					
+					<tr>
+						<td colspan = "2">
+							<button type = "button" id = "faqwriteBtn" class = "btn_setup_faq">글쓰기</button>
+							<button type = "reset" class = "btn_setup_faq">초기화</button>
+							<a href = "notice_board.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
+							<a href = "../../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
+						</td>
+					</tr>
+				</table>
+			</form>
 		</section>
 		
-		<section class="notice_write">
-			<form name="notice_write" action="#" method="get">
-			<table class="notice_write_table">
-				<tr>
-					<th>제목</th>
-					<td><input type="text" name="ntitle" id="ntitle"></td>
-				</tr>
-				
-				<tr>
-					<th>내용</th>
-					<td><textarea class="ncontent"></textarea></td>
-				</tr>
-			
-				<tr>
-					<th>파일</th>
-					<td><input type="file" name="nfile"></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="notice_content_submit">
-						<button type="button" class="notice_submitbtn" >저장</button>
-						<button type="reset" class="notice_resetbtn">취소</button>
-						</div>
-						<div class="notice_content_listbtn">
-						<a href="notice_board.jsp"><button type="button" class="listbtn">목록</button></a>
-						</div>
-					</td>
-				</tr>
-			</table>
-			</form>
-		</section>	
 	</div>
-	<!-- content end -->
 	
-		<jsp:include page="../../footer.jsp"></jsp:include>
+	<!-- footer -->
+	<jsp:include page = "../../footer.jsp"></jsp:include>
 </body>
 </html>
