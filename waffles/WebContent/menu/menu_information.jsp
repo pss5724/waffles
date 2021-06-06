@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
-<%@ page import="com.waffles.dao.MenuDAO"%>
-<%@ page import="com.waffles.vo.MenuVO"%>
+<%@ page import="java.util.*, com.waffles.dao.*, com.waffles.vo.MenuVO" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>  

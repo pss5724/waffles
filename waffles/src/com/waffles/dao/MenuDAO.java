@@ -56,14 +56,14 @@ public class MenuDAO extends DAO {
 		}
 	
 	//메뉴소개(menu_bar.jsp) : waffle-bar 클릭시 해당 데이터 가져오기(이미지와 메뉴명만 출력)
-		public ArrayList<MenuVO> getWaffleList(String kind) {
+		public ArrayList<MenuVO> getWaffleList(String waffle) {
 			ArrayList<MenuVO> list = new ArrayList<MenuVO>();
 			
-			String sql = "SSELECT IMG, NAME FROM MENU WHERE NAME IN (SELECT NAME FROM WAFFLES WHERE KIND=?)";
+			String sql = "SELECT IMG, NAME FROM MENU WHERE NAME IN (SELECT NAME FROM WAFFLES WHERE KIND=?)";
 			getPreparedStatement(sql);
 			
 			try {
-				pstmt.setString(1, kind);
+				pstmt.setString(1, waffle);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {

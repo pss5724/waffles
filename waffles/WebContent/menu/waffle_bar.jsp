@@ -5,11 +5,16 @@
 	request.setCharacterEncoding("utf-8");
 %>  
 <%	//DB에서 메뉴명, 이미지 가져오기
+	String kind = request.getParameter("kind");
+	String waffle = request.getParameter("waffle");
+	
 	MenuDAO mdao = new MenuDAO();
-	ArrayList<MenuVO> menu = mdao.getMenuList();
+	ArrayList<MenuVO> menu = mdao.getWaffleList(waffle);
 	
 	String[] menu_bar = {"전체","와플","커피/라떼","쥬스/차"};
+	String[] waffle_bar = {"베이직와플","스페셜와플","과일/누텔라와플","아이스크림와플"};
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,14 +47,15 @@
 		});
 	});
 </script>
+<link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
 </head>
 <body>
 	<!-- header -->
 	<jsp:include page="../header.jsp">
 		<jsp:param name="mainlabel" value="메뉴소개" />
-		<jsp:param name="sublabel" value=" Home > 메뉴소개 > 전체" />
+		<jsp:param name="sublabel" value=" Home > 메뉴소개" />
 	</jsp:include>
-	
+
 	<!-- menu-bar -->
 	<div class="menu-bar">
 		<a href="menu.jsp?kind=<%= menu_bar[0] %>"><label><%= menu_bar[0] %></label></a>
@@ -57,11 +63,19 @@
 		<a href="menu_bar.jsp?kind=<%= menu_bar[i] %>" ><label class="star1">☆ </label><label><%= menu_bar[i] %></label></a>
 		<% } %>
 	</div>
+	<!-- waffle-bar -->
+	<% if(kind.equals("와플")){ %>
+	<div class="sub-menu-bar">
+		<% for(int i=0; i<waffle_bar.length; i++){ %>
+		<a href="waffle_bar.jsp?kind=<%= kind %>&waffle=<%= waffle_bar[i] %>"><label class="star2">☆ </label><label><%= waffle_bar[i] %></label></a>
+		<% } %>
+	</div>
+	<% } %>
 	<div class="p1">
-		<p style="color: blue">※ 가맹점의 판매 가격은 매장의 임차조건이나 상권에 따라서 다소 차이가 있을 수 있습니다.</p>
+		<p>※ 가맹점의 판매 가격은 매장의 임차조건이나 상권에 따라서 다소 차이가 있을 수 있습니다.</p>
 	</div>
 	<div class="p2">
-		<p style="color: gray">※ 포장 및 배달로 간단하게 주문하여 드실 수 있습니다. (일부매장 제외)</p>
+		<p>※ 포장 및 배달로 간단하게 주문하여 드실 수 있습니다. (일부매장 제외)</p>
 	</div>
 	
 	<!-- content -->
@@ -87,7 +101,8 @@
 		</div>
 	</div> 
 	
-	<!— footer —>
+	
+	<!-- footer -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
