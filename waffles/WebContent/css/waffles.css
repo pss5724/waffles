@@ -3,7 +3,6 @@
 	font-family: '맑은 고딕';
 }
 .content {
-	border:1px solid red;
 	margin:auto;
 }
 
@@ -22,7 +21,6 @@ header>div>nav>ul {
 	
 }
 header>div>nav>ul>li{
-	/*border: 2px solid red;*/
 	list-style-type: none;
 	float: left;
 	margin-top: 20px;

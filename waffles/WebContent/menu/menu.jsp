@@ -24,7 +24,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메뉴소개</title>
+<title>menu</title>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <script>
@@ -46,7 +46,7 @@
 										  'border-top-left-radius': 0,
 									      'border-top-right-radius': 0,
 										  },300);
-			$(this).children().children().children("p").stop().animate({top:'75%'},300);
+			$(this).children().children().children("p").stop().animate({top:'80%'},300);
 			$(this).find("a").stop().animate({top:'130%'},300);
 			$(this).children().children().children("div").stop().animate({top:'110%'},300);
 		});
@@ -56,8 +56,8 @@
 <body>
 	<!-- header -->
 	<jsp:include page="../header.jsp">
-		<jsp:param name="mainlabel" value="와플대학스토리" />
-		<jsp:param name="sublabel" value=" Home > 메뉴소개 > " />
+		<jsp:param name="mainlabel" value="매뉴소개" />
+		<jsp:param name="sublabel" value=" Home > 메뉴소개  " />
 	</jsp:include>
 	
 	<!-- menu-bar -->
@@ -89,7 +89,7 @@
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
 								<a type="button" class="btn btn-outline-secondary" href="menu_information.jsp?name=<%= vo.getName() %>">VIEW</a>
 							</div>
-						</div>
+						</div> 
 					</div>
 					<% } %>
 				</div>

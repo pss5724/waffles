@@ -4,7 +4,6 @@
 	font-family: '맑은 고딕';
 }
 .content {
-	border:1px solid red;
 	width:80%;
 	margin:auto;
 	padding-bottom:50px;
@@ -73,7 +72,6 @@
 	menu 
 */
 .menu-content {
-	border:1px solid blue;
 	width:80%;
 	margin:auto;
 	padding:20px 0;
@@ -82,25 +80,24 @@
 /*메뉴 이미지 애니메이션 넣기 */
 .owl-stage {
 	display:inline-block;
+	margin-left: 60px;
 }
 .owl-item{
 	z-index:0;
+	display: block;
+	float: left;
 	position: relative;
-	float:left;
-	padding:22px 0 22px 22px;
 }
 .owl-item>div{
 	position: relative;
 	overflow: hidden;
-}
-.indexMenu>div>div{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
+	margin: 12px;
+	width: 250px;
+	height: 250px;
 }
 .owl-item img {
 	height: 100%;
-	position: relative;
+	width: 100% !important;
 	z-index: 1;
 }
 .owl-item>div>span {
@@ -124,13 +121,13 @@
 	font-size: 20px;
 	z-index: 51;
 	left: 50%;
-	top: 75%;
+	top: 80%;
 	transform: translate(-50%,-50%);
 	width: 200px;
 	latter-spacing: -1;
 }
 .owl-item>div>div>a {
-position: absolute;
+	position: absolute;
 	z-index: 51;
 	left: 50%;
 	/**top: 80%;**/
@@ -138,11 +135,14 @@ position: absolute;
 	transform: translate(-50%,-50%);
 	background-color: rgba(0,0,0,0);
 	color: orange;
-	font-size: 20px;
+	font-size: 15px;
 	border-radius: 10px;
-	border: 2px solid orange;
+	border: 1px solid orange;
 	width: 80px;
 	height: 25px;
+	text-decoration: none;
+	padding: 6px;
+	/*border: 2px solid red;*/
 }	
 .owl-item>div>div>div {
 	position: absolute;
