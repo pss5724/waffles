@@ -56,7 +56,7 @@
 <body>
 	<!-- header -->
 	<jsp:include page="../header.jsp">
-		<jsp:param name="mainlabel" value="매뉴소개" />
+		<jsp:param name="mainlabel" value="메뉴소개" />
 		<jsp:param name="sublabel" value=" Home > 메뉴소개  " />
 	</jsp:include>
 	
