@@ -85,7 +85,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="bgImage">
+	<div id= "bgImage">
 		<ul>
 			<li></li>
 			<li></li>
