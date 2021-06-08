@@ -55,13 +55,41 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* 비밀번호 찾기 - 인증 */
-	public boolean getFindpass(String id, String name, String email) {
-		boolean result = false;
+	/* 아이디 찾기 */
+	public MemberVO getFindidResult(String name, String email) {
+		MemberVO vo = new MemberVO();
+		
+		String sql = " select id, name, email, pass from waffle_member where name = ? and email = ? ";
+		getPreparedStatement(sql);
 		
 		try {
-			String sql = " select count(*) cnt from waffle_member where id = ? and name = ? and email = ? ";
-			getPreparedStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo.setId(rs.getString(1));
+				vo.setName(rs.getString(2));
+				vo.setEmail(rs.getString(3));
+				vo.setPass(rs.getString(4));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+		
+		return vo;
+	}
+	
+	/* 비밀번호 찾기 - 인증 */
+	public boolean getFindpassResult(String id, String name, String email) {
+		boolean result = false;
+		
+		String sql = " select count(*) from waffle_member where id = ? and name = ? and email = ? ";
+		getPreparedStatement(sql);
+		try {
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, name);
@@ -69,17 +97,14 @@ public class MemberDAO extends DAO {
 			
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-				int cnt = rs.getInt(1);
-				System.out.println(cnt);
-				if(cnt>0) {
-					result =  true;
-				}
+			if(rs.next()) {
+				if(rs.getInt(1) == 1) result = true;
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		close();
 		
 		return result;
 	}
@@ -88,25 +113,23 @@ public class MemberDAO extends DAO {
 	public boolean getFindpassUpdate(String pass, String id) {
 		boolean result = false;
 		
+		String sql = " update waffle_member set pass = ? where id = ? ";
+		getPreparedStatement(sql);
+		
 		try {
-			String sql = " update waffle_member set pass = ? where id = ? ";
-			getPreparedStatement(sql);
-			
 			pstmt.setString(1, pass);
 			pstmt.setString(2, id);
-			//pstmt.setString(3, name);
-			//pstmt.setString(4, email);
 			
-			int val = pstmt.executeUpdate();
+			int value = pstmt.executeUpdate();
 			
-			if(val != 0 ) result = true;
-			System.out.println(result);
+			if(value != 0) result = true;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		close();
 		
 		return result;
 	}
-	
-	/* 아이디 중복체크, 비밀번호 찾기 - 새 비밀번호 (update), 회원정보수정 (update - 아이디, 이름 빼고) */
+
 }

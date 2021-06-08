@@ -1,6 +1,6 @@
 /* ¸ñÂ÷
 login
-login success, login fail, join success
+login success, login fail, join success, findIdProcess
 join
 find id, pass
 findpass - new password
@@ -89,8 +89,8 @@ setup_faq_write, setup_faq_update
 	}
 	
 
-/****** login success, login fail, join success ******/
-	.content_loginsuccess, .content_joinsuccess {
+/****** login success, login fail, join success, findIdProcess ******/
+	.content_loginsuccess, .content_joinsuccess, .content_idfind {
 		/* border : 1px solid green; */
 		width : 1200px;
 		margin : auto;
@@ -99,7 +99,8 @@ setup_faq_write, setup_faq_update
 		margin-bottom : 50px;
 	}
 	
-	.content_loginsuccess .title_login_success, .content_joinsuccess .title_join_success {
+	.content_loginsuccess .title_login_success, .content_joinsuccess .title_join_success,
+	.content_idfind .title_idfind {
 		color : #404040;
 		font-size : 30px;
 		margin : 0 0 10px 0;
@@ -117,6 +118,14 @@ setup_faq_write, setup_faq_update
 		height : 40px;
 	}
 	
+	.content_idfind>section>div {
+		border : 1px solid gray;
+		font-size : 30px;
+		font-weight : 400;
+		width : 30%;
+		margin : 15px 0 0 420px;
+		border-radius : 8px;
+	}
 	
 /****** join ******/
 	.content_join {

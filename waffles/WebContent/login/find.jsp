@@ -72,7 +72,7 @@
 		<section>
 			<div class = "title"> 아이디 / 비밀번호 찾기 </div>
 			
-			<form name = "findid_form" action = "#" method = "get" class = "content_layout_id">
+			<form name = "findid_form" action = "findIdProcess.jsp" method = "post" class = "content_layout_id">
 				<div> 아이디 찾기 </div>
 				<ul>
 					<li>
@@ -92,7 +92,7 @@
 				</ul>	
 			</form>
 			
-			<form name = "findpass_form" action = "#" method = "get" class = "content_layout_pass">
+			<form name = "findpass_form" action = "findPassProcess.jsp" method = "post" class = "content_layout_pass">
 				<div> 비밀번호 찾기 </div>
 				<ul>
 					<li>

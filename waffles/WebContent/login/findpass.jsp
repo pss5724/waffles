@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "com.waffles.vo.*, com.waffles.dao.*" %>
 <%
 	request.setCharacterEncoding("utf-8");
+	String id = request.getParameter("id");
 %>        
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디/비밀번호 찾기 - 새비밀번호 설정 | 와플대학</title>
+<title> 새 비밀번호 설정 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <script>
@@ -56,7 +57,8 @@
 		<div class = "content_findpass">
 			<section>
 				<div class = "title"> 새 비밀번호 설정 </div>
-				<form name = "newpass_form" action = "#" method = "get" class = "content_layout_findpass">
+				<form name = "newpass_form" action = "newPassProcess.jsp" method = "post" class = "content_layout_findpass">
+					<input type = "hidden" name = "id" value = "<%= id %>">
 					<ul>
 						<li>
 							<label> 새 비밀번호 </label>
