@@ -22,7 +22,6 @@
 	//넘어온 페이지 번호가 존재할 경우 현재페이지에 값 넣기
 	if(pageNo != null){
 		curPage = Integer.parseInt(pageNo);
-		System.out.print(curPage);
 	}
 	//현재 페이지의 게시물의 rownum 구하기
    	int pageBegin = (curPage -1) * showData + 1;	//시작번호 = (현재페이지 - 1) * 페이지당 게시물수 + 1
