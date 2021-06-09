@@ -102,13 +102,12 @@ public class CampusDAO extends DAO {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				vo.setRno(rs.getInt(1));
-				vo.setLoction(rs.getString(2));
-				vo.setName(rs.getString(3));
-				vo.setTel(rs.getString(4));
-				vo.setAddress(rs.getString(5));
-				vo.setCoordinates(rs.getString(6));
-				vo.setImg(rs.getString(7));
+				vo.setLoction(rs.getString(1));
+				vo.setName(rs.getString(2));
+				vo.setTel(rs.getString(3));
+				vo.setAddress(rs.getString(4));
+				vo.setCoordinates(rs.getString(5));
+				vo.setImg(rs.getString(6));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

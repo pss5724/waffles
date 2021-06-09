@@ -9,6 +9,7 @@
 
 	CampusDAO cdao = new CampusDAO();
 	CampusVO vo = cdao.getCampusInformation(name);
+	
 %>
     
 <!DOCTYPE html>
@@ -16,9 +17,11 @@
 <head>
 <meta charset="UTF-8">
 <title><%= name %></title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=cayrl604ux"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=cayrl604ux"></script> -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=674bc6df4de3c9d4c2a193001987b616"></script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/bootstrap.min.css">
 <script src="http://localhost:9000/waffles/js/bootstrap.min.js"></script>
@@ -79,6 +82,43 @@
 				</div>
 			</div>
 			
+			<div id="map">
+				<!-- 네이버 지도 -->
+				<%-- <script>
+				var map = new naver.maps.Map('map', {
+				    center: new naver.maps.LatLng(<%= vo.getCoordinates() %>),
+				    zoom: 17
+				});
+			
+				var marker = new naver.maps.Marker({
+				    position: new naver.maps.LatLng(<%= vo.getCoordinates() %>),
+				    map: map
+				});
+				</script> --%>
+				
+				<!-- 카카오 맵 -->
+				<script>
+				var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+				var options = { //지도를 생성할 때 필요한 기본 옵션
+					center: new kakao.maps.LatLng(<%= vo.getCoordinates() %>), //지도의 중심좌표.
+					level: 3 //지도의 레벨(확대, 축소 정도)
+				};
+			
+				var map = new kakao.maps.Map(container, options); // 지도를 생성합니다
+				
+				// 마커가 표시될 위치입니다 
+				var markerPosition  = new kakao.maps.LatLng(<%= vo.getCoordinates() %>); 
+				
+				// 마커를 생성합니다
+				var marker = new kakao.maps.Marker({
+				    position: markerPosition
+				});
+				
+				// 마커가 지도 위에 표시되도록 설정합니다
+				marker.setMap(map);
+				</script>
+			</div>
+			
 			<!-- 목록으로 돌아가는 버튼 -->
 			<div class="btnList">
 				<a href="http://localhost:9000/waffles/campus/nationwide.jsp" class="btn btn-dark">목록</a>
@@ -86,21 +126,7 @@
 		</div>
 	</div>
 	
-	
-	<!-- 네이버 지도 -->
-	<div id="map" style="width:100%;height:300px;"></div>
-
-	<script>
-	var map = new naver.maps.Map('map', {
-	    center: new naver.maps.LatLng(<%= vo.getCoordinates() %>),
-	    zoom: 17
-	});
-
-	var marker = new naver.maps.Marker({
-	    position: new naver.maps.LatLng(<%= vo.getCoordinates() %>),
-	    map: map
-	});
-	</script>
+	<!-- 지도 -->
 	
 	<!-- footer -->
 	<jsp:include page="../footer.jsp"></jsp:include>
