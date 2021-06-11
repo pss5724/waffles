@@ -6,7 +6,6 @@
 .content {
 	width:80%;
 	margin:auto;
-	padding-bottom:50px;
 }
 
 /************	메뉴소개	************/
@@ -382,9 +381,10 @@ div#after {
 .success-story {
 	width:80%;
 	margin:auto;
+	padding:20px 0;
 }
 .story-top {
-	border:1px solid red;
+	/*border:1px solid red;*/
 	height:130px;
 	text-align:center;
 }
@@ -395,6 +395,7 @@ div#after {
 .story-line {
 	display:inline-block;
 	height:30px;
+	margin:10px;
 }
 .story-line p {
 	width:110px;
@@ -413,14 +414,39 @@ div#after {
 	float:left;
 	margin-right:15px;
 }
-
 .story-list {
 	border:1px solid red;
-	width:80%;
-	margin:auto;
-	
+	display:inline-block;
+	padding-left:95px;
 }
+.story {
+	float:left;
+	margin:0 10px 35px 10px;
+}
+.story a {
+	text-decoration:none;
+}
+.story img, label {
+	display:block;
+	text-align:center;
+}
+.story label {
+	font-size:17px;
+	font-weight:bold;
+	color:gray;
+	padding-top:10px;
+}
+
+
+
 /*
-	
+	story-view
 */
+
+
+
+
+
+
+
 
