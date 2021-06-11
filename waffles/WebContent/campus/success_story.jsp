@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, com.waffles.dao.*, com.waffles.vo.* " %>
 <%
 	request.setCharacterEncoding("utf-8");
-%>  
+%>
+<%
+	SuccessStoryDAO dao =new SuccessStoryDAO();
+	ArrayList<SuccessStoryVO> list = dao.getStoryList();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +18,8 @@
 <body>
 	<!-- header -->
 	<jsp:include page="../header.jsp">
-		<jsp:param name="mainlabel" value="와플대학스토리" />
-		<jsp:param name="sublabel" value=" Home > 캠퍼스안내 > 캠퍼스 창업 성공스토리" />
+		<jsp:param name="mainlabel" value="캠퍼스안내" />
+		<jsp:param name="sublabel" value=" Home > 캠퍼스안내 > 캠퍼스 창업성공스토리" />
 	</jsp:include>
 	
 	<!-- content -->
@@ -22,7 +27,7 @@
 		<div class="success-story">
 			<div class="story-top">
 				<img src="http://localhost:9000/waffles/images/campus/학사모.png">
-				<h1>캠퍼스 창업 성공 스토리</h1>
+				<h1>캠퍼스 창업성공스토리</h1>
 				<div class="story-line">
 					<div id="before"></div>
 					<p>Success Story</p>
@@ -33,13 +38,18 @@
 		
 		<!-- 게시글 -->
 		<div class="story-list">
-			<a href="http://localhost:9000/waffles/campus/story_view.jsp"><img src=""><label></label></a>
+			<% for(SuccessStoryVO vo : list){ %>
+			<div class="story">
+				<a href="http://localhost:9000/waffles/campus/story_view.jsp?rno=<%= vo.getRno() %>">
+					<img src="http://localhost:9000/waffles/images/success_story/<%= vo.getImg() %>" style="width: 300px; height: 200px;">
+					<label><%= vo.getTitle() %></label>
+				</a>
+			</div>
+			<% } %>
 		</div>
 	</div>
 	
 	<!-- footer -->
 	<jsp:include page="../footer.jsp"></jsp:include>
-</body>
-</html>
 </body>
 </html>
