@@ -1,8 +1,32 @@
 package com.waffles.vo;
 
 public class MemberVO {
+	int rno, choice;
+	String name, id, email, pass, email1, email2, mdate;
 
-	String name, id, email, pass, email1, email2;
+	public int getRno() {
+		return rno;
+	}
+
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
+
+	public int getChoice() {
+		return choice;
+	}
+
+	public void setChoice(int choice) {
+		this.choice = choice;
+	}
+
+	public String getMdate() {
+		return mdate;
+	}
+
+	public void setMdate(String mdate) {
+		this.mdate = mdate;
+	}
 
 	public String getName() {
 		return name;
