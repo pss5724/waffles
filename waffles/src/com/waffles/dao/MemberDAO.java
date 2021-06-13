@@ -1,5 +1,7 @@
 package com.waffles.dao;
 
+import java.util.ArrayList;
+
 import com.waffles.vo.MemberVO;
 
 public class MemberDAO extends DAO {
@@ -130,6 +132,34 @@ public class MemberDAO extends DAO {
 		close();
 		
 		return result;
+	}
+	
+	// 회원관리 - 리스트
+	public ArrayList<MemberVO> getList(){
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		String sql ="select rownum rno, name, email, id, pass, to_char(mdate,'yyyy-mm-dd') mdate, choice " + 
+				"  from (select name, email, id, pass, mdate, choice from waffle_member order by mdate desc)";
+		getPreparedStatement(sql);
+		
+		try {
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setRno(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setEmail(rs.getString(3));
+				vo.setId(rs.getString(4));
+				vo.setPass(rs.getString(5));
+				vo.setMdate(rs.getString(6));
+				vo.setChoice(rs.getInt(7));
+				
+				list.add(vo);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

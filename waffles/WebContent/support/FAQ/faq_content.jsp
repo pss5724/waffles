@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.waffles.dao.*, com.waffles.vo.*"%>
 <%
 	request.setCharacterEncoding("utf-8");
+	String fid = request.getParameter("fid");
+	FaqDAO dao = new FaqDAO();
+	FaqVO vo = dao.getContent(fid);
 %> 
 <!DOCTYPE html>
 <html>
@@ -21,34 +24,25 @@
 	<!-- content -->
 	<div class = "content_setup_faq_content">
 		<section>
+			<img src = "../../images/setup/step1.PNG">
 			<div class = "title">문의사항</div>
+			<div class = "line"></div>
+		</section>
+		<section>
 			<form name = "faq_content" action = "#" method = "get">
-				<table class = "content_layout_setup_faq_content">
-				
-					<tr>
-						<th>제목</th>
-						<td>1번 문의사항입니다.</td>
-						<th>작성일</th>
-						<td>21/05/6</td>
-					</tr>
-					
-					<tr>
-						<th>내용</th>
-						<td colspan = "3">내용<br><br><br></td>
-					</tr>
-					
-					<tr>
-						<td colspan = "4">
-							<a href = "faq_update.jsp"><button type = "button" class = "btn_setup_faq">수정</button></a>
-							<button type = "button" class = "btn_setup_faq">삭제</button>
-							<a href = "faq_board.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
-							<a href = "../../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
-						</td>	
-					</tr>
-			
-				</table>
+				<h3><%=vo.getRno() %></h3>
+				<div>작성자 <%=vo.getName() %>		작성날짜  <%=vo.getFdate() %> 조회수  <%=vo.getFhit() %></div>
+				<hr>
+				<div>내용 <%=vo.getFcontent() %></div>
+				<hr>
+				<a href = "faq_update.jsp"><button type = "button" class = "btn_setup_faq">수정</button></a>
+				<button type = "button" class = "btn_setup_faq">삭제</button>
+				<a href = "faq_list.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
+				<a href = "../../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
 			</form>	
 		</section>
+			
+		
 		
 	</div>
 	
