@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+		String id = null;
+		if(session.getAttribute("id") != null){
+			id = (String) session.getAttribute("id");
+		}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +19,9 @@
 		});
 		
 		$("#main-li li:nth-child(1),#main-li li:nth-child(2),#main-li li:nth-child(3),#main-li li:nth-child(4),#main-li li:nth-child(5)").mouseenter(function() {
-			$(this).find("#sub-menu").fadeIn(250);
+			$(this).find("#sub-menu").stop().fadeIn(250);
 		}).mouseleave(function() {
-			$(this).find("#sub-menu:visible").fadeOut(250, function() {
+			$(this).find("#sub-menu:visible").stop().fadeOut(250, function() {
 			});
 		});
 		
@@ -79,16 +85,32 @@
 					</li>
 					<li>
 						<div>
-						<a href="http://localhost:9000/waffles/support/notice/notice_board.jsp">고객문의</a>
+						<a href="http://localhost:9000/waffles/support/notice/notice_list.jsp">고객문의</a>
 						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
-							<li><a href="http://localhost:9000/waffles/support/notice/notice_board.jsp">공지사항</a></li>
-							<li><a href="http://localhost:9000/waffles/support/FAQ/faq_board.jsp">문의 게시판</a></li>
+							<li><a href="http://localhost:9000/waffles/support/notice/notice_list.jsp">공지사항</a></li>
+							<li><a href="http://localhost:9000/waffles/support/FAQ/faq_list.jsp">문의 게시판</a></li>
 						</ul>
 					</li>
+					<%
+					if(id == null) { 
+					%>
 					<li><div><button class="login_btn" onclick="location.href='http://localhost:9000/waffles/login/login.jsp'">로그인</button></div></li>
 					<li><div><button class="join_btn" onclick="location.href='http://localhost:9000/waffles/join/join.jsp'">회원가입</button></div></li>
+					<%
+					} else if(id.equals("manager")) { 
+					%>	
+					<li><div><button class="login_btn" onclick="location.href='http://localhost:9000/waffles/admin/adminindex.jsp'">관리메뉴</button></div></li>
+					<li><div><button class="join_btn" onclick="location.href='http://localhost:9000/waffles/login/logoutAction.jsp'">로그아웃</button></div></li>
+					<%
+					} else {
+					%>
+					<li><div><button class="login_btn" onclick="location.href='http://localhost:9000/waffles/login/login.jsp'">정보수정</button></div></li>
+					<li><div><button class="join_btn" onclick="location.href='http://localhost:9000/waffles/login/logoutAction.jsp'">로그아웃</button></div></li>
+					<%
+					} 
+					%>
 				</ul>
 			</nav>
 			<div>

@@ -3,6 +3,12 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>   
+<%
+		String id = null;
+		if(session.getAttribute("id") != null){
+			id = (String) session.getAttribute("id");
+		}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,8 +107,24 @@
 			</a>
 		</p>
 		<div id="headbtn">
+		<%
+		if(id == null) { 
+		%>
 			<button class="login_btn" onclick="location.href='http://localhost:9000/waffles/login/login.jsp'">로그인</button>
 			<button class="join_btn" onclick="location.href='http://localhost:9000/waffles/join/join.jsp'">회원가입</button>
+		<%
+		} else if(id.equals("manager")) { 
+		%>	
+			<button class="login_btn" onclick="location.href='http://localhost:9000/waffles/admin/adminindex.jsp'">관리메뉴</button>
+			<button class="join_btn" onclick="location.href='http://localhost:9000/waffles/login/logoutAction.jsp'">로그아웃</button>
+		<%
+		} else {
+		%>
+			<button class="login_btn" onclick="location.href='http://localhost:9000/waffles/login/login.jsp'">정보수정</button>
+			<button class="join_btn" onclick="location.href='http://localhost:9000/waffles/login/logoutAction.jsp'">로그아웃</button>
+		<%
+		}
+		%>
 		</div>
 		<div>
 			<nav>
@@ -142,24 +164,24 @@
 					</li>
 					<li>
 						<div>
-						<a href="#">창업안내</a>
+						<a href="http://localhost:9000/waffles/setup/setup_main.jsp">창업안내</a>
 						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
-							<li><a href="#">창업 경쟁력</a></li>
-							<li><a href="#">창업 절차 및 비용</a></li>
-							<li><a href="#">창업상담</a></li>
-							<li><a href="#">자주 묻는 질문</a></li>
+							<li><a href="http://localhost:9000/waffles/setup/setup_main.jsp">창업 경쟁력</a></li>
+							<li><a href="http://localhost:9000/waffles/setup/setup_step.jsp">창업 절차 및 비용</a></li>
+							<li><a href="http://localhost:9000/waffles/setup/setup_counsel.jsp">창업상담</a></li>
+							<li><a href="http://localhost:9000/waffles/setup/setup_faq.jsp">자주 묻는 질문</a></li>
 						</ul>
 					</li>
 					<li>
 						<div>
-						<a href="http://localhost:9000/waffles/support/notice/notice_board.jsp">고객문의</a>
+						<a href="http://localhost:9000/waffles/support/notice/notice_list.jsp">고객문의</a>
 						</div>
 						<ul id="sub-menu">
 							<li id="topdeco"></li>
-							<li><a href="http://localhost:9000/waffles/support/notice/notice_board.jsp">공지사항</a></li>
-							<li><a href="http://localhost:9000/waffles/support/FAQ/faq_board.jsp">문의 게시판</a></li>
+							<li><a href="http://localhost:9000/waffles/support/notice/notice_list.jsp">공지사항</a></li>
+							<li><a href="http://localhost:9000/waffles/support/FAQ/faq_list.jsp">문의 게시판</a></li>
 						</ul>
 					</li>
 				</ul>

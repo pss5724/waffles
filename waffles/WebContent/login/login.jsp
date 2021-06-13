@@ -3,6 +3,15 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>   
+<%
+		String id = null;
+		if(session.getAttribute("id") != null){
+			id = (String) session.getAttribute("id");
+		}
+		if(id != null) {
+			response.sendRedirect("http://localhost:9000/waffles/index.jsp");
+		}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +53,7 @@
 	<div class = "content_login">
 		<section>
 			<div class = "title"> 회원로그인 </div>
-			<form name = "login_form" action = "loginProcess.jsp" method = "post" class = "content_layout_login">
+			<form name = "login_form" action = "http://localhost:9000/waffles/LoginServlet" method = "post" class = "content_layout_login">
 				<ul>
 					<li>
 						<label> 아이디 </label>
@@ -57,7 +66,7 @@
 					</li>
 					
 					<li>
-						<button type = "button" id = "loginBtn" class = "btn_login">로그인</button>
+						<button type = "submit" id = "loginBtn" class = "btn_login">로그인</button>
 					</li>
 					
 					<li>

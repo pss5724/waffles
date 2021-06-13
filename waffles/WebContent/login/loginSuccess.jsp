@@ -3,6 +3,12 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>   
+<%
+		String id = null;
+		if(session.getAttribute("id") != null){
+			id = (String) session.getAttribute("id");
+		}
+%>
 <!DOCTYPE html>
 <html>
 <head>

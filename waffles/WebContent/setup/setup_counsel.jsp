@@ -172,7 +172,7 @@
 			<div> * 표시는 필수 입력사항입니다.</div>
 			<div class = "line"></div>
 			
-			<form name = "setup_counsel_form" action = "#" method = "get" class = "content_layout_setup_counsel">
+			<form name = "setup_counsel_form" action = "http://localhost:9000/waffles/CounselWriteServlet" method = "post" class = "content_layout_setup_counsel">
 				<ul>
 					<li>
 						<label> 이름 * </label>
@@ -226,14 +226,14 @@
 					
 					<li>
 						<label> 기타 문의사항 </label>
-						<textarea></textarea>
+						<textarea name="etc"></textarea>
 						<div></div>
 					</li>
 					
 					
 					<li>
 						<a href = "setup_main.jsp"><button type = "button" class = "btn_counsel_1">취소</button></a>
-						<button type = "button" id = "counselBtn" class = "btn_counsel_2">확인</button>
+						<button type = "submit" id = "counselBtn" class = "btn_counsel_2">확인</button>
 					</li>
 				
 				</ul>
@@ -250,7 +250,6 @@
 	
 	<!-- footer -->
 	<jsp:include page = "../footer.jsp"></jsp:include>
-	
 	
 </body>
 </html>

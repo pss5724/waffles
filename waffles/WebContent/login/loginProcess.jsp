@@ -10,10 +10,8 @@
 		boolean result = dao.getLoginResult(id, pass);
 		
 		if(result) {
-			//loginSuccess.jsp
 			response.sendRedirect("loginSuccess.jsp");
 		}else {
-			//loginFail.jsp
 			response.sendRedirect("loginFail.jsp");
 		}
 %>
