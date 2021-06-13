@@ -3,7 +3,7 @@ package com.waffles.vo;
 public class SuccessStoryVO {
 
 	private String title, img, id, sdate, content;
-	private int rno, hit;
+	private int no, hit;
 
 	public String getTitle() {
 		return title;
@@ -45,12 +45,12 @@ public class SuccessStoryVO {
 		this.content = content;
 	}
 
-	public int getRno() {
-		return rno;
+	public int getNo() {
+		return no;
 	}
 
-	public void setRno(int rno) {
-		this.rno = rno;
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 	public int getHit() {

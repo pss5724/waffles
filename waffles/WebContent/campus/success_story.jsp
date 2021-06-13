@@ -5,14 +5,14 @@
 	request.setCharacterEncoding("utf-8");
 %>
 <%
-	SuccessStoryDAO dao =new SuccessStoryDAO();
+	SuccessStoryDAO dao = new SuccessStoryDAO();
 	ArrayList<SuccessStoryVO> list = dao.getStoryList();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>캠퍼스 창업성공스토리</title>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
 </head>
 <body>
@@ -40,8 +40,8 @@
 		<div class="story-list">
 			<% for(SuccessStoryVO vo : list){ %>
 			<div class="story">
-				<a href="http://localhost:9000/waffles/campus/story_view.jsp?rno=<%= vo.getRno() %>">
-					<img src="http://localhost:9000/waffles/images/success_story/<%= vo.getImg() %>" style="width: 300px; height: 200px;">
+				<a href="http://localhost:9000/waffles/campus/story_view.jsp?no=<%= vo.getNo() %>">
+					<img src="http://localhost:9000/waffles/images/success_story/<%= vo.getImg() %>" style="width: 350px; height: 270px;">
 					<label><%= vo.getTitle() %></label>
 				</a>
 			</div>

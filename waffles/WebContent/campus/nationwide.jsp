@@ -34,7 +34,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>전국 캠퍼스 현황</title>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/bootstrap.min.css">
 <script src="http://localhost:9000/waffles/js/bootstrap.min.js"></script>
@@ -51,7 +51,7 @@
 		<div class="nationwide">
 			<div class="nationwide-top">
 				<img src="http://localhost:9000/waffles/images/campus/학사모.png">
-				<h1>전국캠퍼스현황</h1>
+				<h1>전국 캠퍼스 현황</h1>
 				<div class="nationwide-line">
 					<div id="before"></div>
 					<p>Waffle universities nationwide</p>

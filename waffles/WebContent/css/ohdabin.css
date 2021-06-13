@@ -426,23 +426,75 @@ div#after {
 .story a {
 	text-decoration:none;
 }
-.story img, label {
+.story img, .story label {
 	display:block;
 	text-align:center;
 }
 .story label {
-	font-size:17px;
+	font-size:18px;
 	font-weight:bold;
-	color:gray;
-	padding-top:10px;
+	color:#383632;
+	padding:10px 0;
 }
-
-
 
 /*
 	story-view
 */
+.story-top {
+	/*border:1px solid red;*/
+	height:130px;
+	text-align:center;
+}
+.story-top >img {
+	width:45px; height:30px;
+	padding:7px 0;
+}
+.story-view {
+/* border : 1px solid green; */
+	width : 80%;
+	margin : auto;
+	margin-top : 50px;
+	margin-bottom : 50px;
+	text-align : center;
+}
+.story-view>section {
+	/*border : 1px solid red; */
+	width : 90%;
+	margin : auto;	
+}
+.story-view>section:first-child>div.title {
+	font-size : 40px;
+	font-weight : 400;
+}
+.story-view>section:first-child>div.line {
+	background-color : rgb(213, 169, 18);
+	margin : 20px 0;
+	height : 2px;
+}
+.story-view form>h3 {
+	text-align : left;
+	margin: 8px 0 0 10px;
+}
+.story-view form>div:nth-child(2) {
+	text-align : left;
+	margin : 8px 0 15px 10px;
+}
 
+.story-view form>div:nth-child(4) {
+	text-align : left;
+	margin : 30px 0;
+}
+.btn-story-list {
+	margin : 50px 2px;
+	background-color : rgb(56, 54, 50);
+	width : 14%;
+	font-size : 16px;
+	font-weight : 700;
+	border : 1px solid rgb(56, 54, 50);
+	border-radius : 7px;
+	color : white;
+	height : 40px;
+}
 
 
 

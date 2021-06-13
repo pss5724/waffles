@@ -17,15 +17,14 @@ public class SuccessStoryDAO extends DAO{
 		ArrayList<SuccessStoryVO> list = new ArrayList<SuccessStoryVO>();
 
 		try {
-			String sql = "select rno, img, title from"
-					+ "(select rownum rno, img, title from success_story)order by rno desc";
+			String sql = "select no, img, title from success_story order by no desc";
 			getPreparedStatement(sql);
 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				SuccessStoryVO vo = new SuccessStoryVO();
-				vo.setHit(rs.getInt(1));
+				vo.setNo(rs.getInt(1));
 				vo.setImg(rs.getString(2));
 				vo.setTitle(rs.getString(3));
 				list.add(vo);
@@ -37,24 +36,23 @@ public class SuccessStoryDAO extends DAO{
 	}
 	
 	// 
-	public SuccessStoryVO getStoryViewList(String rno) {
+	public SuccessStoryVO getStoryViewList(String no) {
 		SuccessStoryVO vo = new SuccessStoryVO();
 		
 		try {
-			String sql = "select rno, title, img, id, content, sdate, hit from"
-						+ "(select rownum rno, title, img, id, content,sdate, hit from success_story ) where rno=?";
+			String sql = "select * from success_story where no=?";
 			getPreparedStatement(sql);
 			
-			pstmt.setInt(1, Integer.parseInt(rno+1));
+			pstmt.setInt(1, Integer.parseInt(no));
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				vo.setHit(rs.getInt(1));
+				vo.setNo(rs.getInt(1));
 				vo.setTitle(rs.getString(2));
 				vo.setImg(rs.getString(3));
 				vo.setId(rs.getString(4));
-				vo.setContent(rs.getString(5));
-				vo.setSdate(rs.getString(6));
+				vo.setSdate(rs.getString(5));
+				vo.setContent(rs.getString(6));
 				vo.setHit(rs.getInt(7));
 			}
 		} catch (Exception e) {
@@ -63,7 +61,18 @@ public class SuccessStoryDAO extends DAO{
 		return vo;
 	}
 	
-	
-	
+	//update --> 조회수 업데이트
+		 public void getUpdateHit(String bid) {
+			 String sql = "update mycgv_board set bhit = bhit + 1 where bid=?";
+			 getPreparedStatement(sql);
+			 
+			 try {
+				pstmt.setString(1, bid);
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			 close();
+		 }
 	
 }

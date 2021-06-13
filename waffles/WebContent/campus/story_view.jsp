@@ -5,21 +5,17 @@
 	request.setCharacterEncoding("utf-8");
 %>
 <%
-	String rno = request.getParameter("rno");
-
+	String no = request.getParameter("no");
+	
 	SuccessStoryDAO dao =new SuccessStoryDAO();
-	SuccessStoryVO vo = dao.getStoryViewList(rno);
-	
-	
-	
+	SuccessStoryVO vo = dao.getStoryViewList(no);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><%= vo.getTitle() %></title>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
-<link rel="stylesheet" href="http://localhost:9000/waffles/css/setup.css">
 </head>
 <body>
 	<!-- header -->
@@ -29,22 +25,21 @@
 	</jsp:include>
 	
 	<!-- content -->
-	<div class = "content_setup_faq_content">
-		<section>
-			<img src = "../images/setup/step1.PNG">
-			<div class = "title">캠퍼스 창업성공스토리</div>
-			<div class = "line"></div>
+	<div class="story-view">
+		<section class="story-top">
+			<img src="http://localhost:9000/waffles/images/campus/학사모.png">
+			<div class="title">캠퍼스 창업성공스토리</div>
+			<div class="line"></div>
 		</section>
-	
 		<section>
-			<form name = "faq_content" action = "#" method = "get">
+			<form name="story-content" action="#" method="get">
 				<h3><%= vo.getTitle() %></h3>
-				<div>작성자 <%= vo.getId() %>		작성날짜 <%= vo.getSdate() %>		조회수 <%= vo.getHit() %></div>
+				<div>작성자 <%= vo.getId() %>	작성날짜 <%= vo.getSdate() %>	조회수 <%= vo.getHit() %></div>
 				<hr>
 				<div><%= vo.getContent() %></div>
 				<hr>
-				<a href = "success_story.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
-				<a href = "../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
+				<a href="success_story.jsp"><button type="button" class="btn-story-list">목록</button></a>
+				<a href="../index.jsp"><button type="button" class="btn-story-list">홈으로</button></a>
 			</form>	
 		</section>
 	</div>
