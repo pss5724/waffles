@@ -334,3 +334,12 @@ a:hover {
 	visibility: hidden;
 	position: absolute;
 }
+
+/* 페이지 버튼 색 */
+.active_page > a {
+	color: #ffffff;
+	background-color: #c59d5f;
+}
+.paginaion>li>a {
+	color : black !important;
+}
