@@ -24,6 +24,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=674bc6df4de3c9d4c2a193001987b616"></script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/ohdabin.css">
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
 <script src="http://localhost:9000/waffles/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -45,7 +46,7 @@
 			
 			<!-- 캠퍼스 정보 -->
 			<div class="row" id="information">
-				<div class="col-4" id="addr">
+				<%-- <div class="col-4" id="addr">
 					<img src="http://localhost:9000/waffles/images/campus/와플대학로고.png">
 					<div>
 						<h4>주소</h4>
@@ -65,8 +66,40 @@
 						<h4>이용시간</h4>
 						<p>AM 10:00 ~ PM 10:00</p>
 					</div>
-				</div>
+				</div> --%>
 			</div>
+				
+				<div class="bg-transparent add-transparent padding-100">
+	            <div class="container">
+	              <div class="row">
+	                <div class="col-md-3 adress add_box">
+	                  <div class="col-md-3 icon "> <i class="fa fa-road"></i> </div>
+	                  <div class="col-sm-12 content-item addess-info">
+	                    <h3>주소(도로명)</h3>
+	                    <p>경기도 평택시 이충로35번길 20-9</p>
+	                  </div>
+	                </div>
+	                <div class="col-md-3 Phone add_box">
+	                  <div class="col-md-3 icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+	                  <div class="col-sm-12 content-item addess-info">
+	                    <h3>전화번호</h3>
+	                    <p>Tel : 031-663-6312</p>
+	                  </div>
+	                </div>
+	                <div class="col-md-3 email add_box">
+	                  <div class="col-md-3 icon"> <i class="fa fa-envelope"></i> </div>
+	                  <div class="col-sm-12 content-item addess-info">
+	                    <h3>이용시간</h3>
+	                    <p>AM 10:00 ~ PM 10:00<br></p>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	          
+			
+			
+			
 			
 			<!-- 캠퍼스 이미지 -->
 			<div class="campus-photo">
