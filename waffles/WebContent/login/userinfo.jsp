@@ -1,7 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "com.waffles.dao.MemberDAO, com.waffles.vo.MemberVO" %>
 <%
 	request.setCharacterEncoding("utf-8");
+
+	//회원 정보 받아오기
+	String id = "lee";	//예시
+	
+	MemberDAO dao = new MemberDAO();
+	MemberVO vo = dao.getInfo(id);
+	
+	String emaillist[] = vo.getEmail().split("@");
+	String email1 = emaillist[0];
+	String email2 = emaillist[1];
+	
 %> 
 <!DOCTYPE html>
 <html>
@@ -13,9 +24,13 @@
 <script>
 	$(document).ready(function() {
 		
-		/* 폼체크 */
+		/* 폼체크 - 정보수정 (이메일, 비밀번호) */
 		$("#modifyBtn").click(function() {
-			if($("#email1").val() == "") {
+			if ($("#name").val() == "") {
+				alert("이름을 입력해주세요");
+				$("#name").focus();
+				return false;
+			} else if($("#email1").val() == "") {
 				alert("email1을 입력해주세요");
 				$("#email1").focus();
 				return false;
@@ -24,11 +39,11 @@
 				$("#email3").focus();
 				return false;
 			} else if ($("#pass").val() == "") {
-				alert("패스워드를 입력해주세요");
+				alert("새 비밀번호를 입력해주세요");
 				$("#pass").focus();
 				return false;
 			} else if ($("#cpass").val() == "") {
-				alert("패스워드 확인을 입력해주세요");
+				alert("새 비밀번호 확인을 입력해주세요");
 				$("#cpass").focus();
 				return false;	
 			} else {
@@ -51,15 +66,15 @@
 		});
 		
 		/* 패스워드 체크 */
-		$("#cpass").blur(function() {
-			if($("#pass").val() != "" && $("#cpass").val() != "") {
-				if($("#pass").val() == $("#cpass").val()) {
+		$("#ncpass").blur(function() {
+			if($("#npass").val() != "" && $("#ncpass").val() != "") {
+				if($("#npass").val() == $("#ncpass").val()) {
 					$("#msg").text("패스워드가 동일합니다").css("color", "blue");
 					return true;
 				}else {
 					$("#msg").text("패스워드가 다릅니다").css("color", "red");
-					$("#pass").val("");
-					$("#cpass").val("").focus();
+					$("#npass").val("");
+					$("#ncpass").val("").focus();
 					return false;
 				}
 			}	
@@ -81,24 +96,24 @@
 		<section>
 			<div class = "title"> 회원정보수정 </div>
 			<div class = "hr"></div>
-			<form name = "modify_form" action = "#" method = "get" class = "content_layout_modify">
+			<form name = "modify_form" action = "modifyProcess.jsp" method = "post" class = "content_layout_modify">
 				<ul>
 					<li>
 						<label> 아이디 </label>
-						<input type = "text" name = "id" class = "id" disabled>
+						<input type = "text" name = "id" class = "id" value = "<%= vo.getId() %>" readonly>
 						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 이름 </label>
-						<input type = "text" name = "name" class = "name" disabled>
+						<input type = "text" name = "name" class = "name" value = "<%= vo.getName() %>">
 						<div class = "line"></div>
 					</li>
 					
 					<li>
 						<label> 이메일 </label>
-						<input type = "text" name = "email1" id = "email1" class = "email1"> @ 
-						<input type = "text" name = "email2" id = "email2" class = "email2">
+						<input type = "text" name = "email1" id = "email1" class = "email1" value = "<%= email1 %>"> @ 
+						<input type = "text" name = "email2" id = "email2" class = "email2" value = "<%= email2 %>">
 						<select id = "email3" class = "email3">
 							<option value = "choice">선택</option>
 							<option value = "naver.com">naver.com</option>
@@ -108,11 +123,10 @@
 						</select>
 						<div class = "line"></div>
 					</li>
-					
-					
+
 					<li>
 						<label> 비밀번호 </label>
-						<input type = "password" name = "pass" id = "pass" class = "pass">
+						<input type = "password" name = "pass" id = "pass" class = "pass" placeholder = "변경할 비밀번호를 입력해주세요">
 						<div class = "line"></div>
 					</li>
 					
@@ -125,9 +139,9 @@
 					
 					
 					<li>
-						<a href = "../index.jsp"><button type = "button" class = "btn_modify_1">취소</button></a>
 						<button type = "button" id = "modifyBtn" class = "btn_modify_2">정보수정</button>
-						<button type = "button" class = "btn_modify_2">회원탈퇴</button>
+						<a href = "#"><button type = "button" class = "btn_modify_2">회원탈퇴</button></a>
+						<a href = "../index.jsp"><button type = "button" class = "btn_modify_1">홈으로</button></a>
 					</li>
 				
 				</ul>
