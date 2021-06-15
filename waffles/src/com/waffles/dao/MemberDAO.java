@@ -31,6 +31,28 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
+	/* id 중복체크 */
+	public int getIdCheck(String id) {
+		int result = 0;
+		String sql = " select count(*) from waffle_member where id = ? ";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result = rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		
+		return result;
+	}
+	
 	/* 로그인 처리 */
 	public boolean getLoginResult(String id, String pass) {
 		boolean result = false;

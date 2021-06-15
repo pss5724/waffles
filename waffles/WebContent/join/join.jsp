@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
 %>       
@@ -77,7 +76,35 @@
 			}	
 		});	
 		
-	});
+		/* 아이디 중복확인 */
+		$("#idcheck").click(function() {
+			if($("#id").val() == "") {
+				alert("아이디를 입력해주세요");
+				$("#id").focus();
+				return false;
+			}else {
+				
+				// 아이디 중복 체크를 위한 서버 파일 호출 후  결과 확인
+				$.ajax({
+					url : "idCheckProcess.jsp?id=" + $("#id").val(),
+					success : function(data) {
+						if(data == 1) {
+							$("#idmsg").text("중복된 아이디가 존재합니다 .다시 입력해주세요").css("color", "red");
+							$("#id").focus();
+							return false;
+						}else {
+							$("#idmsg").text("사용가능한 아이디 입니다").css("color", "blue");
+							$("#pass").focus();
+							return true;
+						}
+					}//success
+				}); //ajax
+			}
+		});
+		
+		
+		
+	}); //ready
 	
 
 
@@ -204,7 +231,8 @@
 					<li>
 						<label> 아이디 * </label>
 						<input type = "text" name = "id" id = "id" class = "id">
-						<button type = "button">중복체크</button>
+						<button type = "button" id = "idcheck">중복체크</button>
+						<div id = "idmsg"></div>
 						<div class = "line"></div>
 					</li>
 					

@@ -125,8 +125,6 @@
 			
 			<input type = "text" name = "search_text" class = "search_text">
 			<button type = "button" class = "btn_search">검색</button>
-			
-			<a href = "setup_faq_write.jsp"><button type = "button" class = "btn_setup_faq_write">글쓰기</button></a>
 		</section>
 		
 	</div>	

@@ -33,8 +33,6 @@
 				<hr>
 				<div>내용 vo 높이 높게 설정</div>
 				<hr>
-				<a href = "setup_faq_update.jsp"><button type = "button" class = "btn_setup_faq">수정</button></a>
-				<button type = "button" class = "btn_setup_faq">삭제</button>
 				<a href = "setup_faq.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
 				<a href = "../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
 			</form>	
