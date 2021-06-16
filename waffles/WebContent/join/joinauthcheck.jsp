@@ -2,8 +2,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-	//String checkCode = (String)request.getAttribute("checkCode");
-	String checkCode = "90";
+	String checkCode = (String)request.getAttribute("checkCode");
 	String email = (String)request.getAttribute("email");
 	String name = (String)request.getAttribute("name");
 	String id = (String)request.getAttribute("id");

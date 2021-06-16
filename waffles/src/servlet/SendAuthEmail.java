@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.Code;
 import util.Gmail;
 
 @WebServlet("/SendAuthEmail")
@@ -34,7 +35,9 @@ public class SendAuthEmail extends HttpServlet {
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 		String toEmail = email1 + "@" + email2;
-		String checkCode = "90";
+		
+		Code code = new Code();
+		String checkCode =Code.getCode();
 		
 		// 사용자에게 보낼 메시지를 기입합니다.
 		String host = "http://localhost:9000/waffles/";

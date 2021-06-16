@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		boolean result = dao.getLoginResult(id, pass);
 		
-		if(result || id.equals("manager")&&pass.equals("1234")) {
+		if(result) {
 			request.getSession().setAttribute("id", id);
 			response.sendRedirect("http://localhost:9000/waffles/login/loginSuccess.jsp");
 		} else {
