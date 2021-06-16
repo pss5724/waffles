@@ -31,6 +31,28 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
+	/* id 중복체크 */
+	public int getIdCheck(String id) {
+		int result = 0;
+		String sql = " select count(*) from waffle_member where id = ? ";
+		getPreparedStatement(sql);
+
+		try {
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) result = rs.getInt(1);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+
+		return result;
+	}
+	
 	/* 로그인 처리 */
 	public boolean getLoginResult(String id, String pass) {
 		boolean result = false;
@@ -131,6 +153,58 @@ public class MemberDAO extends DAO {
 		}
 		close();
 		
+		return result;
+	}
+	
+	/* 정보수정 - 아이디, 이름, 이메일 가져오기 */
+	public MemberVO getInfo(String id) {
+		MemberVO vo = new MemberVO();
+
+		String sql = " select id, name, email, pass from waffle_member where id = ? ";
+		getPreparedStatement(sql);
+
+		try {
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				vo.setId(rs.getString(1));
+				vo.setName(rs.getString(2));
+				vo.setEmail(rs.getString(3));
+				vo.setPass(rs.getString(4));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+
+		return vo;
+	}
+
+	/* 정보수정 - 이메일, 비밀번호 수정 */
+	public boolean getModify(MemberVO vo) {
+		boolean result = false;
+
+		String sql = " update waffle_member set name = ?, email = ?, pass = ? where id = ? ";
+		getPreparedStatement(sql);
+
+		try {
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getEmail());
+			pstmt.setString(3, vo.getPass());
+			pstmt.setString(4, vo.getId());
+
+			int value = pstmt.executeUpdate();
+
+			if(value != 0) result = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+
 		return result;
 	}
 	
