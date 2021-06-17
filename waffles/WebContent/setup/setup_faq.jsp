@@ -46,7 +46,7 @@
 				<% for(QuestionVO vo : list) { %>
 				<tr>
 					<td><%= vo.getRno() %></td>
-					<td><a href = "setup_faq_content.jsp?qid=<%= vo.getQid() %>%rno=<%= vo.getRno() %>"><%= vo.getQtitle() %></a></td>
+					<td><a href = "setup_faq_content.jsp?qid=<%= vo.getQid() %>&rno=<%= vo.getRno() %>"><%= vo.getQtitle() %></a></td>
 					<td><%= vo.getQwriter() %></td>
 					<td><%= vo.getQdate() %></td>
 					<td><%= vo.getQhit() %></td>

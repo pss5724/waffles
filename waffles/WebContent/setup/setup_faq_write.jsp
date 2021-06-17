@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
 %> 
@@ -7,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>창업안내 - 창업FAQ - 글쓰기 | 와플대학</title>
+<title> 창업FAQ - 글쓰기 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <script>
@@ -43,17 +42,22 @@
 	<div class = "content_setup_faq_write">
 		<section>
 			<div class = "title">FAQ 글쓰기</div>
-			<form name = "faq_write" action = "#" method = "get">
+			<form name = "faq_write" action = "faq_writeProcess.jsp" method = "post">
 				<table class = "content_layout_setup_faq_write">
 				
 					<tr>
 						<th>제목</th>
-						<td><input type = "text" name = "ftitle" id = "ftitle"></td>
+						<td><input type = "text" name = "qtitle" id = "qtitle"></td>
 					</tr>
 					
 					<tr>
 						<th>내용</th>
-						<td><textarea name = "fcontent" id = "fcontent"></textarea></td>
+						<td><textarea name = "qcontent" id = "qcontent"></textarea></td>
+					</tr>
+					
+					<tr>
+						<th>작성자</th>
+						<td><input type = "text" name = "qwriter" id = "qwriter"></td>
 					</tr>
 					
 					<tr>
