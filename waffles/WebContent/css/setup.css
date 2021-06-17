@@ -1,4 +1,4 @@
-/* ¸ñÂ÷
+/* ï¿½ï¿½ï¿½ï¿½
 login
 login success, login fail, join success, findIdProcess
 join
@@ -942,7 +942,7 @@ setup_faq_write, setup_faq_update
 	
 	/* form */
 	.content_setup_faq_content form>div:nth-child(2) {
-	/* Á¦¸ñ */	
+	/* ï¿½ï¿½ï¿½ï¿½ */	
 		/* border : 1px solid red; */
 		text-align : left;
 		margin : 8px 0 10px 0;
@@ -952,16 +952,24 @@ setup_faq_write, setup_faq_update
 	}
 	
 	.content_setup_faq_content form>div:nth-child(3) {
-	/* ÀÛ¼ºÀÚ, ³¯Â¥, Á¶È¸¼ö */	
-		/* border : 1px solid red; */
+	/* ï¿½Û¼ï¿½ï¿½ï¿½, ï¿½ï¿½Â¥, ï¿½ï¿½È¸ï¿½ï¿½ */	
 		text-align : left;
-		margin : 8px 0 10px 0;
 		font-size : 16px;
 		font-weight : 300;
 	}
+	.content_setup_faq_content form>div:nth-child(3)>div{
+	}
+	.content_setup_faq_content form>div:nth-child(3)>div:nth-child(1) {
+		display: block;
+		text-align: right;
+	}
+	.content_setup_faq_content form>div:nth-child(3)>div:nth-child(2) {
+		display: block;
+		text-align: right;
+	}
 	
 	.content_setup_faq_content form>div:nth-child(5) {
-	/* ³»¿ë */
+	/* ï¿½ï¿½ï¿½ï¿½ */
 		/* border : 1px solid red; */
 		height : 400px;
 		text-align : left;

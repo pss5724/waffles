@@ -40,8 +40,13 @@
 			<form name = "faq_content" action = "#" method = "get">
 				<input type = "hidden" name = "qid" value = "<%= qid %>">
 				<div><%= vo.getQtitle() %></div>
-				<div>작성자 <%= vo.getQwriter()%>　　　　<%=vo.getQdate()%>　　　　조회 <%=vo.getQhit() %> 회</div>
-				<hr>
+				<div>
+					<div><%=vo.getQdate()%>
+					&nbsp&nbsp&nbsp
+					조회 <%=vo.getQhit() %> 회</div>
+					<div>작성자 <%= vo.getQwriter()%></div>
+				</div>
+				<hr style="display: inline-block; width: 100%;">
 				<div><%= content %></div>
 				<hr>
 				<a href = "setup_faq.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>

@@ -41,7 +41,7 @@
 			<% for(SuccessStoryVO vo : list){ %>
 			<div class="story">
 				<a href="http://localhost:9000/waffles/campus/story_view.jsp?no=<%= vo.getNo() %>">
-					<img src="http://localhost:9000/waffles/images/success_story/<%= vo.getImg() %>" style="width: 350px; height: 270px;">
+					<img src="http://localhost:9000/waffles/images/success_story/<%= vo.getImg() %>">
 					<label><%= vo.getTitle() %></label>
 				</a>
 			</div>
