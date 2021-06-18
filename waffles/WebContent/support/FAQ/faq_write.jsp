@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.waffles.dao.*"%>
 <%
 	request.setCharacterEncoding("utf-8");
+	
+	MemberDAO dao = new MemberDAO();
+	
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
+	
+	
+
 %> 
 <!DOCTYPE html>
 <html>
@@ -43,9 +53,12 @@
 	<div class = "content_setup_faq_write">
 		<section>
 			<div class = "title">문의사항</div>
-			<form name = "faq_write" action = "#" method = "get">
+			<form name = "faq_write" action = "faqWriteProcess.jsp" method = "post" enctype="multipart/form-data">
 				<table class = "content_layout_setup_faq_write">
-				
+					<tr>
+						<th>직성자</th>
+						<td><input type = "text" name = "name" id = "name" value="<%=id %>" readonly></td>
+					</tr>
 					<tr>
 						<th>제목</th>
 						<td><input type = "text" name = "ftitle" id = "ftitle"></td>
@@ -55,7 +68,10 @@
 						<th>내용</th>
 						<td><textarea name = "fcontent" id = "fcontent"></textarea></td>
 					</tr>
-					
+					<tr>
+						<th>파일</th>
+						<td><input type="file" name="ffile"></td>
+					</tr>
 					<tr>
 						<td colspan = "2">
 							<button type = "button" id = "faqwriteBtn" class = "btn_setup_faq">글쓰기</button>

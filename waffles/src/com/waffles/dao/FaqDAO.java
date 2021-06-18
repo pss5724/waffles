@@ -9,6 +9,130 @@ public class FaqDAO extends DAO{
 	
 	
 	
+	public String getFsfile(String fid) {
+		String fsfile=null;
+		String sql="select fsfile from waffle_faq where fid=?";
+		
+		getPreparedStatement(sql);
+		
+		
+		try {
+			pstmt.setString(1, fid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				fsfile = rs.getString(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return fsfile;
+	}
+	
+	//Delete -->삭제 처리
+	public boolean getDeleteResult(String fid){
+		boolean result = false;
+		String sql = "delete from waffle_faq where fid=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, fid);
+			
+			int value = pstmt.executeUpdate();
+			if(value != 0){
+				result = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+		return result;
+	}
+	
+	//Update ---> 수정 처리
+		public boolean getUpdateResult(FaqVO vo){
+			boolean result = false;
+			String sql = "update waffle_faq set ftitle=?, fcontent=?, ffile=?, fsfile=? where fid=?";
+			getPreparedStatement(sql);
+			
+			try {
+				pstmt.setString(1, vo.getFtitle());
+				pstmt.setString(2, vo.getFcontent());
+				pstmt.setString(3, vo.getFfile());
+				pstmt.setString(4, vo.getFsfile());
+				pstmt.setString(5, vo.getFid());
+				
+				int value = pstmt.executeUpdate();
+				if(value != 0){
+					result = true;
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			close();
+			return result;
+		}
+		
+		//Update --> 수정처리(기존파일 유지)
+		public boolean getUpdateResultNofile(FaqVO vo){
+			boolean result = false;
+			String sql = "update waffle_faq set ftitle=?, fcontent=? where fid=?";
+			getPreparedStatement(sql);
+			
+			try {
+				pstmt.setString(1, vo.getFtitle());
+				pstmt.setString(2, vo.getFcontent());
+				pstmt.setString(3, vo.getFid());
+				
+				int value = pstmt.executeUpdate();
+				if(value != 0){
+					result = true;
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			close();
+			return result;
+		}
+	
+	
+	// insert --> 문의사항 글쓰기
+	public boolean getInsertResult(FaqVO vo) {
+		boolean result = false;
+		String sql="insert into waffle_faq values('f_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate)";
+		
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getFtitle());
+			pstmt.setString(3, vo.getFcontent());
+			pstmt.setString(4, vo.getFfile());
+			pstmt.setString(5, vo.getFsfile());
+			
+			int value = pstmt.executeUpdate();
+			if(value !=0) {
+				result = true;
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		
+		
+		return result;
+	}
+	
+	
 	//Update ---> 조회수 업데이트
 	public void getUpdateHit(String fid){
 		String sql = "update waffle_faq set fhit = fhit + 1 where fid=?";
@@ -64,7 +188,6 @@ public class FaqDAO extends DAO{
 		
 		try {
 			rs = pstmt.executeQuery();
-			
 			
 			while(rs.next()){
 				FaqVO vo = new FaqVO();

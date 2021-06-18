@@ -3,7 +3,17 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	FaqDAO dao = new FaqDAO();
+
+	
+	
 	ArrayList<FaqVO> list = dao.getList();
+	
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
+	
+	
 %>   
 <!DOCTYPE html>
 <html>
@@ -12,6 +22,8 @@
 <title>고객센터 - 문의사항 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+
+
 </head>
 <body>
 	<!-- header -->
@@ -43,17 +55,15 @@
 				<% for(FaqVO vo : list) {%>
 				<tr>
 					<td><%= vo.getRno() %></td>
-					<td><a href="faq_content.jsp?fid=<%=vo.getFid()%>&rno=<%=vo.getRno()%>"><%=vo.getFtitle() %></a></td>
+					<td><a href="faq_content.jsp?fid=<%=vo.getFid()%>&rno=<%=vo.getRno()%>&id=<%=id%>"><%=vo.getFtitle() %></a></td>
 					<td><%= vo.getName() %></td>
-					<td><%= vo.getFhit() %></td>
 					<td><%= vo.getFdate() %></td>
+					<td><%= vo.getFhit() %></td>
 				</tr>
 				<%} %>
 				
-				
-				
-				
 			</table>
+		
 		</section>
 		
 		<section class = "setup_faq_search">

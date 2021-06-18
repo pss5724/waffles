@@ -9,9 +9,6 @@
 	if(session.getAttribute("id") != null){
 		id = (String) session.getAttribute("id");
 	}
-	FaqVO vo = dao.getContent(fid);
-	
-	if(vo != null) dao.getUpdateHit(fid);
 	
 	
 %> 
@@ -22,12 +19,13 @@
 <title>고객센터 - 문의사항 - 게시물 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
 	<!-- header -->
 	<jsp:include page = "../../header.jsp">
 	<jsp:param name="mainlabel" value="문의사항 " />
-	<jsp:param name="sublabel" value=" Home > 고객센터 > 문의사항 > 게시물 "/>
+	<jsp:param name="sublabel" value=" Home > 고객센터 > 문의사항 > 게시물 > 삭제 "/>
 	</jsp:include>
 	
 	<!-- content -->
@@ -39,23 +37,13 @@
 		</section>
 		<section>
 			<form name = "faq_content" action = "#" method = "get">
-				<h3></h3>
-				<div>작성자 <%=vo.getName() %>		작성날짜  <%=vo.getFdate() %> 조회수  <%=vo.getFhit() %></div>
-				<hr>
-				<div>내용 <%=vo.getFcontent() %></div>
-				<% if(vo.getFsfile() != null){%>
-						<img src="http://localhost:9000/waffles/upload/<%=vo.getFsfile()%>" width="200px" height="200px">
-						<%}else{ %>
-							<span>파일없음</span>
-						<%} %>
-				<hr>
-				<% if(vo.getName().equals(id) || id.equals("manager")) {%>
-				<a href = "faq_update.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">수정</button></a>
-				<a href = "faq_delete.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">삭제</button></a>
-				<%} %>
+				<h3>정말로 삭제하시겠습니까?</h3>
+				<img src="../../images/delete.jpg">				
+				
+			</form>	
+			<a href = "faqDeleteProcess.jsp?fid=<%=fid%>"><button type = "button" class = "btn_setup_faq">삭제완료</button></a>
 				<a href = "faq_list.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
 				<a href = "../../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
-			</form>	
 		</section>
 			
 		
