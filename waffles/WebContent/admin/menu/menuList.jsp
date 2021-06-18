@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import= "com.waffles.dao.adminMenuDAO, com.waffles.vo.CounselVO, java.util.ArrayList" %>
+<%@ page import= "com.waffles.dao.adminMenuDAO, com.waffles.vo.CounselVO, java.util.ArrayList, com.waffles.vo.MenuVO" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>   
@@ -11,7 +11,7 @@
 		pageNumber = request.getParameter("pageNumber");
 	}
 	
-	ArrayList<CounselVO> list = dao.getcounselList(pageNumber);
+	ArrayList<MenuVO> list = dao.getcounselList(pageNumber);
 %>
 <!DOCTYPE html>
 <html>
@@ -64,19 +64,19 @@
 			<table class = "content_layout_setup_faq">
 				
 				<tr>
-					<td> 번호 </td>
-					<td> 이름 </td>
-					<td> 지역 </td>
-					<td> 날짜 </td>
-					<td> 조회수 </td>
+					<td>종류</td>
+					<td>이름</td>
+					<td>이미지경로</td>
+					<td>설명</td>
+					<td>상세이미지경로</td>
 				</tr>
-				<% for(CounselVO vo : list) { %>
+				<% for(MenuVO vo : list) { %>
 				<tr>
-					<td><%= vo.getNum() %></td>
-					<td><a href = "http://localhost:9000/waffles/admin/counsel/counsel_content.jsp?cid=<%=vo.getCid() %>&pnum=<%= pageNumber %>"><%= vo.getName() %></a></td>
-					<td><a href = "http://localhost:9000/waffles/admin/counsel/counsel_content.jsp?cid=<%=vo.getCid() %>&pnum=<%= pageNumber %>"><%= vo.getLocal() %></a></td>
-					<td><%= vo.getSubmittime() %></td>
-					<td><%= vo.getViews() %></td>
+					<td><%= vo.getKind() %></td>
+					<td><a href = "http://localhost:9000/waffles/admin/counsel/counsel_content.jsp?cid=<%=vo.getName() %>&pnum=<%= pageNumber %>"><%= vo.getName() %></a></td>
+					<td><a href = "http://localhost:9000/waffles/admin/counsel/counsel_content.jsp?cid=<%=vo.getName() %>&pnum=<%= pageNumber %>"><%= vo.getImg() %></a></td>
+					<td class="menuExplain"><a href = "http://localhost:9000/waffles/admin/counsel/counsel_content.jsp?cid=<%=vo.getName() %>&pnum=<%= pageNumber %>"><%= vo.getExplain() %></a></td>
+					<td><%= vo.getIngredient() %></td>
 				</tr>
 				<% } %>
 				<tr>

@@ -335,6 +335,10 @@ a:hover {
 	position: absolute;
 }
 
+.menuExplain {
+	width: 500px;
+}
+
 /* 페이지 버튼 색 */
 .active_page > a {
 	color: #ffffff;
