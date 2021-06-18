@@ -6,6 +6,10 @@
 	QuestionDAO dao = new QuestionDAO();
 	ArrayList<QuestionVO> list = dao.getList();
 	
+	 String keyField = request.getParameter("keyField");
+    String keyWord = request.getParameter("keyWord");
+   /*  ArrayList<QuestionVO> searchlist = dao.getSearchResult(keyField, keyWord); */
+	
 %>   
 <!DOCTYPE html>
 <html>
@@ -14,6 +18,68 @@
 <title>창업안내 - 창업FAQ | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<script>
+	/* $(document).ready(function() {
+		
+		/* $("#btn_search").click(function() {
+			if($("#search_text").val() == "") {
+				alert("검색할 데이터를 입력해주세요");
+				$("#search_text").focus();
+				return false;
+			} else {
+				
+			}
+		});
+	
+	/* function searchCheck(form){
+        //검색
+       
+        if(form.keyWord.value ==""){
+            alert("검색할 데이터를 입력해주세요");
+            form.keyWord.focus();
+            return;
+        }
+        form.submit();      
+    }
+   
+    
+	    $("#btn_search").click(function() {   
+	       var value = $("#search_input").val().toLowerCase();
+			$(".tbody tr").hide();
+			var select = $(".select").val();
+	       if (select == "title") {
+	          var value = $(".tbody td:nth-child(5n+2):contains('" + value + "') ");
+	          $(value).parent().show();
+	       } else if (select == "content") {
+	          var value = $(".tbody td:nth-child(5n+1):contains('" + value + "') ");
+	          $(value).parent().show();
+	       } else if (select == "writer"){
+	          var value = $(".tbody td:nth-child(5n+3):contains('" + value + "') ");
+	          $(value).parent().show();
+	       }
+	        
+	    });
+	}); */
+	
+	$(document).ready(function() {
+		$("#btn_search").click(function() {
+			var value = $("#search_input").val().toLowerCase();
+			$("#tbody tr").hide();
+			var select = $("#select_search").val();
+			if (select == "title") {
+				var value = $("#tbody td:nth-child(2):contains('" + value + "') ");
+				$(value).parent().show();
+			} else if (select = "writer"){
+				var value = $("#tbody td:nth-child(3):contains('" + value + "') ");
+				$(value).parent().show();
+		        }
+		});
+	});
+    
+
+
+</script>
+
 </head>
 <body>
 	<!-- header -->
@@ -34,7 +100,7 @@
 		
 		<section class ="setup_faq_list">
 			<table class = "content_layout_setup_faq">
-				
+				<thead>
 				<tr>
 					<th> 번호 </th>
 					<th> 제목 </th>
@@ -42,6 +108,9 @@
 					<th> 날짜 </th>
 					<th> 조회수 </th>
 				</tr>
+				</thead>
+				
+				<tbody id = "tbody">
 				
 				<% for(QuestionVO vo : list) { %>
 				<tr>
@@ -53,20 +122,20 @@
 				</tr>
 				<% } %>
 				
+				</tbody>
+				
 				
 			</table>
 		</section>
 		
 		<section class = "setup_faq_search">
-			<select class = "search">
-				<option value = "title">제목</option>
-				<option value = "content">내용</option>
-				<option value = "title+content">제목+내용</option>
-				<option value = "writer">글쓴이</option>
+			<select class = "search" id = "select_search">
+				<option value = "title" id = "title">제목</option>
+				<option value = "writer" id = "writer">글쓴이</option>
 			</select>
 			
-			<input type = "text" name = "search_text" class = "search_text">
-			<button type = "button" class = "btn_search">검색</button>
+			<input type = "text" name = "search_text" id = "search_input" class = "search_text">
+			<button type = "button" class = "btn_search" id = "btn_search" name = "btn_search">검색</button>
 		</section>
 		
 	</div>	
