@@ -45,7 +45,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="http://localhost:9000/waffles/admin/adminindex.jsp">메인</a>
-					<li><a href="#">메뉴관리</a></li>
+					<li><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
 					<li><a href="#">회원관리<span id="unread" class="label label-info"></span></a></li>
 					<li class="active"><a href="counselList.jsp">창업상담내역</a></li>
 				</ul>

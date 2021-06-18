@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import= "com.waffles.dao.CounselDAO, com.waffles.vo.CounselVO, java.util.ArrayList" %>
+<%@ page import= "com.waffles.dao.adminMenuDAO, com.waffles.vo.CounselVO, java.util.ArrayList" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>   
 <%
-	CounselDAO dao = new CounselDAO();
+	adminMenuDAO dao = new adminMenuDAO();
 
 	String pageNumber = "1";
 	if(request.getParameter("pageNumber") != null) {
@@ -41,9 +41,9 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="http://localhost:9000/waffles/admin/adminindex.jsp">메인</a>
-					<li><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
+					<li class="active"><a href="#">메뉴관리</a></li>
 					<li><a href="#">회원관리<span id="unread" class="label label-info"></span></a></li>
-					<li class="active"><a href="#">창업상담내역</a></li>
+					<li><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -85,10 +85,10 @@
 					<%
 						int startPage = (Integer.parseInt(pageNumber) / 10) *10 +1; 
 						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;  
-						int targetPage = new CounselDAO().targetPage(pageNumber);
+						int targetPage = new adminMenuDAO().targetPage(pageNumber);
 						if(startPage != 1) {
 					%>
-						<li><a href="counselList.jsp?pageNumber=<%= startPage -1 %>"><span ><</span></a></li>
+						<li><a href="menuList.jsp?pageNumber=<%= startPage -1 %>"><span ><</span></a></li>
 					<%
 						} else {
 					%>
@@ -97,22 +97,22 @@
 						}
 						for(int i = startPage; i < Integer.parseInt(pageNumber); i++) {
 					%>
-						<li><a href="counselList.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+						<li><a href="menuList.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
 					<%
 						}
 					%>
-						<li class="active_page" ><a href="counselList.jsp?pageNumber=<%= pageNumber %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
+						<li class="active_page" ><a href="menuList.jsp?pageNumber=<%= pageNumber %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
 					<%
 						for(int i = Integer.parseInt(pageNumber) + 1; i <= targetPage + Integer.parseInt(pageNumber); i++) {
 							if(i < startPage +10) {
 					%>
-						<li><a href="counselList.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+						<li><a href="menuList.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
 					<%
 							}
 						}
 						if(targetPage + Integer.parseInt(pageNumber) > startPage + 9){
 					%>
-						<li><a href="counselList.jsp?pageNumber=<%= startPage + 10 %>"color: #000000;"><span>></span></a></li>
+						<li><a href="menuList.jsp?pageNumber=<%= startPage + 10 %>"color: #000000;"><span>></span></a></li>
 					<%
 						} else {
 					%>
