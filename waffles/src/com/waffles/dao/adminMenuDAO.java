@@ -35,13 +35,12 @@ public class adminMenuDAO extends DAO {
 		return result;
 	}
 	
-	public ArrayList<CounselVO> getcounselList(String pageNumber) {
-		ArrayList<CounselVO> list = new ArrayList<CounselVO>();
+	public ArrayList<MenuVO> getcounselList(String pageNumber) {
+		ArrayList<MenuVO> list = new ArrayList<MenuVO>();
 		 
-		String sql = " select num,name,hp,email,route,local,etc,submittime,views,counsel_id " +
-				     " from(select rownum num,name,hp,email,route,local,etc,submittime,views,counsel_id " +
-				     " from(select * from waffle_counsel order by submittime desc)) " +
-				     " where num between ? and ? ";
+		String sql = " select * from(select rownum num,kind,name,img,explain,ingredient " +
+	                 " from(select * from menu order by rownum desc)) " +
+					 " where num between ? and ? ";
 		getPreparedStatement(sql);
 		
 		try {
@@ -52,17 +51,13 @@ public class adminMenuDAO extends DAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				CounselVO counsel = new CounselVO();
-				counsel.setNum(rs.getInt(1));
-				counsel.setName(rs.getString(2));
-				counsel.setHp(rs.getString(3));
-				counsel.setEmail(rs.getString(4));
-				counsel.setRoute(rs.getString(5));
-				counsel.setLocal(rs.getString(6));
-				counsel.setEtc(rs.getString(7));
-				counsel.setSubmittime(rs.getString(8).substring(0,11));
-				counsel.setViews(rs.getInt(9));
-				counsel.setCid(rs.getString(10));
+				MenuVO counsel = new MenuVO();
+				counsel.setKind(rs.getString(2));
+				counsel.setName(rs.getString(3));
+				counsel.setImg(rs.getString(4));
+				counsel.setExplain(rs.getString(5));
+				counsel.setIngredient(rs.getString(6));
+				
 				
 				list.add(counsel);
 			}
@@ -71,6 +66,7 @@ public class adminMenuDAO extends DAO {
 		}
 		return list;
 	}
+	
 	public void getUpdateHit(String cid) {
 		String sql = "update waffle_counsel set views = views+1 where counsel_id = ?";
 		getPreparedStatement(sql);
@@ -85,7 +81,7 @@ public class adminMenuDAO extends DAO {
 		close();
 	}
 	public int targetPage(String pageNumber) {
-		String SQL = "select count(num) from(select rownum num from waffle_counsel) where num >= ?";
+		String SQL = "select count(num) from(select rownum num from Menu) where num >= ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
