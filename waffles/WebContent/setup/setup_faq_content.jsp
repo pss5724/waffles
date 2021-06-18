@@ -41,10 +41,12 @@
 				<input type = "hidden" name = "qid" value = "<%= qid %>">
 				<div><%= vo.getQtitle() %></div>
 				<div>
-					<div><%=vo.getQdate()%>
+					<div>작성자 <%= vo.getQwriter()%>	</div>
+					<div>
+					조회 <%=vo.getQhit() %> 회
 					&nbsp&nbsp&nbsp
-					조회 <%=vo.getQhit() %> 회</div>
-					<div>작성자 <%= vo.getQwriter()%></div>
+					<%=vo.getQdate()%>
+					</div>
 				</div>
 				<hr style="display: inline-block; width: 100%;">
 				<div><%= content %></div>
