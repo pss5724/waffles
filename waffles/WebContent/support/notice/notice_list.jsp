@@ -48,8 +48,8 @@
 					<td><%= vo.getRno() %></td>
 					<td><a href="notice_content.jsp?nid=<%=vo.getNid()%>&rno=<%=vo.getRno()%>"><%=vo.getNtitle() %></a></td>
 					<td><%= vo.getName() %></td>
-					<td><%= vo.getNhit() %></td>
 					<td><%= vo.getNdate() %></td>
+					<td><%= vo.getNhit() %></td>
 				</tr>
 				<%} %>
 
