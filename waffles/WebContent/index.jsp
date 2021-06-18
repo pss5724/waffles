@@ -283,7 +283,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button>view</button>
+									<button><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -295,7 +295,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button>view</button>
+									<button><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -307,7 +307,7 @@
 							<div>
 								<p>초코범벅젤라또와플</p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<button>view</button>
+								<button><p>view</p></button>
 							</div>
 						</div>
 						</div>
@@ -319,7 +319,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button>view</button>
+									<button><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -331,7 +331,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button>view</button>
+									<button><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -343,7 +343,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button>view</button>
+									<button><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -355,7 +355,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button>view</button>
+									<button><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -367,7 +367,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button>view</button>
+									<button><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -379,7 +379,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button>view</button>
+									<button><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -391,7 +391,7 @@
 							<div>
 								<p>초코범벅젤라또와플</p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<button>view</button>
+								<button><p>view</p></button>
 							</div>
 						</div>
 						</div>
@@ -403,7 +403,7 @@
 							<div>
 								<p>초코범벅젤라또와플</p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<button>view</button>
+								<button><p>view</p></button>
 							</div>
 						</div>
 						</div>
@@ -415,7 +415,7 @@
 							<div>
 								<p>초코범벅젤라또와플</p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<button>view</button>
+								<button><p>view</p></button>
 							</div>
 						</div>
 						</div>

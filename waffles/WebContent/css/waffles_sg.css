@@ -590,7 +590,7 @@ section.index>div.indexBot>div#p2>div>a>img{
 	latter-spacing: -1;
 }
 .owl-item>div>div>button {
-position: absolute;
+    position: absolute;
 	z-index: 51;
 	left: 50%;
 	/**top: 80%;**/
@@ -605,6 +605,10 @@ position: absolute;
 	height: 35px;
 	padding: 6px;	
 }	
+.owl-item>div>div>button>p {
+	position: relative;
+	bottom: 5px;
+}
 .owl-item>div>div>div {
 	position: absolute;
 	z-index: 51;
