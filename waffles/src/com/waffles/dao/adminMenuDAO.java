@@ -66,6 +66,52 @@ public class adminMenuDAO extends DAO {
 		}
 		return list;
 	}
+	public ArrayList<MenuVO> getcounselList(String pageNumber, String search, String search_text) {
+		ArrayList<MenuVO> list = new ArrayList<MenuVO>();
+		
+		String sql = "";
+		String target_text = "";
+		if(search.equals("name")) {
+		
+			sql = " select * from(select rownum num,kind,name,img,explain,ingredient " +
+				" from(select * from menu order by rownum desc)" +
+				" where name like ?) " +
+				" where num between ? and ? ";
+			target_text = "%"+search_text+"%";
+		} else {
+			sql = " select * from(select rownum num,kind,name,img,explain,ingredient " +
+					" from(select * from menu order by rownum desc)" +
+					" where kind like ?) " +
+					" where num between ? and ? ";
+			target_text = "%"+search_text+"%";
+		}
+		
+		getPreparedStatement(sql);
+		
+		try {
+			int startnum = ((Integer.parseInt(pageNumber)-1)*10) +1;
+			int endnum = Integer.parseInt(pageNumber)*10;
+			pstmt.setString(1, target_text);
+			pstmt.setInt(2, startnum);
+			pstmt.setInt(3, endnum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MenuVO counsel = new MenuVO();
+				counsel.setKind(rs.getString(2));
+				counsel.setName(rs.getString(3));
+				counsel.setImg(rs.getString(4));
+				counsel.setExplain(rs.getString(5));
+				counsel.setIngredient(rs.getString(6));
+				
+				
+				list.add(counsel);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 	public void getUpdateHit(String cid) {
 		String sql = "update waffle_counsel set views = views+1 where counsel_id = ?";
@@ -87,7 +133,39 @@ public class adminMenuDAO extends DAO {
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return rs.getInt(1) / 10 ;
+				return (rs.getInt(1)-2) / 10 ;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	public int targetPage(String pageNumber, String search, String search_text) {
+		String SQL = "";
+		String target_text = "";
+		if(search.equals("name")) {
+		SQL = "select count(num) from(select rownum num from Menu where name like ?) where num >= ?";
+		target_text = "%"+search_text+"%" ;
+		} else {
+			SQL = "select count(num) from(select rownum num from Menu where kind like ?) where num >= ?";
+			target_text = "%"+search_text+"%" ;
+		}
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, target_text);
+			pstmt.setInt(2, (Integer.parseInt(pageNumber) -1) * 10);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return (rs.getInt(1)-2) / 10 ;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

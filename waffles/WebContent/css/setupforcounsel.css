@@ -777,6 +777,13 @@ setup_faq_write, setup_faq_update
 		height : 30px;
 	}
 	
+	.content_layout_setup_counsel>ul>li:nth-child(2)>input {
+		width: 14px; height: 14px;
+		margin: 3px 5px 0 2px;
+		position: relative;
+		top: 3px;
+	}
+	
 	.content_layout_setup_counsel>ul>li:nth-child(6) textarea {
 		vertical-align : middle;
 		width : 60%; height : 100px;
