@@ -59,7 +59,7 @@
 	<div class = "content_setup_faq_content">
 		<section>
 			<img src = "http://localhost:9000/waffles/images/setup/step1.PNG">
-			<div class = "title">FAQ 내용보기</div>
+			<div class = "title">메뉴상세내용</div>
 			<div class = "line"></div>
 		</section>
 	
@@ -71,7 +71,7 @@
 				<div class="counsel_content">
 					<div style="margin-bottom: 50px">설명 : <%= vo.getExplain() %></div>
 					<div style="display:inline-block;">이미지 : <img src="http://localhost:9000/waffles/images/menu/<%= vo.getImg() %>" style ="width:200px; height:200px;"></div>
-					<div style="float:right;">상세 내용 이미지 : <img src="http://localhost:9000/waffles/images/ingredient/<%= vo.getIngredient() %>"style ="width:600px; height:200px;"></div>
+					<div style="float:right;">상세 내용 이미지 : <img src="http://localhost:9000/waffles/images/menu/<%= vo.getIngredient() %>"style ="width:600px; height:200px;"></div>
 				</div>
 				<hr>
 				<button type = "button" class = "btn_setup_faq">수정</button>

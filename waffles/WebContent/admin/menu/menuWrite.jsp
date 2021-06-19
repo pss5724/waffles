@@ -35,8 +35,16 @@
 				alert("세부내용을 입력해주세요");
 				$("#content").focus();
 				return false;
+			}else if($("#image").val() == "") {
+				alert("이미지을 업로드해주세요");
+				$("#image").focus();
+				return false;
+			}else if($("#ingredient").val() == "") {
+				alert("상세이미지을 업로드해주세요");
+				$("#ingredient").focus();
+				return false;
 			} else {
-				//setup_counsel_form.submit();
+				setup_counsel_form.submit();
 			}
 		});
 	});
@@ -71,13 +79,13 @@
 	<div class = "content_setup_counsel">
 		<section>
 			<img src = "../../images/setup/step1.PNG">
-			<div> 창업상담 </div>
+			<div> 메뉴추가 </div>
 			<div></div><div> Keep in Touch</div><div></div>
 		</section>
-			<form name = "setup_counsel_form" action = "#" method = "post" class = "content_layout_setup_counsel">
+			<form name = "setup_counsel_form" action = "../../MenuWriteServlet" method = "post" class = "content_layout_setup_counsel" enctype="multipart/form-data">
 				<ul>
 					<li>
-						<label> 제품명 * </label>
+						<label> 제품명 </label>
 						<input type = "text" name = "name" id = "name">
 						<div></div>
 					</li>
@@ -96,11 +104,18 @@
 						<textarea name="content" id="content"></textarea>
 						<div></div>
 					</li>
-					
+					<li>
+						<label> 이미지파일</label>
+						<input type="file" name="imagefile" id="image">
+					</li>
+					<li>
+						<label> 상세정보파일</label>
+						<input type="file" name="ingredientfile" id="ingredient">
+					</li>
 					
 					<li>
 						<a href = "setup_main.jsp"><button type = "button" class = "btn_counsel_1">취소</button></a>
-						<button type = "submit" id = "counselBtn" class = "btn_counsel_2">확인</button>
+						<button type = "button" id = "counselBtn" class = "btn_counsel_2">확인</button>
 					</li>
 				
 				</ul>
@@ -111,6 +126,3 @@
 		
 </body>
 </html>
-	
-	
-	

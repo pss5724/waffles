@@ -2,6 +2,7 @@ package com.waffles.dao;
 
 import java.util.ArrayList;
 
+import com.waffles.vo.MemberVO;
 import com.waffles.vo.MenuVO;
 
 public class MenuDAO extends DAO {
@@ -102,7 +103,29 @@ public class MenuDAO extends DAO {
 		}
 		return vo;
 	}
-	
+	public boolean getInsertResult(MenuVO vo) {
+		boolean result = false;
+		String sql = " insert into menu values(?, ?, ?, ?, ?)";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, vo.getKind());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getImg());
+			pstmt.setString(4, vo.getExplain());
+			pstmt.setString(5, vo.getIngredient());
+
+			int value = pstmt.executeUpdate();
+			
+			if(value != 0) result = true;
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+		
+		return result;
+	}
 	
 	
 }

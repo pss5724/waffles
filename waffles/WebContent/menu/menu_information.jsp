@@ -53,7 +53,7 @@
 					<p>1회 제공 영양성분</p>
 				</div>
 				<div class="menu-right4">
-					<img src="http://localhost:9000/waffles/images/ingredient/<%= vo.getIngredient() %>">
+					<img src="http://localhost:9000/waffles/images/menu/<%= vo.getIngredient() %>">
 				</div>
 			</div>
 		</div>

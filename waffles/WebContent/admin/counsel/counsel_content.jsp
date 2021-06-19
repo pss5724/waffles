@@ -59,7 +59,7 @@
 	<div class = "content_setup_faq_content">
 		<section>
 			<img src = "http://localhost:9000/waffles/images/setup/step1.PNG">
-			<div class = "title">FAQ 내용보기</div>
+			<div class = "title">창업상담내용</div>
 			<div class = "line"></div>
 		</section>
 	
