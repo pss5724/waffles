@@ -2,10 +2,10 @@
 <%@ page import= "com.waffles.dao.adminMenuDAO, com.waffles.vo.MenuVO, java.util.ArrayList" %>
 <%
 	request.setCharacterEncoding("utf-8");
-%>   
-<%
+	
 	adminMenuDAO dao = new adminMenuDAO();
-	ArrayList<MenuVO> list = dao.getcounselList(request.getParameter("pnum"));
+	String pnum = request.getParameter("pnum");
+	ArrayList<MenuVO> list = dao.getcounselList(pnum);
 	String cid = request.getParameter("cid");
 	MenuVO vo = new MenuVO();
 	for(int i = 0; i<list.size(); i++ ){
@@ -29,6 +29,15 @@
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/bootstrap.js"></script>
+<script>
+function deleteFunction() {
+	if (confirm("정말 이 데이터를 삭제 하시겠습니까?")) {
+		faq_content.submit();         
+    } else {
+    	alert("삭제을 취소했습니다.");
+    }
+}
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -64,7 +73,8 @@
 		</section>
 	
 		<section>
-			<form name = "faq_content" action = "#" method = "get">
+			<form name = "faq_content" action = "../../MenuDeleteServlet" method = "post">
+				<input type="hidden" name="name" value=<%= vo.getName() %>>
 				<h3><%= vo.getName()%></h3>
 				<div>종류 <%= vo.getKind() %></div>
 				<hr style="display: inline-block; width:100%;">
@@ -74,8 +84,9 @@
 					<div style="float:right;">상세 내용 이미지 : <img src="http://localhost:9000/waffles/images/menu/<%= vo.getIngredient() %>"style ="width:600px; height:200px;"></div>
 				</div>
 				<hr>
-				<button type = "button" class = "btn_setup_faq">수정</button>
-				<button type = "button" class = "btn_setup_faq">삭제</button>
+				<button type = "button" class = "btn_setup_faq" onclick="location.href='http://localhost:9000/waffles/admin/menu/menuUpdate.jsp?name=<%= vo.getName() %>&pnum=<%= pnum %>'">수정</button>
+				<button type = "button" class = "btn_setup_faq" onclick= "deleteFunction();">삭제</button>
+				
 				<a href = "menuList.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
 				<a href = "http://localhost:9000/waffles/admin/adminindex.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
 			</form>	

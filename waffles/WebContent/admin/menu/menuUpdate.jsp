@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import= "com.waffles.dao.CounselDAO, com.waffles.vo.CounselVO, java.util.ArrayList" %>
+<%@ page import= "com.waffles.dao.adminMenuDAO, com.waffles.vo.MenuVO, java.util.ArrayList" %>
 <%
 	request.setCharacterEncoding("utf-8");
-
-	String email = request.getParameter("email");
 	
+	adminMenuDAO dao = new adminMenuDAO();
+	ArrayList<MenuVO> list = dao.getcounselList(request.getParameter("pnum"));
+	String name = request.getParameter("name");
+	MenuVO vo = new MenuVO();
+	for(int i = 0; i<list.size(); i++ ){
+		if(list.get(i).getName().equals(name)) {
+			vo = list.get(i);
+		}
+		
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -47,6 +55,22 @@
 				setup_counsel_form.submit();
 			}
 		});
+		$(document).ready(function() {
+			$("input[name=imagefile]").on('change', function(){
+				if(window.FileReader){
+					var filename = $(this)[0].files[0].name;
+					$("#fname").text("").text(filename);
+				}			
+			});
+		});
+		
+		$("input[name=ingredientfile]").on('change', function(){
+			if(window.FileReader){
+				var filename = $(this)[0].files[0].name;
+				$("#finame").text("").text(filename);
+			}			
+		});
+		
 	});
 </script>
 </head>
@@ -79,38 +103,56 @@
 	<div class = "content_setup_counsel">
 		<section>
 			<img src = "../../images/setup/step1.PNG">
-			<div> 메뉴추가 </div>
+			<div> 메뉴수정 </div>
 			<div></div><div> Keep in Touch</div><div></div>
 		</section>
-			<form name = "setup_counsel_form" action = "../../MenuWriteServlet" method = "post" class = "content_layout_setup_counsel" enctype="multipart/form-data">
+			<form name = "setup_counsel_form" action = "../../MenuUpdateServlet" method = "post" class = "content_layout_setup_counsel" enctype="multipart/form-data">
 				<ul>
 					<li>
 						<label> 제품명 </label>
-						<input type = "text" name = "name" id = "name">
+						<input type = "text" name = "name" id = "name" value = <%= vo.getName() %> readonly>
 						<div></div>
 					</li>
 					
 					
 					<li>
 						<label> 종류 </label>
-						<input type = "radio" name = "kind" value = "쥬스/차">쥬스/차
+						<%if(vo.getKind().equals("쥬스/차")) {%>
+						<input type = "radio" name = "kind" value = "쥬스/차" checked>쥬스/차
 						<input type = "radio" name = "kind" value = "커피/라떼">커피/라떼
 						<input type = "radio" name = "kind" value = "와플">와플
+						<% } else if (vo.getKind().equals("커피/라떼")) { %>
+						<input type = "radio" name = "kind" value = "쥬스/차">쥬스/차
+						<input type = "radio" name = "kind" value = "커피/라떼" checked>커피/라떼
+						<input type = "radio" name = "kind" value = "와플">와플
+						<% } else if (vo.getKind().equals("와플")) { %>
+						<input type = "radio" name = "kind" value = "쥬스/차">쥬스/차
+						<input type = "radio" name = "kind" value = "커피/라떼">커피/라떼
+						<input type = "radio" name = "kind" value = "와플" checked>와플
+						<% } %>
 						<div></div>
 					</li>
 					
 					<li>
 						<label> 세부 내용 </label>
-						<textarea name="content" id="content"></textarea>
+						<textarea name="content" id="content"><%= vo.getExplain() %></textarea>
 						<div></div>
 					</li>
 					<li>
 						<label> 이미지파일</label>
-						<input type="file" name="imagefile" id="image">
+						 <% if(vo.getImg() != null) { %>
+								<input type="file" name="imagefile"><span id="fname"><%= vo.getImg() %></span>
+								<% } else { %>
+								<input type="file" name="imagefile"><span id="fname">선택된 파일 없음</span>
+								<% } %>
 					</li>
 					<li>
 						<label> 상세정보파일</label>
-						<input type="file" name="ingredientfile" id="ingredient">
+						<% if(vo.getIngredient() != null) { %>
+								<input type="file" name="ingredientfile"><span id="finame"><%= vo.getIngredient() %></span>
+								<% } else { %>
+								<input type="file" name="ingredientfile"><span id="finame">선택된 파일 없음</span>
+								<% } %>
 					</li>
 					
 					<li>
