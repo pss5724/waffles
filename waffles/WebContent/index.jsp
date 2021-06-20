@@ -5,6 +5,14 @@
 %>   
 <%
 		String id = null;
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null){
+		    for(Cookie co : cookies){
+		        if(co.getName().equals("log_id")) {
+		        	request.getSession().setAttribute("id", co.getValue());
+		        }
+		    }
+		}
 		if(session.getAttribute("id") != null){
 			id = (String) session.getAttribute("id");
 		}

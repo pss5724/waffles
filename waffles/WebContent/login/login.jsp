@@ -2,9 +2,19 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-%>   
-<%
+
 		String id = null;
+		String save_id = null;
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null){
+		    for(Cookie co : cookies){
+		        if(co.getName().equals("save_id")){
+		        	save_id = co.getValue();
+		        }else if(co.getName().equals("log_id")) {
+		        	request.getSession().setAttribute("id", co.getValue());
+		        }
+		    }
+		}
 		if(session.getAttribute("id") != null){
 			id = (String) session.getAttribute("id");
 		}
@@ -57,12 +67,27 @@
 				<ul>
 					<li>
 						<label> 아이디 </label>
+					<% if(save_id != null) { %>
+						<input type = "text" name = "id" id = "id" value= <%= save_id %>>
+					<% } else { %>
 						<input type = "text" name = "id" id = "id">
+					<% } %>
 					</li>
 					
 					<li>
 						<label> 비밀번호 </label>
 						<input type = "password" name = "pass" id = "pass">
+					</li>
+					<li>
+						<label>아이디 저장</label>
+						<% if(save_id != null) { %>
+						<input type="checkbox" name="idsave" value ="true" checked>
+						<% } else { %>
+						<input type="checkbox" name="idsave" value ="true">
+						<% } %>
+						<label>로그인 상태 유지</label>
+						<input type="checkbox" name="loginck" value ="true">
+						
 					</li>
 					
 					<li>

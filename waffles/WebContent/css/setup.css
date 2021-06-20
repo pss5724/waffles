@@ -54,9 +54,28 @@ setup_faq_write, setup_faq_update
 	.content_layout_login>ul>li {
 		margin : 15px 0;
 	}
+	.content_layout_login>ul>li:nth-child(3)>label {
+		font-size: 15px;
+		display: inline-block;
+		width: 120px;
+		margin: 0;
+		margin-left: -70px;
+	}
+	.content_layout_login>ul>li:nth-child(3)>label:first-child {
+		width: 90px;
+	}
+	.content_layout_login>ul>li:nth-child(3)>label:nth-child(2) {
+	}
+	
+	.content_layout_login>ul>li:nth-child(3)>input {
+		width: 20px; 
+		height: 20px;
+		margin: 0;
+		margin-right: 80px;	
+		display: inline-block;
+	}
 	
 	.content_layout_login>ul>li label {
-		/* border : 1px solid red; */
 		display : block;
 		width : 30%;
 		font-weight : 700;
@@ -67,16 +86,16 @@ setup_faq_write, setup_faq_update
 	}
 	
 	.content_layout_login>ul>li input {
-		width : 72%; height : 30px;
+		width : 72%; height : 35px;
 	}
 	
 	.btn_login {
-		width : 73%; height : 25px;
+		width : 73%;
 		background-color : rgb(173,130,85);
 		border : 1px solid rgb(173,130,85);
 		color : white;
 		font-size : 16px;
-		height : 30px;
+		height : 35px;
 	}
 	
 	.btn_login_op {
