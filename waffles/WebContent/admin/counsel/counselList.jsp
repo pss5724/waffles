@@ -2,6 +2,14 @@
 <%@ page import= "com.waffles.dao.CounselDAO, com.waffles.vo.CounselVO, java.util.ArrayList" %>
 <%
 	request.setCharacterEncoding("utf-8");
+	
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
+	if(id == null || !id.equals("manager")) {
+		response.sendRedirect("http://localhost:9000/waffles/index.jsp");
+	}
 
 	String search = request.getParameter("search");
 	String search_text = request.getParameter("search_text");
@@ -33,6 +41,32 @@
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		function getUnread() {
+			$.ajax({
+				type: "POST",
+				url: "http://localhost:9000/waffles/counselUnread",
+				data: {
+					userID: encodeURIComponent('<%= id %>'),
+				},
+				success: function(result) {
+					if(result >= 1) {
+						showUnread(result);
+					} else {
+						showUnread('');
+					}				
+				}
+			});
+		}
+		function getInfiniteUnread() {
+			setInterval(function() {
+				getUnread();
+			}, 4000);
+		}
+		function showUnread(result) {
+			$('#unread').html(result);
+		}
+	</script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -50,8 +84,9 @@
 				<ul class="nav navbar-nav">
 					<li><a href="http://localhost:9000/waffles/admin/adminindex.jsp">메인</a>
 					<li><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
-					<li><a href="#">회원관리<span id="unread" class="label label-info"></span></a></li>
-					<li class="active"><a href="#">창업상담내역</a></li>
+					<li><a href="#">회원관리</a></li>
+					<li class="active"><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역
+					<span id="unread" class="label label-info" style="position: relative; bottom: 2px; background-color:#D0B07E;"></span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -149,6 +184,18 @@
 				<button type = "submit" class = "btn_search">검색</button>
 			</form>
 		</section>
-	</div>	
+	</div>
+		<%
+			if(id != null) {
+		%>
+			<script type="text/javascript">
+				$(document).ready(function () {
+					getUnread();
+					getInfiniteUnread();
+				});
+			</script>		
+		<%
+			}
+		%>	
 </body>
 </html>

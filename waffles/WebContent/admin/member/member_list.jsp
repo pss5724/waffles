@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.waffles.dao.*, com.waffles.vo.*,java.util.*"%>
-      <%
+<%
 	request.setCharacterEncoding("utf-8");
+
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
+	if(id == null || !id.equals("manager")) {
+		response.sendRedirect("http://localhost:9000/waffles/index.jsp");
+	}
+
       MemberDAO dao = new MemberDAO();
       ArrayList<MemberVO> list = dao.getList();
       

@@ -3,6 +3,13 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
+	if(id == null || !id.equals("manager")) {
+		response.sendRedirect("http://localhost:9000/waffles/index.jsp");
+	}
 	adminMenuDAO dao = new adminMenuDAO();
 	String pnum = request.getParameter("pnum");
 	ArrayList<MenuVO> list = dao.getcounselList(pnum);
@@ -37,6 +44,30 @@ function deleteFunction() {
     	alert("삭제을 취소했습니다.");
     }
 }
+function getUnread() {
+	$.ajax({
+		type: "POST",
+		url: "http://localhost:9000/waffles/counselUnread",
+		data: {
+			userID: encodeURIComponent('<%= id %>'),
+		},
+		success: function(result) {
+			if(result >= 1) {
+				showUnread(result);
+			} else {
+				showUnread('');
+			}				
+		}
+	});
+}
+function getInfiniteUnread() {
+	setInterval(function() {
+		getUnread();
+	}, 4000);
+}
+function showUnread(result) {
+	$('#unread').html(result);
+}
 </script>
 </head>
 <body>
@@ -55,8 +86,9 @@ function deleteFunction() {
 				<ul class="nav navbar-nav">
 					<li><a href="http://localhost:9000/waffles/admin/adminindex.jsp">메인</a>
 					<li class="active"><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
-					<li><a href="#">회원관리<span id="unread" class="label label-info"></span></a></li>
-					<li><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역</a></li>
+					<li><a href="#">회원관리</a></li>
+					<li><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역
+					<span id="unread" class="label label-info" style="position: relative; bottom: 2px; background-color:#c59d5f;"></span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -91,8 +123,19 @@ function deleteFunction() {
 				<a href = "http://localhost:9000/waffles/admin/adminindex.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
 			</form>	
 		</section>
-		
 	</div>
+		<%
+			if(id != null) {
+		%>
+			<script type="text/javascript">
+				$(document).ready(function () {
+					getUnread();
+					getInfiniteUnread();
+				});
+			</script>		
+		<%
+			}
+		%>
 </body>
 </html>
 	

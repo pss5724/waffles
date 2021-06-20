@@ -189,4 +189,26 @@ public class CounselDAO extends DAO {
 		}
 		return 0;
 	}
+	public int getAllUnreadChat(String userID) {
+		String SQL = "SELECT COUNT(counsel_id) FROM waffle_counsel WHERE views = 0";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt("COUNT(counsel_id)");
+			}
+			return 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
 }

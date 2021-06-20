@@ -83,10 +83,10 @@
 				<table class="table table-striped text-center">
 					<thead>
 						<tr>
-							<th scope="col">지역</th>
-							<th scope="col">캠퍼스</th>
-							<th scope="col">전화번호</th>
-							<th scope="col">주소(도로명)</th>
+							<th scope="col" style = "text-align:center">지역</th>
+							<th scope="col" style = "text-align:center">캠퍼스</th>
+							<th scope="col" style = "text-align:center">전화번호</th>
+							<th scope="col" style = "text-align:center">주소(도로명)</th>
 						</tr>
 					</thead>
 					<tbody>

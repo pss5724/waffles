@@ -3,6 +3,14 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
+	if(id == null || !id.equals("manager")) {
+		response.sendRedirect("http://localhost:9000/waffles/index.jsp");
+	}
+
 	String email = request.getParameter("email");
 	
 %>
@@ -36,6 +44,30 @@
 			}
 		});
 	});
+	function getUnread() {
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:9000/waffles/counselUnread",
+			data: {
+				userID: encodeURIComponent('<%= id %>'),
+			},
+			success: function(result) {
+				if(result >= 1) {
+					showUnread(result);
+				} else {
+					showUnread('');
+				}				
+			}
+		});
+	}
+	function getInfiniteUnread() {
+		setInterval(function() {
+			getUnread();
+		}, 4000);
+	}
+	function showUnread(result) {
+		$('#unread').html(result);
+	}
 
 </script>
 </head>
@@ -55,8 +87,9 @@
 				<ul class="nav navbar-nav">
 					<li><a href="http://localhost:9000/waffles/admin/adminindex.jsp">메인</a>
 					<li><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
-					<li><a href="#">회원관리<span id="unread" class="label label-info"></span></a></li>
-					<li class="active"><a href="counselList.jsp">창업상담내역</a></li>
+					<li><a href="#">회원관리</a></li>
+					<li class="active"><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역
+					<span id="unread" class="label label-info" style="position: relative; bottom: 2px; background-color:#D0B07E;"></span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -79,18 +112,18 @@
 				<ul>
 					<li>
 						<label style ="display : inline-block; position: relative; top: -3px;">E-mail 제목 </label>
-						<input type = "text" name = "name" id = "name" style = "width: 600px;">
+						<input type = "text" name = "name" id = "name" style = "width: 800px;">
 						<div></div>
 					</li>
 					<li>
 						<label style ="display : inline-block; position: relative; top: -280px;">E-mail 내용 </label>
-						<textarea name="content" id="content" style = "width: 600px; height: 300px;"></textarea>
+						<textarea name="content" id="content" style = "width: 800px; height: 300px;"></textarea>
 						<div></div>
 					</li>
 					
 					
 					<li>
-						<a href = "setup_main.jsp"><button type = "button" class = "btn_counsel_1">취소</button></a>
+						<a href = "counselList.jsp"><button type = "button" class = "btn_counsel_1">취소</button></a>
 						<button type = "submit" id = "counselBtn" class = "btn_counsel_2">확인</button>
 					</li>
 				
@@ -104,8 +137,18 @@
 
 	
 	</div>
-		
-	</div>
+		<%
+			if(id != null) {
+		%>
+			<script type="text/javascript">
+				$(document).ready(function () {
+					getUnread();
+					getInfiniteUnread();
+				});
+			</script>		
+		<%
+			}
+		%>
 </body>
 </html>
 	
