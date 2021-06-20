@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 import com.waffles.vo.MemberVO;
 
+import bcrypt.BCrypt;
+
 public class MemberDAO extends DAO {
 
 	
-	/* È¸¿ø°¡ÀÔ Ã³¸® */
+	/* È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ */
 	public boolean getInsertResult(MemberVO vo) {
 		boolean result = false;
 		String sql = " insert into waffle_member values(?, ?, ?, ?, sysdate, 0) ";
@@ -17,7 +19,7 @@ public class MemberDAO extends DAO {
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getEmail());
 			pstmt.setString(3, vo.getId());
-			pstmt.setString(4, vo.getPass());
+			pstmt.setString(4, BCrypt.hashpw(vo.getPass(), BCrypt.gensalt(10)));
 
 			int value = pstmt.executeUpdate();
 			
@@ -31,7 +33,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* id Áßº¹Ã¼Å© */
+	/* id ï¿½ßºï¿½Ã¼Å© */
 	public int getIdCheck(String id) {
 		int result = 0;
 		String sql = " select count(*) from waffle_member where id = ? ";
@@ -53,22 +55,23 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* ·Î±×ÀÎ Ã³¸® */
+	/* ï¿½Î±ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ */
 	public boolean getLoginResult(String id, String pass) {
 		boolean result = false;
 		
-		String sql = " select count(*) from waffle_member where id = ? and pass = ? ";
+		String sql = " select pass from waffle_member where id = ?";
 		getPreparedStatement(sql);
 		
 		try {
 			
 			pstmt.setString(1, id);
-			pstmt.setString(2, pass);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				if(rs.getInt(1) == 1) result = true;
+				if(BCrypt.checkpw(pass, rs.getString(1))) { 
+					result = true;
+				}
 			}
 			
 		} catch (Exception e) {
@@ -79,7 +82,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* ¾ÆÀÌµð Ã£±â */
+	/* ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½ */
 	public MemberVO getFindidResult(String name, String email) {
 		MemberVO vo = new MemberVO();
 		
@@ -107,7 +110,7 @@ public class MemberDAO extends DAO {
 		return vo;
 	}
 	
-	/* ºñ¹Ð¹øÈ£ Ã£±â - ÀÎÁõ */
+	/* ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ */
 	public boolean getFindpassResult(String id, String name, String email) {
 		boolean result = false;
 		
@@ -133,7 +136,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* ºñ¹Ð¹øÈ£ Ã£±â - »õºñ¹Ð¹øÈ£·Î º¯°æ */
+	/* ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	public boolean getFindpassUpdate(String pass, String id) {
 		boolean result = false;
 		
@@ -156,7 +159,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* Á¤º¸¼öÁ¤ - ¾ÆÀÌµð, ÀÌ¸§, ÀÌ¸ÞÀÏ °¡Á®¿À±â */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½Ìµï¿½, ï¿½Ì¸ï¿½, ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	public MemberVO getInfo(String id) {
 		MemberVO vo = new MemberVO();
 
@@ -183,7 +186,7 @@ public class MemberDAO extends DAO {
 		return vo;
 	}
 
-	/* Á¤º¸¼öÁ¤ - ÀÌ¸ÞÀÏ, ºñ¹Ð¹øÈ£ ¼öÁ¤ */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½Ì¸ï¿½ï¿½ï¿½, ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ */
 	public boolean getModify(MemberVO vo) {
 		boolean result = false;
 
@@ -208,7 +211,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	// È¸¿ø°ü¸® - ¸®½ºÆ®
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½Æ®
 	public ArrayList<MemberVO> getList(){
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		String sql ="select rownum rno, name, email, id, pass, to_char(mdate,'yyyy-mm-dd') mdate, choice " + 
