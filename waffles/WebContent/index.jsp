@@ -5,6 +5,14 @@
 %>   
 <%
 		String id = null;
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null){
+		    for(Cookie co : cookies){
+		        if(co.getName().equals("log_id")) {
+		        	request.getSession().setAttribute("id", co.getValue());
+		        }
+		    }
+		}
 		if(session.getAttribute("id") != null){
 			id = (String) session.getAttribute("id");
 		}
@@ -87,6 +95,32 @@
 		
 	});
 </script>
+<script type="text/javascript">
+		function getUnread() {
+			$.ajax({
+				type: "POST",
+				url: "http://localhost:9000/waffles/counselUnread",
+				data: {
+					userID: encodeURIComponent('<%= id %>'),
+				},
+				success: function(result) {
+					if(result >= 1) {
+						showUnread("•");
+					} else {
+						showUnread('');
+					}				
+				}
+			});
+		}
+		function getInfiniteUnread() {
+			setInterval(function() {
+				getUnread();
+			}, 4000);
+		}
+		function showUnread(result) {
+			$('#unread').html(result);
+		}
+	</script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/waffles_sg.css">
 <title>Insert title here</title>
 </head>
@@ -115,7 +149,9 @@
 		<%
 		} else if(id.equals("manager")) { 
 		%>	
-			<button class="login_btn" onclick="location.href='http://localhost:9000/waffles/admin/adminindex.jsp'">관리메뉴</button>
+			<button class="login_btn" onclick="location.href='http://localhost:9000/waffles/admin/adminindex.jsp'" 
+					style="position:absolute; right:130px">관리메뉴</button>
+			<span id="unread" class="label label-info" style="position: relative; color:red;bottom:7px; right: 4px; background-color:rgba(0,0,0,0);"></span>
 			<button class="join_btn" onclick="location.href='http://localhost:9000/waffles/login/logoutAction.jsp'">로그아웃</button>
 		<%
 		} else {
@@ -461,5 +497,17 @@
 <div class="indexfooter">
 	<jsp:include page="footer.jsp"></jsp:include>
 </div>
+<%
+	if(id != null) {
+%>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			getUnread();
+			getInfiniteUnread();
+		});
+	</script>		
+<%
+	}
+%>
 </body>
 </html>

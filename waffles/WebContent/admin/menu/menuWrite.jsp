@@ -11,17 +11,7 @@
 		response.sendRedirect("http://localhost:9000/waffles/index.jsp");
 	}
 
-	CounselDAO dao = new CounselDAO();
-	ArrayList<CounselVO> list = dao.getcounselList(request.getParameter("pnum"));
-	String cid = request.getParameter("cid");
-	CounselVO vo = new CounselVO();
-	for(int i = 0; i<list.size(); i++ ){
-		if(list.get(i).getCid().equals(cid)) {
-			vo = list.get(i);
-		}
-		
-	}
-	if(vo != null) dao.getUpdateHit(cid);
+	String email = request.getParameter("email");
 	
 %>
 <!DOCTYPE html>
@@ -36,7 +26,38 @@
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/bootstrap.js"></script>
-	<script type="text/javascript">
+	<script>
+	$(document).ready(function() {
+		
+		/* 폼체크 */
+		$("#counselBtn").click(function() {
+			if($("#name").val() == "") {
+				alert("제품명을 입력해주세요");
+				$("#name").focus();
+				return false;
+			}else if($("input[name = 'kind']:checked").length == 0) {
+				alert("종류를 선택해주세요");
+				$("input[name = 'kind']").focus();
+				return false;
+			}else if($("#content").val() == "") {
+				alert("세부내용을 입력해주세요");
+				$("#content").focus();
+				return false;
+			}else if($("#image").val() == "") {
+				alert("이미지을 업로드해주세요");
+				$("#image").focus();
+				return false;
+			}else if($("#ingredient").val() == "") {
+				alert("상세이미지을 업로드해주세요");
+				$("#ingredient").focus();
+				return false;
+			} else {
+				setup_counsel_form.submit();
+			}
+		});
+	});
+</script>
+<script type="text/javascript">
 		function getUnread() {
 			$.ajax({
 				type: "POST",
@@ -78,10 +99,10 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="http://localhost:9000/waffles/admin/adminindex.jsp">메인</a>
-					<li><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
+					<li  class="active"><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
 					<li><a href="#">회원관리</a></li>
-					<li class="active"><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역
-					<span id="unread" class="label label-info" style="position: relative; bottom: 2px; background-color:#D0B07E;"></span></a></li>
+					<li><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역
+					<span id="unread" class="label label-info" style="position: relative; bottom: 2px; background-color:#c59d5f;"></span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -90,32 +111,52 @@
 				</ul>						
 			</div>
 		</nav>
-	<div class = "content_setup_faq_content">
+	<div class = "content_setup_counsel">
 		<section>
-			<img src = "http://localhost:9000/waffles/images/setup/step1.PNG">
-			<div class = "title">창업상담내용</div>
-			<div class = "line"></div>
+			<img src = "../../images/setup/step1.PNG">
+			<div> 메뉴추가 </div>
+			<div></div><div> Keep in Touch</div><div></div>
 		</section>
-	
-		<section>
-			<form name = "faq_content" action = "#" method = "get">
-				<h3><%= vo.getLocal() + " 지역 창업 희망" %></h3>
-				<div>신청인 <%= vo.getName() %></div>
-				<div>조회수 <%= vo.getViews()+1 %></div>
-				<hr style="display: inline-block; width:100%;">
-				<div class="counsel_content">
-					<div>이메일 주소 : <%= vo.getEmail() %></div>
-					<div>연락처 : <%= vo.getHp() %></div>
-					<div>알게된 경로 : <%= vo.getRoute() %></div>
-					<div>기타 문의 사항 : <%= vo.getEtc() %></div>
-				</div>
-				<hr>
-				<button type = "button" class = "btn_setup_faq" onclick="location.href='http://localhost:9000/waffles/admin/counsel/emailSend.jsp?email=<%= vo.getEmail() %>'" >이메일 답장</button>
-				<a href = "counselList.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
-				<a href = "http://localhost:9000/waffles/admin/adminindex.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
-			</form>	
-		</section>
-		
+			<form name = "setup_counsel_form" action = "../../MenuWriteServlet" method = "post" class = "content_layout_setup_counsel" enctype="multipart/form-data">
+				<ul>
+					<li>
+						<label> 제품명 </label>
+						<input type = "text" name = "name" id = "name">
+						<div></div>
+					</li>
+					
+					
+					<li>
+						<label> 종류 </label>
+						<input type = "radio" name = "kind" value = "쥬스/차">쥬스/차
+						<input type = "radio" name = "kind" value = "커피/라떼">커피/라떼
+						<input type = "radio" name = "kind" value = "와플">와플
+						<div></div>
+					</li>
+					
+					<li>
+						<label> 세부 내용 </label>
+						<textarea name="content" id="content"></textarea>
+						<div></div>
+					</li>
+					<li>
+						<label> 이미지파일</label>
+						<input type="file" name="imagefile" id="image">
+					</li>
+					<li>
+						<label> 상세정보파일</label>
+						<input type="file" name="ingredientfile" id="ingredient">
+					</li>
+					
+					<li>
+						<a href = "menuList.jsp"><button type = "button" class = "btn_counsel_1">취소</button></a>
+						<button type = "button" id = "counselBtn" class = "btn_counsel_2">확인</button>
+					</li>
+				
+				</ul>
+				
+			
+			</form>
 	</div>
 		<%
 			if(id != null) {
@@ -131,6 +172,3 @@
 		%>
 </body>
 </html>
-	
-	
-	

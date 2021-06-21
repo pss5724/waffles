@@ -8,6 +8,18 @@
 <body>
 	<% 
 		session.invalidate();
+	
+		Cookie[] cookies = request.getCookies();
+	    if(cookies!=null){
+	        for(Cookie tempCookie : cookies){
+	            if(tempCookie.getName().equals("log_id")){
+	                tempCookie.setMaxAge(0);
+	                tempCookie.setPath("/");
+	                response.addCookie(tempCookie);
+	                
+	            }
+	        }
+	    }
 	%>
 	<script>
 		location.href = '../index.jsp';

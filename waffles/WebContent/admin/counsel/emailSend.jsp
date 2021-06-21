@@ -11,17 +11,7 @@
 		response.sendRedirect("http://localhost:9000/waffles/index.jsp");
 	}
 
-	CounselDAO dao = new CounselDAO();
-	ArrayList<CounselVO> list = dao.getcounselList(request.getParameter("pnum"));
-	String cid = request.getParameter("cid");
-	CounselVO vo = new CounselVO();
-	for(int i = 0; i<list.size(); i++ ){
-		if(list.get(i).getCid().equals(cid)) {
-			vo = list.get(i);
-		}
-		
-	}
-	if(vo != null) dao.getUpdateHit(cid);
+	String email = request.getParameter("email");
 	
 %>
 <!DOCTYPE html>
@@ -36,32 +26,50 @@
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/bootstrap.js"></script>
-	<script type="text/javascript">
-		function getUnread() {
-			$.ajax({
-				type: "POST",
-				url: "http://localhost:9000/waffles/counselUnread",
-				data: {
-					userID: encodeURIComponent('<%= id %>'),
-				},
-				success: function(result) {
-					if(result >= 1) {
-						showUnread(result);
-					} else {
-						showUnread('');
-					}				
-				}
-			});
-		}
-		function getInfiniteUnread() {
-			setInterval(function() {
-				getUnread();
-			}, 4000);
-		}
-		function showUnread(result) {
-			$('#unread').html(result);
-		}
-	</script>
+	<script>
+	$(document).ready(function() {
+		
+		/* 폼체크 */
+		$("#counselBtn").click(function() {
+			if($("#name").val() == "") {
+				alert("제목을 입력해주세요");
+				$("#name").focus();
+				return false;
+			} else if($("#content").val() == "") {
+				alert("내용을 입력해주세요");
+				$("#content").focus();
+				return false;
+			} else {
+				setup_counsel_form.submit();
+			}
+		});
+	});
+	function getUnread() {
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:9000/waffles/counselUnread",
+			data: {
+				userID: encodeURIComponent('<%= id %>'),
+			},
+			success: function(result) {
+				if(result >= 1) {
+					showUnread(result);
+				} else {
+					showUnread('');
+				}				
+			}
+		});
+	}
+	function getInfiniteUnread() {
+		setInterval(function() {
+			getUnread();
+		}, 4000);
+	}
+	function showUnread(result) {
+		$('#unread').html(result);
+	}
+
+</script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -90,32 +98,44 @@
 				</ul>						
 			</div>
 		</nav>
-	<div class = "content_setup_faq_content">
+	<div class = "content_setup_counsel">
 		<section>
-			<img src = "http://localhost:9000/waffles/images/setup/step1.PNG">
-			<div class = "title">창업상담내용</div>
-			<div class = "line"></div>
+			<img src = "../../images/setup/step1.PNG">
+			<div> 창업상담 </div>
+			<div></div><div> Keep in Touch</div><div></div>
 		</section>
 	
-		<section>
-			<form name = "faq_content" action = "#" method = "get">
-				<h3><%= vo.getLocal() + " 지역 창업 희망" %></h3>
-				<div>신청인 <%= vo.getName() %></div>
-				<div>조회수 <%= vo.getViews()+1 %></div>
-				<hr style="display: inline-block; width:100%;">
-				<div class="counsel_content">
-					<div>이메일 주소 : <%= vo.getEmail() %></div>
-					<div>연락처 : <%= vo.getHp() %></div>
-					<div>알게된 경로 : <%= vo.getRoute() %></div>
-					<div>기타 문의 사항 : <%= vo.getEtc() %></div>
-				</div>
-				<hr>
-				<button type = "button" class = "btn_setup_faq" onclick="location.href='http://localhost:9000/waffles/admin/counsel/emailSend.jsp?email=<%= vo.getEmail() %>'" >이메일 답장</button>
-				<a href = "counselList.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
-				<a href = "http://localhost:9000/waffles/admin/adminindex.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
-			</form>	
-		</section>
+		<section class = "setup_counsel">
 		
+			<form name = "setup_counsel_form" action = "http://localhost:9000/waffles/emailSendServlet" method = "post" class = "content_layout_setup_counsel">
+				<input type ="hidden" name = "email" value = <%= email %> >
+				<ul>
+					<li>
+						<label style ="display : inline-block; position: relative; top: -3px;">E-mail 제목 </label>
+						<input type = "text" name = "name" id = "name" style = "width: 800px;">
+						<div></div>
+					</li>
+					<li>
+						<label style ="display : inline-block; position: relative; top: -280px;">E-mail 내용 </label>
+						<textarea name="content" id="content" style = "width: 800px; height: 300px;"></textarea>
+						<div></div>
+					</li>
+					
+					
+					<li>
+						<a href = "counselList.jsp"><button type = "button" class = "btn_counsel_1">취소</button></a>
+						<button type = "submit" id = "counselBtn" class = "btn_counsel_2">확인</button>
+					</li>
+				
+				</ul>
+				
+			
+			</form>
+		
+		
+		</section>
+
+	
 	</div>
 		<%
 			if(id != null) {

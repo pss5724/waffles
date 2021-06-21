@@ -2,8 +2,18 @@
 <%@ page import= "com.waffles.dao.CounselDAO, com.waffles.vo.CounselVO, java.util.ArrayList" %>
 <%
 	request.setCharacterEncoding("utf-8");
-%>   
-<%
+	
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
+	if(id == null || !id.equals("manager")) {
+		response.sendRedirect("http://localhost:9000/waffles/index.jsp");
+	}
+
+	String search = request.getParameter("search");
+	String search_text = request.getParameter("search_text");
+	
 	CounselDAO dao = new CounselDAO();
 
 	String pageNumber = "1";
@@ -11,7 +21,13 @@
 		pageNumber = request.getParameter("pageNumber");
 	}
 	
-	ArrayList<CounselVO> list = dao.getcounselList(pageNumber);
+	ArrayList<CounselVO> list = new ArrayList<CounselVO>();
+	
+	if(search_text == null || search_text.equals("") || search_text.equals("null")) {
+		list = dao.getcounselList(pageNumber);
+	} else {
+		list = dao.getcounselList(pageNumber,search,search_text);
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -25,6 +41,32 @@
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 	<script src="http://localhost:9000/waffles/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		function getUnread() {
+			$.ajax({
+				type: "POST",
+				url: "http://localhost:9000/waffles/counselUnread",
+				data: {
+					userID: encodeURIComponent('<%= id %>'),
+				},
+				success: function(result) {
+					if(result >= 1) {
+						showUnread(result);
+					} else {
+						showUnread('');
+					}				
+				}
+			});
+		}
+		function getInfiniteUnread() {
+			setInterval(function() {
+				getUnread();
+			}, 4000);
+		}
+		function showUnread(result) {
+			$('#unread').html(result);
+		}
+	</script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -42,8 +84,9 @@
 				<ul class="nav navbar-nav">
 					<li><a href="http://localhost:9000/waffles/admin/adminindex.jsp">메인</a>
 					<li><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
-					<li><a href="#">회원관리<span id="unread" class="label label-info"></span></a></li>
-					<li class="active"><a href="#">창업상담내역</a></li>
+					<li><a href="#">회원관리</a></li>
+					<li class="active"><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역
+					<span id="unread" class="label label-info" style="position: relative; bottom: 2px; background-color:#D0B07E;"></span></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -84,11 +127,16 @@
 						<ul class = "pagination" style="margin: 0 auto;">
 					<%
 						int startPage = (Integer.parseInt(pageNumber) / 10) *10 +1; 
-						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;  
-						int targetPage = new CounselDAO().targetPage(pageNumber);
+						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;
+						int targetPage =0;
+						if(search_text == null || search_text.equals("")  || search_text.equals("null")) {
+							targetPage = dao.targetPage(pageNumber);
+						}else{
+							targetPage = dao.targetPage(pageNumber, search, search_text);
+						}
 						if(startPage != 1) {
 					%>
-						<li><a href="counselList.jsp?pageNumber=<%= startPage -1 %>"><span ><</span></a></li>
+						<li><a href="counselList.jsp?pageNumber=<%= startPage -1 %>&search=<%= search %>&search_text=<%= search_text %>"><span ><</span></a></li>
 					<%
 						} else {
 					%>
@@ -97,22 +145,22 @@
 						}
 						for(int i = startPage; i < Integer.parseInt(pageNumber); i++) {
 					%>
-						<li><a href="counselList.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+						<li><a href="counselList.jsp?pageNumber=<%= i %>&search=<%= search %>&search_text=<%= search_text %>" style="color: #000000;"><%= i %></a></li>
 					<%
 						}
 					%>
-						<li class="active_page" ><a href="counselList.jsp?pageNumber=<%= pageNumber %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
+						<li class="active_page" ><a href="counselList.jsp?pageNumber=<%= pageNumber %>&search=<%= search %>&search_text=<%= search_text %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
 					<%
 						for(int i = Integer.parseInt(pageNumber) + 1; i <= targetPage + Integer.parseInt(pageNumber); i++) {
 							if(i < startPage +10) {
 					%>
-						<li><a href="counselList.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+						<li><a href="counselList.jsp?pageNumber=<%= i %>&search=<%= search %>&search_text=<%= search_text %>" style="color: #000000;"><%= i %></a></li>
 					<%
 							}
 						}
 						if(targetPage + Integer.parseInt(pageNumber) > startPage + 9){
 					%>
-						<li><a href="counselList.jsp?pageNumber=<%= startPage + 10 %>"color: #000000;"><span>></span></a></li>
+						<li><a href="counselList.jsp?pageNumber=<%= startPage + 10 %>&search=<%= search %>&search_text=<%= search_text %>"color: #000000;"><span>></span></a></li>
 					<%
 						} else {
 					%>
@@ -126,17 +174,28 @@
 			</table>
 		</section>
 		<section class = "setup_faq_search">
-			<select class = "search">
-				<option value = "title">제목</option>
-				<option value = "content">내용</option>
-				<option value = "title+content">제목+내용</option>
-				<option value = "writer">글쓴이</option>
-			</select>
-			
-			<input type = "text" name = "search_text" class = "search_text">
-			<button type = "button" class = "btn_search">검색</button>
-			
+			<form name = "setup_counsel_form" action ="http://localhost:9000/waffles/admin/counsel/counselList.jsp" method = "post">
+				<select class = "search" name = "search" style = "width: 60px; height: 27px">
+					<option value = "name">이름</option>
+					<option value = "local">지역</option>
+				</select>
+				
+				<input type = "text" name = "search_text" class = "search_text" style = "width: 300px; margin: 0 10px;">
+				<button type = "submit" class = "btn_search">검색</button>
+			</form>
 		</section>
-	</div>	
+	</div>
+		<%
+			if(id != null) {
+		%>
+			<script type="text/javascript">
+				$(document).ready(function () {
+					getUnread();
+					getInfiniteUnread();
+				});
+			</script>		
+		<%
+			}
+		%>	
 </body>
 </html>

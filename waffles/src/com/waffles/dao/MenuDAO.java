@@ -2,6 +2,7 @@ package com.waffles.dao;
 
 import java.util.ArrayList;
 
+import com.waffles.vo.MemberVO;
 import com.waffles.vo.MenuVO;
 
 public class MenuDAO extends DAO {
@@ -25,6 +26,29 @@ public class MenuDAO extends DAO {
 				menu.setKind(rs.getString(1));
 				menu.setImg(rs.getString(2));
 				menu.setName(rs.getString(3));
+				list.add(menu);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public ArrayList<MenuVO> getMenuList(int check) {
+		ArrayList<MenuVO> list = new ArrayList<MenuVO>();
+		
+		String sql = "SELECT * FROM MENU";
+		getPreparedStatement(sql);
+		
+		try {
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MenuVO menu = new MenuVO();
+				menu.setKind(rs.getString(1));
+				menu.setName(rs.getString(2));
+				menu.setImg(rs.getString(3));
+				menu.setExplain(rs.getString(4));
+				menu.setIngredient(rs.getString(5));
 				list.add(menu);
 			}
 		} catch (Exception e) {
@@ -102,7 +126,70 @@ public class MenuDAO extends DAO {
 		}
 		return vo;
 	}
+	public boolean getInsertResult(MenuVO vo) {
+		boolean result = false;
+		String sql = " insert into menu values(?, ?, ?, ?, ?)";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, vo.getKind());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getImg());
+			pstmt.setString(4, vo.getExplain());
+			pstmt.setString(5, vo.getIngredient());
+
+			int value = pstmt.executeUpdate();
+			
+			if(value != 0) result = true;
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+		
+		return result;
+	}
 	
-	
-	
+	public boolean getUpdateResult(MenuVO vo) {
+		boolean result = false;
+		String sql = " update menu set kind=?,img=?,explain=?,ingredient=? where name=? ";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, vo.getKind());
+			pstmt.setString(2, vo.getImg());
+			pstmt.setString(3, vo.getExplain());
+			pstmt.setString(4, vo.getIngredient());
+			pstmt.setString(5, vo.getName());
+			
+			int value = pstmt.executeUpdate();
+			
+			if(value != 0) result = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+		
+		return result;
+	}
+	public boolean getDeleteResult(MenuVO vo) {
+		boolean result = false;
+		String sql = " delete from menu where name = ? ";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, vo.getName());
+			
+			int value = pstmt.executeUpdate();
+			
+			if(value != 0) result = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		close();
+		
+		return result;
+	}
 }

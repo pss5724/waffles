@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%
 		String id = null;
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null){
+		    for(Cookie co : cookies){
+		        if(co.getName().equals("log_id")) {
+		        	request.getSession().setAttribute("id", co.getValue());
+		        }
+		    }
+		}
 		if(session.getAttribute("id") != null){
 			id = (String) session.getAttribute("id");
 		}
@@ -10,8 +18,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" href="http://localhost:9000/waffles/css/bootstrap/bootstrap.css">
 <title>Insert title here</title>
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="http://localhost:9000/waffles/js/bootstrap.js"></script>
 <script>
 	$(document).ready(function(){
 		$("#main-li li:nth-child(1),#main-li li:nth-child(2),#main-li li:nth-child(3),#main-li li:nth-child(4),#main-li li:nth-child(5)").mouseenter(function() {
@@ -30,6 +41,32 @@
 		});
 	});
 	
+</script>
+<script type="text/javascript">
+	function getUnread() {
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:9000/waffles/counselUnread",
+			data: {
+				userID: encodeURIComponent('<%= id %>'),
+			},
+			success: function(result) {
+				if(result >= 1) {
+					showUnread("•");
+				} else {
+					showUnread('');
+				}				
+			}
+		});
+	}
+	function getInfiniteUnread() {
+		setInterval(function() {
+			getUnread();
+		}, 4000);
+	}
+	function showUnread(result) {
+		$('#unread').html(result);
+	}
 </script>
 <link rel="stylesheet" href="http://localhost:9000/waffles/css/waffles.css">
 </head>
@@ -101,7 +138,9 @@
 					<%
 					} else if(id.equals("manager")) { 
 					%>	
-					<li><div><button class="login_btn" onclick="location.href='http://localhost:9000/waffles/admin/adminindex.jsp'">관리메뉴</button></div></li>
+					<li><div><button class="login_btn" onclick="location.href='http://localhost:9000/waffles/admin/adminindex.jsp'">관리메뉴</button>
+					<span id="unread" class="label label-info" style="position: absolute; color:red; top:28px; right:100px; background-color:rgba(0,0,0,0);"></span>
+					</div></li>
 					<li><div><button class="join_btn" onclick="location.href='http://localhost:9000/waffles/login/logoutAction.jsp'">로그아웃</button></div></li>
 					<%
 					} else {
@@ -125,6 +164,18 @@
 			    <p class="subLabel"><%= request.getParameter("sublabel") %></p>
 			</div>
 	 	</div>
+<%
+	if(id != null) {
+%>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			getUnread();
+			getInfiniteUnread();
+		});
+	</script>		
+<%
+	}
+%>
 	</header>
 </body>
 </html>
