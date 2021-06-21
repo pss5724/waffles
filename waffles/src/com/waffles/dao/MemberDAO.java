@@ -9,7 +9,7 @@ import bcrypt.BCrypt;
 public class MemberDAO extends DAO {
 
 	
-	/* ȸ������ ó�� */
+	/* 회占쏙옙占쏙옙占쏙옙 처占쏙옙 */
 	public boolean getInsertResult(MemberVO vo) {
 		boolean result = false;
 		String sql = " insert into waffle_member values(?, ?, ?, ?, sysdate, 0) ";
@@ -33,7 +33,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* id �ߺ�üũ */
+	/* id 占쌩븝옙체크 */
 	public int getIdCheck(String id) {
 		int result = 0;
 		String sql = " select count(*) from waffle_member where id = ? ";
@@ -55,7 +55,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* �α��� ó�� */
+	/* 占싸깍옙占쏙옙 처占쏙옙 */
 	public boolean getLoginResult(String id, String pass) {
 		boolean result = false;
 		
@@ -82,7 +82,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* ���̵� ã�� */
+	/* 占쏙옙占싱듸옙 찾占쏙옙 */
 	public MemberVO getFindidResult(String name, String email) {
 		MemberVO vo = new MemberVO();
 		
@@ -110,12 +110,13 @@ public class MemberDAO extends DAO {
 		return vo;
 	}
 	
-	/* ��й�ȣ ã�� - ���� */
+	/* 占쏙옙橘占싫� 찾占쏙옙 - 占쏙옙占쏙옙 */
 	public boolean getFindpassResult(String id, String name, String email) {
 		boolean result = false;
 		
 		String sql = " select count(*) from waffle_member where id = ? and name = ? and email = ? ";
 		getPreparedStatement(sql);
+		
 		try {
 			
 			pstmt.setString(1, id);
@@ -136,7 +137,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* ��й�ȣ ã�� - ����й�ȣ�� ���� */
+	/* 占쏙옙橘占싫� 찾占쏙옙 - 占쏙옙占쏙옙橘占싫ｏ옙占� 占쏙옙占쏙옙 */
 	public boolean getFindpassUpdate(String pass, String id) {
 		boolean result = false;
 		
@@ -144,7 +145,7 @@ public class MemberDAO extends DAO {
 		getPreparedStatement(sql);
 		
 		try {
-			pstmt.setString(1, pass);
+			pstmt.setString(1, BCrypt.hashpw(pass, BCrypt.gensalt(10)));
 			pstmt.setString(2, id);
 			
 			int value = pstmt.executeUpdate();
@@ -159,11 +160,11 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	/* �������� - ���̵�, �̸�, �̸��� �������� */
+	/* 占쏙옙占쏙옙占쏙옙占쏙옙 - 占쏙옙占싱듸옙, 占싱몌옙, 占싱몌옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 */
 	public MemberVO getInfo(String id) {
 		MemberVO vo = new MemberVO();
 
-		String sql = " select id, name, email, pass from waffle_member where id = ? ";
+		String sql = " select id, name, email from waffle_member where id = ? ";
 		getPreparedStatement(sql);
 
 		try {
@@ -175,7 +176,6 @@ public class MemberDAO extends DAO {
 				vo.setId(rs.getString(1));
 				vo.setName(rs.getString(2));
 				vo.setEmail(rs.getString(3));
-				vo.setPass(rs.getString(4));
 			}
 
 		} catch (Exception e) {
@@ -186,7 +186,7 @@ public class MemberDAO extends DAO {
 		return vo;
 	}
 
-	/* �������� - �̸���, ��й�ȣ ���� */
+	/* 占쏙옙占쏙옙占쏙옙占쏙옙 - 占싱몌옙占쏙옙, 占쏙옙橘占싫� 占쏙옙占쏙옙 */
 	public boolean getModify(MemberVO vo) {
 		boolean result = false;
 
@@ -196,7 +196,7 @@ public class MemberDAO extends DAO {
 		try {
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getEmail());
-			pstmt.setString(3, vo.getPass());
+			pstmt.setString(3, BCrypt.hashpw(vo.getPass(), BCrypt.gensalt(10)));
 			pstmt.setString(4, vo.getId());
 
 			int value = pstmt.executeUpdate();
@@ -211,7 +211,7 @@ public class MemberDAO extends DAO {
 		return result;
 	}
 	
-	// ȸ������ - ����Ʈ
+	// 회占쏙옙占쏙옙占쏙옙 - 占쏙옙占쏙옙트
 	public ArrayList<MemberVO> getList(){
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		String sql ="select rownum rno, name, email, id, pass, to_char(mdate,'yyyy-mm-dd') mdate, choice " + 

@@ -145,7 +145,7 @@
 					<%
 					} else {
 					%>
-					<li><div><button class="login_btn" onclick="location.href='http://localhost:9000/waffles/login/login.jsp'">정보수정</button></div></li>
+					<li><div><button class="login_btn" onclick="location.href='http://localhost:9000/waffles/login/userinfo.jsp'">정보수정</button></div></li>
 					<li><div><button class="join_btn" onclick="location.href='http://localhost:9000/waffles/login/logoutAction.jsp'">로그아웃</button></div></li>
 					<%
 					} 

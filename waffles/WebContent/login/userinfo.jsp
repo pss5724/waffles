@@ -4,7 +4,9 @@
 	request.setCharacterEncoding("utf-8");
 
 	//회원 정보 받아오기
-	String id = "lee";	//예시
+	String id = (String) session.getAttribute("id");
+	
+	System.out.println(id);
 	
 	MemberDAO dao = new MemberDAO();
 	MemberVO vo = dao.getInfo(id);
