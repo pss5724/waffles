@@ -113,7 +113,7 @@ public class FaqDAO extends DAO{
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return rs.getInt(1) / 10 ;
+				return (rs.getInt(1)-2) / 10 ;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -154,7 +154,7 @@ public class FaqDAO extends DAO{
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return rs.getInt(1) / 10 ;
+				return (rs.getInt(1)-2) / 10 ;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -194,7 +194,7 @@ public class FaqDAO extends DAO{
 		return fsfile;
 	}
 	
-	//Delete -->»èÁ¦ Ã³¸®
+	//Delete -->ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	public boolean getDeleteResult(String fid){
 		boolean result = false;
 		String sql = "delete from waffle_faq where fid=?";
@@ -215,7 +215,7 @@ public class FaqDAO extends DAO{
 		return result;
 	}
 	
-	//Update ---> ¼öÁ¤ Ã³¸®
+	//Update ---> ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		public boolean getUpdateResult(FaqVO vo){
 			boolean result = false;
 			String sql = "update waffle_faq set ftitle=?, fcontent=?, ffile=?, fsfile=? where fid=?";
@@ -240,7 +240,7 @@ public class FaqDAO extends DAO{
 			return result;
 		}
 		
-		//Update --> ¼öÁ¤Ã³¸®(±âÁ¸ÆÄÀÏ À¯Áö)
+		//Update --> ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 		public boolean getUpdateResultNofile(FaqVO vo){
 			boolean result = false;
 			String sql = "update waffle_faq set ftitle=?, fcontent=? where fid=?";
@@ -264,7 +264,7 @@ public class FaqDAO extends DAO{
 		}
 	
 	
-	// insert --> ¹®ÀÇ»çÇ× ±Û¾²±â
+	// insert --> ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½
 	public boolean getInsertResult(FaqVO vo) {
 		boolean result = false;
 		String sql="insert into waffle_faq values('f_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate)";
@@ -295,7 +295,7 @@ public class FaqDAO extends DAO{
 	}
 	
 	
-	//Update ---> Á¶È¸¼ö ¾÷µ¥ÀÌÆ®
+	//Update ---> ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	public void getUpdateHit(String fid){
 		String sql = "update waffle_faq set fhit = fhit + 1 where fid=?";
 		getPreparedStatement(sql);
@@ -312,7 +312,7 @@ public class FaqDAO extends DAO{
 	}
 	
 	
-	//Select ---> »ó¼¼ Á¤º¸
+	//Select ---> ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public FaqVO getContent(String fid){
 		FaqVO vo = new FaqVO();
 		String sql = "select fid,name, ftitle, fcontent, fhit, to_char(fdate,'yyyy-mm-dd') fdate, ffile, fsfile "
@@ -340,7 +340,7 @@ public class FaqDAO extends DAO{
 		return vo;
 	}
 	
-	//Select --> ÀüÃ¼ ¸®½ºÆ®
+	//Select --> ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Æ®
 	public ArrayList<FaqVO> getList(){
 		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
 		String sql = "select rownum rno, fid, name, ftitle,fhit, to_char(fdate, 'yyyy-mm-dd') fdate "

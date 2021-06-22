@@ -26,7 +26,7 @@
 	<div class="content">
 		<div class="success-story">
 			<div class="story-top">
-				<img src="http://localhost:9000/waffles/images/campus/학사모.png">
+				<img style= "margin: -10px;" src="http://localhost:9000/waffles/images/campus/학사모.png">
 				<h1>캠퍼스 창업성공스토리</h1>
 				<div class="story-line">
 					<div id="before"></div>

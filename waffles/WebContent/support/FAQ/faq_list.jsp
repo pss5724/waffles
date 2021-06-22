@@ -14,11 +14,13 @@
 		pageNumber = request.getParameter("pageNumber");
 	}
 	
-	ArrayList<FaqVO> list = dao.getList(pageNumber);
+	ArrayList<FaqVO> list = new ArrayList<FaqVO>(); 
 	
-	if(search_text != null) {
+	if(search_text == null || search_text.equals("null") || search_text.equals("")) {
+		list = dao.getList(pageNumber);
+	} else {
 		list = dao.getList(pageNumber,search,search_text);
-	} 
+	}
 	
 	String id = null;
 	if(session.getAttribute("id") != null){

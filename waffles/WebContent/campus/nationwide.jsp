@@ -5,13 +5,21 @@
 	request.setCharacterEncoding("utf-8");
 %>
 <% 	//paging
+	String select = request.getParameter("select");
+	String select_value = request.getParameter("select_value");
+	
 	Paging p = new Paging();
 	CampusDAO cdao = new CampusDAO();
 	
 	//전체 데이터 갯수 구하기
-	int dataCount = cdao.getCampusDataCount();
+	int dataCount = 0;
+	if(select_value == null || select_value.equals("null") || select_value.equals("") ) {
+	dataCount = cdao.getCampusDataCount();
+	} else {
+	dataCount = cdao.getCampusDataCountSearch(select,select_value);
+	}
 	//한 페이지당 보여질 글의 갯수
-	int showData = 5;
+	int showData = 10;
 	//전체 페이지 수 구하기
 	int pageCount = p.getPageCount(dataCount, showData);
 	
@@ -27,7 +35,12 @@
    	int pageBegin = (curPage -1) * showData + 1;	//시작번호 = (현재페이지 - 1) * 페이지당 게시물수 + 1
    	int pageEnd = curPage * showData;				//끝번호 = 현재페이지 * 페이지당 게시물수
 	//DB에서 해당 페이지 게시물을 가져오기
-	ArrayList<CampusVO> pageData = cdao.getPageData(pageBegin, pageEnd);
+	ArrayList<CampusVO> pageData = new ArrayList<CampusVO>();
+	if(select_value == null || select_value.equals("null") || select_value.equals("") ) {
+		pageData = cdao.getPageData(pageBegin, pageEnd);
+	} else {
+		pageData = cdao.getPageDataSearch(pageBegin, pageEnd ,select, select_value);
+	}
 	
 %> 
 <!DOCTYPE html>
@@ -66,15 +79,17 @@
 					<p>전국의 와플대학을 검색해 보실 수 있습니다.</p>
 				</div>
 				<div>
-					<select>
-						<option value="areaName">지역+캠퍼스명</option>
-						<option value="area">지역</option>
-						<option value="name">캠퍼스명</option>
-						<option value="hp">전화번호</option>
-						<option value="address">주소(도로명)</option>
-					</select>
-					<input type="text">
-					<button>검색</button>
+					<form name = "faq_write" action = "nationwide.jsp" method = "post">
+						<select name="select">
+							<option value="areaName">지역+캠퍼스명</option>
+							<option value="area">지역</option>
+							<option value="name">캠퍼스명</option>
+							<option value="hp">전화번호</option>
+							<option value="address">주소(도로명)</option>
+						</select>
+						<input type="text" name="select_value" style="width:250px;">
+						<button type= "submit">검색</button>
+					</form>
 				</div>
 			</div>
 
@@ -92,10 +107,10 @@
 					<tbody>
 						<% for(CampusVO vo : pageData){ %>
 						<tr>
-							<td><%= vo.getLoction() %></td>
-							<td><a href="http://localhost:9000/waffles/campus/campus_information.jsp?name=<%= vo.getName() %>"><%= vo.getName() %></a></td>
-							<td><%= vo.getTel() %></td>
-							<td><%= vo.getAddress() %></td>
+							<td style="width: 100px;"><%= vo.getLoction() %></td>
+							<td style="width: 300px;"><a href="http://localhost:9000/waffles/campus/campus_information.jsp?name=<%= vo.getName() %>"><%= vo.getName() %></a></td>
+							<td style="width: 300px;"><%= vo.getTel() %></td>
+							<td style="width: 500px;"><%= vo.getAddress() %></td>
 						</tr>
 						<% } %>
 					</tbody>
@@ -105,7 +120,7 @@
 			<!-- 페이지수 -->
 			<div class="page">
 				<% for(int i=1;i<pageCount+1;i++){ %>
-				<a type="button" class="btn btn-outline-primary" href="nationwide.jsp?pageNo=<%= i %>" role="button"><%= i %></a>
+				<a type="button" class="btn btn-outline-primary" href="nationwide.jsp?pageNo=<%= i %>&select=<%= select %>&select_value=<%=select_value %>" role="button"><%= i %></a>
 				<% } %>
 			</div>
 		</div>
