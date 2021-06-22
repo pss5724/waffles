@@ -5,14 +5,16 @@
 	FaqDAO dao = new FaqDAO();
 
 	String search_text = request.getParameter("search_text");
-	String search = (String)request.getParameter("search");
+	String search = request.getParameter("search");
+	
 	
 	String pageNumber = "1";
 	if(request.getParameter("pageNumber") != null) {
 		pageNumber = request.getParameter("pageNumber");
 	}
 	
-	ArrayList<FaqVO> list = dao.getList(pageNumber,search,search_text);
+	ArrayList<FaqVO> list =  dao.getList(pageNumber,search,search_text);
+	
 	
 	String id = null;
 	if(session.getAttribute("id") != null){
@@ -77,16 +79,16 @@
 					<td><%= vo.getFhit() %></td>
 				</tr>
 				<%} %>
-					<tr>
+				<tr>
 					<td colspan="5">
 						<ul class = "pagination" style="margin: 0 auto;">
 					<%
 						int startPage = (Integer.parseInt(pageNumber) / 10) *10 +1; 
-						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;  
-						int targetPage = new FaqDAO().targetPage(pageNumber);
+						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;
+						int targetPage = dao.targetPage(pageNumber, search, search_text);
 						if(startPage != 1) {
 					%>
-						<li><a href="faq_List.jsp?pageNumber=<%= startPage -1 %>"><span ><</span></a></li>
+						<li><a href="faq_list.jsp?pageNumber=<%= startPage -1 %>&search=<%= search %>&search_text=<%= search_text %>"><span ><</span></a></li>
 					<%
 						} else {
 					%>
@@ -95,22 +97,22 @@
 						}
 						for(int i = startPage; i < Integer.parseInt(pageNumber); i++) {
 					%>
-						<li><a href="faq_List.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+						<li><a href="faq_list.jsp?pageNumber=<%= i %>&search=<%= search %>&search_text=<%= search_text %>" style="color: #000000;"><%= i %></a></li>
 					<%
 						}
 					%>
-						<li class="active_page" ><a href="faq_List.jsp?pageNumber=<%= pageNumber %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
+						<li class="active_page" ><a href="faq_list.jsp?pageNumber=<%= pageNumber %>&search=<%= search %>&search_text=<%= search_text %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
 					<%
 						for(int i = Integer.parseInt(pageNumber) + 1; i <= targetPage + Integer.parseInt(pageNumber); i++) {
 							if(i < startPage +10) {
 					%>
-						<li><a href="faq_List.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+						<li><a href="faq_list.jsp?pageNumber=<%= i %>&search=<%= search %>&search_text=<%= search_text %>" style="color: #000000;"><%= i %></a></li>
 					<%
 							}
 						}
 						if(targetPage + Integer.parseInt(pageNumber) > startPage + 9){
 					%>
-						<li><a href="faq_List.jsp?pageNumber=<%= startPage + 10 %>"color: #000000;"><span>></span></a></li>
+						<li><a href="faq_list.jsp?pageNumber=<%= startPage + 10 %>&search=<%= search %>&search_text=<%= search_text %>"color: #000000;"><span>></span></a></li>
 					<%
 						} else {
 					%>
@@ -128,6 +130,7 @@
 		
 		<section class = "setup_faq_search">
 			<form name = "faq_list" action="faq_list.jsp" method = "post">
+
 			<select name="search" class = "search">
 				<option value = "title">제목</option>
 				<option value = "content">내용</option>

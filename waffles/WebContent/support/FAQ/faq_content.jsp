@@ -37,17 +37,28 @@
 			<div class = "title">문의사항</div>
 			<div class = "line"></div>
 		</section>
+		
 		<section>
 			<form name = "faq_content" action = "#" method = "get">
-				<h3></h3>
-				<div>작성자 <%=vo.getName() %>		작성날짜  <%=vo.getFdate() %> 조회수  <%=vo.getFhit() %></div>
-				<hr>
-				<div>내용 <%=vo.getFcontent() %></div>
+				<input type="hidden">
+				<div><%=vo.getFtitle() %></div>
+				<div>
+					<div>작성자 <%=vo.getName() %>	</div>
+					<div>
+					 조회  <%=vo.getFhit() %> 회
+					 &nbsp;
+					 <%=vo.getFdate() %>
+					</div>
+				</div>
+				<hr style="display:inline-block; width:100%;">
+				<div> <%=vo.getFcontent() %>
 				<% if(vo.getFsfile() != null){%>
+						<br>
 						<img src="http://localhost:9000/waffles/upload/<%=vo.getFsfile()%>" width="200px" height="200px">
 						<%}else{ %>
 							<span>파일없음</span>
 						<%} %>
+						</div>
 				<hr>
 				<%if(id != null) {%>
 				<% if(vo.getName().equals(id) || id.equals("manager")) {%>

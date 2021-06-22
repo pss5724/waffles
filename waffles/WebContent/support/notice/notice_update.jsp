@@ -17,17 +17,21 @@
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <style>
-	span#fname {
-		width:120px;
-		display:inline-block;
-		font-size:12px;
-		margin-left:-670px;
-		background-color:white;
-	}
-	input[type=file] {
-		display:inline-block;
-		margin-left: -550px;
-	}
+ 	span#fname { 
+ 		height:24px;
+ 		width:110px; 
+ 		display:inline-block; 
+ 		font-size:12px; 
+ 		margin-left:-680px; 
+ 		background-color:white;
+ 	} 
+ 	input[type=file] { 
+ 		width:187px; 
+ 		display:inline-block; 
+ 		margin-left: 10px; 
+ 		float:left;
+ 		border:none;
+ 	} 
 </style>
 <script>
 	$(document).ready(function(){
@@ -76,7 +80,8 @@
 							<% if(vo.getNfile() != null){ %>
 							<input type="file" name="nfile"><span id="fname"><%=vo.getNfile() %></span>
 							<%} else { %>
-							<input type="file" name="nfile"><span id="fname">파일 없음</span>
+							<input type="file" name="nfile">
+							<span id="fname"></span>
 							<%} %>
 						</td>
 					</tr>

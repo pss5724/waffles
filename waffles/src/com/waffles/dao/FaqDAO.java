@@ -22,26 +22,26 @@ public class FaqDAO extends DAO{
 		else if(search.equals("title")) {
 			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
 					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
-					"				      from(select * from waffle_faq order by fdate desc)) " + 
-					"						     where rno between ? and ? and ftitle like '%"+search_text+"%'";
+					"				      from(select * from waffle_faq order by fdate desc) where ftitle like '%"+search_text+"%') " + 
+					"						     where rno between ? and ? ";
 		}
 		else if(search.equals("content")) {
 			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
 					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
-					"				      from(select * from waffle_faq order by fdate desc)) " + 
-					"						     where rno between ? and ? and fcontent like '%"+search_text+"%'";
+					"				      from(select * from waffle_faq order by fdate desc) where fcontent like '%"+search_text+"%') " + 
+					"						     where rno between ? and ?";
 		}
 		else if(search.equals("titleContent")) {
 			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
 					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
-					"				      from(select * from waffle_faq order by fdate desc)) " + 
-					"						     where rno between ? and ? and fcontent like '%"+search_text+"%' or ftitle like '%"+search_text+"%'";
+					"				      from(select * from waffle_faq order by fdate desc) where fcontent like '%"+search_text+"%' or ftitle like '%"+search_text+"%') " + 
+					"						     where rno between ? and ? ";
 		}
 		else if(search.equals("writer")) {
 			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
 					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
-					"				      from(select * from waffle_faq order by fdate desc)) " + 
-					"						     where rno between ? and ? and name like '%"+search_text+"%'";
+					"				      from(select * from waffle_faq order by fdate desc) where name like '%"+search_text+"%') " + 
+					"						     where rno between ? and ?";
 		}
 
 	
@@ -73,8 +73,89 @@ public class FaqDAO extends DAO{
 		return list;
 	}
 	
+	public ArrayList<FaqVO> getList(String pageNumber) {
+		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
+		
+		String sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
+				"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
+				"				      from(select * from waffle_faq order by fdate desc)) " + 
+				"						     where rno between ? and ?";
+		
+		
+	
+	
+		getPreparedStatement(sql);
+		
+		try {
+			int startnum = ((Integer.parseInt(pageNumber)-1)*10) +1;
+			int endnum = Integer.parseInt(pageNumber)*10;
+			pstmt.setInt(1, startnum);	
+			pstmt.setInt(2, endnum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				FaqVO vo = new FaqVO();
+				vo.setRno(rs.getInt(1));
+				vo.setFid(rs.getString(2));
+				vo.setName(rs.getString(3));
+				vo.setFtitle(rs.getString(4));
+				vo.setFcontent(rs.getString(5));
+				vo.setFhit(rs.getInt(6));
+				vo.setFdate(rs.getString(7));
+				
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public int targetPage(String pageNumber) {
 		String SQL = "select count(num) from(select rownum num from waffle_faq) where num >= ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1) / 10 ;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	
+	public int targetPage(String pageNumber, String search, String search_text) {
+		String SQL = "";
+		
+		if(search == null) {
+			SQL = "select count(num) from(select rownum num from waffle_faq) where num >= ?";
+		}
+		else if(search.equals("title")) {
+			SQL = "select count(num) from(select rownum num from waffle_faq where ftitle like '%"+search_text+"%' ) where num >= ?";
+		}
+		else if(search.equals("content")) {
+			SQL = "select count(num) from(select rownum num from waffle_faq where fcontent like '%"+search_text+"%' ) where num >= ?";
+		}
+		else if(search.equals("titleContent")) {
+			SQL = "select count(num) from(select rownum num from waffle_faq where ftitle like '%"+search_text+"%' and like fcontent '%"+search_text+"%' ) where num >= ?";
+		}
+		else if(search.equals("writer")) {
+			SQL = "select count(num) from(select rownum num from waffle_faq where name like '%"+search_text+"%' ) where num >= ?";
+		}
+		
+		
+		
+		
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
@@ -269,7 +350,7 @@ public class FaqDAO extends DAO{
 	//Select --> 전체 리스트
 	public ArrayList<FaqVO> getList(){
 		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
-		String sql = "select rownum rno, fid, name, ftitle, fhit, to_char(fdate, 'yyyy-mm-dd') fdate "
+		String sql = "select rownum rno, fid, name, ftitle,fhit, to_char(fdate, 'yyyy-mm-dd') fdate "
 						+ " from (select fid, name,ftitle, fhit, fdate from waffle_faq "
 						+ " order by fdate desc)";
 		getPreparedStatement(sql);

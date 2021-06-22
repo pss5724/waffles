@@ -38,15 +38,25 @@
 		</section>
 		<section>
 			<form name = "faq_content" action = "#" method = "get">
-				<h3><%=vo.getRno() %></h3>
-				<div>작성자 <%=vo.getName() %>		작성날짜  <%=vo.getNdate() %> 조회수  <%=vo.getNhit() %></div>
-				<hr>
-				<div>내용 <%=vo.getNcontent() %></div>
+				<input type="hidden">
+				<div><%=vo.getNtitle() %></div>
+				<div>
+					<div>작성자 <%=vo.getName() %></div>
+					<div>	 
+					조회 <%=vo.getNhit() %> 회 
+					&nbsp;
+					<%=vo.getNdate() %>
+					</div>
+				</div>
+				<hr style="display:inline-block; width:100%;">
+				<div>내용 <%=vo.getNcontent() %>
 				<% if(vo.getNsfile() != null){%>
+						<br>
 						<img src="http://localhost:9000/waffles/upload/<%=vo.getNsfile()%>" width="200px" height="200px">
 						<%}else{ %>
 							<span>파일없음</span>
 						<%} %>
+						</div>
 				<hr>
 				<%if(id != null) {%>
 				<% if(vo.getName().equals(id) || id.equals("manager")) {%>
