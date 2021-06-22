@@ -13,6 +13,7 @@
 	if(session.getAttribute("id") != null){
 		id = (String) session.getAttribute("id");
 	}
+	
 %> 
 <!DOCTYPE html>
 <html>
@@ -49,13 +50,12 @@
 					</div>
 				</div>
 				<hr style="display:inline-block; width:100%;">
-				<div>내용 <%=vo.getNcontent() %>
+				<div style="white-space:pre-wrap; width:50%; text-align:center; margin:auto;"><%=vo.getNcontent() %>
 				<% if(vo.getNsfile() != null){%>
 						<br>
 						<img src="http://localhost:9000/waffles/upload/<%=vo.getNsfile()%>" width="200px" height="200px">
-						<%}else{ %>
-							<span>파일없음</span>
-						<%} %>
+						<%}%>
+							
 						</div>
 				<hr>
 				<%if(id != null) {%>

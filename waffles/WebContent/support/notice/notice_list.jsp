@@ -11,9 +11,13 @@
 	String pageNumber = "1";
 	if(request.getParameter("pageNumber") != null) {
 		pageNumber = request.getParameter("pageNumber");
-	}
+	} 
 	 
-	ArrayList<NoticeVO> list = dao.getList(pageNumber,search,search_text);
+	ArrayList<NoticeVO> list = dao.getList(pageNumber);
+	
+	if(search_text != null) {
+		list = dao.getList(pageNumber,search,search_text);
+	} 
 	
 
 	String id = null;
@@ -79,16 +83,21 @@
 					<td><%= vo.getNdate() %></td>
 				</tr>
 				<%} %>
-<tr>
+				<tr>
 					<td colspan="5">
 						<ul class = "pagination" style="margin: 0 auto;">
 					<%
 						int startPage = (Integer.parseInt(pageNumber) / 10) *10 +1; 
-						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;  
-						int targetPage = new NoticeDAO().targetPage(pageNumber);
+						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;
+						int targetPage =0;
+						if(search_text == null || search_text.equals("")  || search_text.equals("null")) {
+							targetPage = dao.targetPage(pageNumber);
+						}else{
+							targetPage = dao.targetPage(pageNumber, search, search_text);
+						}
 						if(startPage != 1) {
 					%>
-						<li><a href="notice_List.jsp?pageNumber=<%= startPage -1 %>"><span ><</span></a></li>
+						<li><a href="notice_list.jsp?pageNumber=<%= startPage -1 %>&search=<%= search %>&search_text=<%= search_text %>"><span ><</span></a></li>
 					<%
 						} else {
 					%>
@@ -97,22 +106,22 @@
 						}
 						for(int i = startPage; i < Integer.parseInt(pageNumber); i++) {
 					%>
-						<li><a href="notice_List.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+						<li><a href="notice_list.jsp?pageNumber=<%= i %>&search=<%= search %>&search_text=<%= search_text %>" style="color: #000000;"><%= i %></a></li>
 					<%
 						}
 					%>
-						<li class="active_page" ><a href="notice_List.jsp?pageNumber=<%= pageNumber %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
+						<li class="active_page" ><a href="notice_list.jsp?pageNumber=<%= pageNumber %>&search=<%= search %>&search_text=<%= search_text %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
 					<%
 						for(int i = Integer.parseInt(pageNumber) + 1; i <= targetPage + Integer.parseInt(pageNumber); i++) {
 							if(i < startPage +10) {
 					%>
-						<li><a href="notice_List.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+						<li><a href="notice_list.jsp?pageNumber=<%= i %>&search=<%= search %>&search_text=<%= search_text %>" style="color: #000000;"><%= i %></a></li>
 					<%
 							}
 						}
 						if(targetPage + Integer.parseInt(pageNumber) > startPage + 9){
 					%>
-						<li><a href="notice_List.jsp?pageNumber=<%= startPage + 10 %>"color: #000000;"><span>></span></a></li>
+						<li><a href="notice_list.jsp?pageNumber=<%= startPage + 10 %>&search=<%= search %>&search_text=<%= search_text %>"color: #000000;"><span>></span></a></li>
 					<%
 						} else {
 					%>

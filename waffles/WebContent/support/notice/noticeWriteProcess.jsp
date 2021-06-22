@@ -17,7 +17,7 @@
 	
 	//파일명 확인
 
-
+	System.out.print(multi.getParameter("ntitle"));
 
 	NoticeVO vo = new NoticeVO();
 	vo.setNtitle(multi.getParameter("ntitle"));

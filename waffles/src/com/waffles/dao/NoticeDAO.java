@@ -2,6 +2,7 @@ package com.waffles.dao;
 
 import java.util.ArrayList;
 
+import com.waffles.vo.FaqVO;
 import com.waffles.vo.NoticeVO;
 
 
@@ -72,8 +73,87 @@ public class NoticeDAO extends DAO{
 		return list;
 	}
 	
+	public ArrayList<NoticeVO> getList(String pageNumber) {
+		ArrayList<NoticeVO> list = new ArrayList<NoticeVO>();
+		
+		String sql = " select rno,nid,name,ntitle,ncontent,nhit,to_char(ndate,'yyyy-mm-dd') ndate " + 
+				"						      from(select rownum rno,nid,name,ntitle,ncontent,nhit,ndate " + 
+				"				      from(select * from waffle_notice order by ndate desc)) " + 
+				"						     where rno between ? and ?";
+		
+		
+	
+	
+		getPreparedStatement(sql);
+		
+		try {
+			int startnum = ((Integer.parseInt(pageNumber)-1)*10) +1;
+			int endnum = Integer.parseInt(pageNumber)*10;
+			pstmt.setInt(1, startnum);	
+			pstmt.setInt(2, endnum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				NoticeVO vo = new NoticeVO();
+				vo.setRno(rs.getInt(1));
+				vo.setNid(rs.getString(2));
+				vo.setName(rs.getString(3));
+				vo.setNtitle(rs.getString(4));
+				vo.setNcontent(rs.getString(5));
+				vo.setNhit(rs.getInt(6));
+				vo.setNdate(rs.getString(7));
+				
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public int targetPage(String pageNumber) {
 		String SQL = "select count(num) from(select rownum num from waffle_notice) where num >= ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1) / 10 ;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	
+	public int targetPage(String pageNumber, String search, String search_text) {
+		String SQL = "select count(num) from(select rownum num from waffle_notice) where num >= ?";
+		
+		
+		if(search.equals("title")) {
+			SQL = "select count(num) from(select rownum num from waffle_notice where ntitle like '%"+search_text+"%' ) where num >= ?";
+		}
+		else if(search.equals("content")) {
+			SQL = "select count(num) from(select rownum num from waffle_notice where ncontent like '%"+search_text+"%' ) where num >= ?";
+		}
+		else if(search.equals("titleContent")) {
+			SQL = "select count(num) from(select rownum num from waffle_notice where ntitle like '%"+search_text+"%' and like ncontent '%"+search_text+"%' ) where num >= ?";
+		}
+		else if(search.equals("writer")) {
+			SQL = "select count(num) from(select rownum num from waffle_notice where name like '%"+search_text+"%' ) where num >= ?";
+		}
+		
+		
+		
+		
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);

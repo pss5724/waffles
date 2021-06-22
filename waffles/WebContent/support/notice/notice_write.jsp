@@ -35,6 +35,12 @@
 		});
 	});
 </script>
+<style>
+	input[type=file] { 
+ 		margin-left: 10px; 
+ 		border:none;
+ 	} 
+</style>
 </head>
 <body>
 
@@ -52,7 +58,7 @@
 				<table class = "content_layout_setup_faq_write">
 						<tr>
 						<th>직성자</th>
-						<td><input type = "text" name = "name" id = "name" value="<%=id %>" readonly></td>
+						<td><input type = "text" name = "name" id = "name" value="와플대학관리자" readonly></td>
 					</tr>
 					<tr>
 						<th>제목</th>

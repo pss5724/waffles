@@ -51,13 +51,12 @@
 					</div>
 				</div>
 				<hr style="display:inline-block; width:100%;">
-				<div> <%=vo.getFcontent() %>
+				<div style="white-space:pre-wrap; width:50%; text-align:center; margin:auto;"> <%=vo.getFcontent() %>
 				<% if(vo.getFsfile() != null){%>
 						<br>
 						<img src="http://localhost:9000/waffles/upload/<%=vo.getFsfile()%>" width="200px" height="200px">
-						<%}else{ %>
-							<span>파일없음</span>
 						<%} %>
+						
 						</div>
 				<hr>
 				<%if(id != null) {%>
