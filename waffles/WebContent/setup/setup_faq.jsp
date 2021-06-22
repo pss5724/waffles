@@ -8,7 +8,6 @@
 	
 	 String keyField = request.getParameter("keyField");
     String keyWord = request.getParameter("keyWord");
-   /*  ArrayList<QuestionVO> searchlist = dao.getSearchResult(keyField, keyWord); */
 	
 %>   
 <!DOCTYPE html>
@@ -19,48 +18,8 @@
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <script>
-	/* $(document).ready(function() {
-		
-		/* $("#btn_search").click(function() {
-			if($("#search_text").val() == "") {
-				alert("검색할 데이터를 입력해주세요");
-				$("#search_text").focus();
-				return false;
-			} else {
-				
-			}
-		});
 	
-	/* function searchCheck(form){
-        //검색
-       
-        if(form.keyWord.value ==""){
-            alert("검색할 데이터를 입력해주세요");
-            form.keyWord.focus();
-            return;
-        }
-        form.submit();      
-    }
-   
-    
-	    $("#btn_search").click(function() {   
-	       var value = $("#search_input").val().toLowerCase();
-			$(".tbody tr").hide();
-			var select = $(".select").val();
-	       if (select == "title") {
-	          var value = $(".tbody td:nth-child(5n+2):contains('" + value + "') ");
-	          $(value).parent().show();
-	       } else if (select == "content") {
-	          var value = $(".tbody td:nth-child(5n+1):contains('" + value + "') ");
-	          $(value).parent().show();
-	       } else if (select == "writer"){
-	          var value = $(".tbody td:nth-child(5n+3):contains('" + value + "') ");
-	          $(value).parent().show();
-	       }
-	        
-	    });
-	}); */
-	
+	/* 제목, 글쓴이 검색 기능 */
 	$(document).ready(function() {
 		$("#btn_search").click(function() {
 			var value = $("#search_input").val().toLowerCase();
