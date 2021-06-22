@@ -3,17 +3,17 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-	String fid = request.getParameter("fid");
+	String nid = request.getParameter("nid");
 	
-	FaqDAO dao = new FaqDAO();
-	FaqVO vo = dao.getContent(fid);	
-	String content = vo.getFcontent().replace("<br>","\r\n");
+	NoticeDAO dao = new NoticeDAO();
+	NoticeVO vo = dao.getContent(nid);	
+	String content = vo.getNcontent().replace("<br>","\r\n");
 %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터 - 문의사항 - 수정하기 | 와플대학</title>
+<title>고객센터 - 공지사항 - 수정하기 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
 <script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
 <style>
@@ -48,35 +48,35 @@
 
 	<!-- header -->
 	<jsp:include page = "../../header.jsp">
-	<jsp:param name="mainlabel" value="문의사항 수정하기 " />
-	<jsp:param name="sublabel" value=" Home > 고객센터 > 문의사항 > 수정하기 "/>
+	<jsp:param name="mainlabel" value="공지사항 수정하기 " />
+	<jsp:param name="sublabel" value=" Home > 공지사항 > 게시물 > 수정하기 "/>
 	</jsp:include>
 	
 	<!-- content -->
 	<div class = "content_setup_faq_write">
 		<section>
-			<div class = "title">문의사항 수정하기</div>
-			<form name = "faq_update" action = "faqUpdateProcess.jsp" method = "post" enctype="multipart/form-data">
-				<input type="hidden" name="fid" value="<%= fid %>">
-				<input type="hidden" name="fsfile_old" value="<%= vo.getFsfile()%>">
+			<div class = "title">공지사항 수정하기</div>
+			<form name = "faq_update" action = "noticeUpdateProcess.jsp" method = "post" enctype="multipart/form-data">
+				<input type="hidden" name="nid" value="<%= nid %>">
+				<input type="hidden" name="nsfile_old" value="<%= vo.getNsfile()%>">
 				<table class = "content_layout_setup_faq_write">
 				
 					<tr>
 						<th>제목</th>
-						<td><input type = "text" name = "ftitle" value = "<%=vo.getFtitle()%>"></td>
+						<td><input type = "text" name = "ntitle" value = "<%=vo.getNtitle()%>"></td>
 					</tr>
 					
 					<tr>
 						<th>내용</th>
-						<td><textarea name = "fcontent"><%=content %></textarea></td>
+						<td><textarea name = "ncontent"><%=content %></textarea></td>
 					</tr>
 					<tr>
 						<th>파일</th>
 						<td>
-							<% if(vo.getFfile() != null){ %>
-							<input type="file" name="ffile"><span id="fname"><%=vo.getFfile() %></span>
+							<% if(vo.getNfile() != null){ %>
+							<input type="file" name="nfile"><span id="fname"><%=vo.getNfile() %></span>
 							<%} else { %>
-							<input type="file" name="ffile"><span id="fname">파일 없음</span>
+							<input type="file" name="nfile"><span id="fname">파일 없음</span>
 							<%} %>
 						</td>
 					</tr>
@@ -84,7 +84,7 @@
 						<td colspan = "2">
 							<button type = "submit" class = "btn_setup_faq">수정하기</button>
 							<button type = "reset" class = "btn_setup_faq">초기화</button>
-							<a href = "faq_list.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
+							<a href = "notice_list.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
 							<a href = "../../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
 						</td>
 					</tr>

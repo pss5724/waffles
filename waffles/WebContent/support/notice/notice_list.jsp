@@ -4,7 +4,22 @@
 	request.setCharacterEncoding("utf-8");
 	
 	NoticeDAO dao = new NoticeDAO();
-	ArrayList<NoticeVO> list = dao.getList();
+	
+	String search_text = request.getParameter("search_text");
+	String search = (String)request.getParameter("search");
+	
+	String pageNumber = "1";
+	if(request.getParameter("pageNumber") != null) {
+		pageNumber = request.getParameter("pageNumber");
+	}
+	 
+	ArrayList<NoticeVO> list = dao.getList(pageNumber,search,search_text);
+	
+
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
 	
 	
 %>   
@@ -14,7 +29,19 @@
 <meta charset="UTF-8">
 <title>고객센터 - 공지사항 | 와플대학</title>
 <link rel = "stylesheet" href = "http://localhost:9000/waffles/css/setup.css">
-<script src="http://localhost:9000/test/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/waffles/css/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="http://localhost:9000/waffles/css/bootstrap/custom.css">
+	<link rel ="stylesheet" href ="http://localhost:9000/waffles/css/setupforcounsel.css">
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="http://localhost:9000/waffles/js/jquery-3.6.0.min.js"></script>
+	<script src="http://localhost:9000/waffles/js/bootstrap.js"></script>
+<style>
+	table tr:first-child th {
+		text-align:center;
+		font-wegiht :1000;
+		font-size : 16px;
+	}
+</style>
 </head>
 <body>
 	<!-- header -->
@@ -48,28 +75,76 @@
 					<td><%= vo.getRno() %></td>
 					<td><a href="notice_content.jsp?nid=<%=vo.getNid()%>&rno=<%=vo.getRno()%>"><%=vo.getNtitle() %></a></td>
 					<td><%= vo.getName() %></td>
-					<td><%= vo.getNdate() %></td>
 					<td><%= vo.getNhit() %></td>
+					<td><%= vo.getNdate() %></td>
 				</tr>
 				<%} %>
-
+<tr>
+					<td colspan="5">
+						<ul class = "pagination" style="margin: 0 auto;">
+					<%
+						int startPage = (Integer.parseInt(pageNumber) / 10) *10 +1; 
+						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;  
+						int targetPage = new NoticeDAO().targetPage(pageNumber);
+						if(startPage != 1) {
+					%>
+						<li><a href="notice_List.jsp?pageNumber=<%= startPage -1 %>"><span ><</span></a></li>
+					<%
+						} else {
+					%>
+						<li><span style="color: gray;"><</span></li>
+					<%
+						}
+						for(int i = startPage; i < Integer.parseInt(pageNumber); i++) {
+					%>
+						<li><a href="notice_List.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+					<%
+						}
+					%>
+						<li class="active_page" ><a href="notice_List.jsp?pageNumber=<%= pageNumber %>" style="background-color: #3d2520;color: #ffffff;"><%= pageNumber %></a></li>
+					<%
+						for(int i = Integer.parseInt(pageNumber) + 1; i <= targetPage + Integer.parseInt(pageNumber); i++) {
+							if(i < startPage +10) {
+					%>
+						<li><a href="notice_List.jsp?pageNumber=<%= i %>" style="color: #000000;"><%= i %></a></li>
+					<%
+							}
+						}
+						if(targetPage + Integer.parseInt(pageNumber) > startPage + 9){
+					%>
+						<li><a href="notice_List.jsp?pageNumber=<%= startPage + 10 %>"color: #000000;"><span>></span></a></li>
+					<%
+						} else {
+					%>
+						<li><span style="color: gray;">></span></li>
+					<%		
+						}
+					%>
+						</ul>	
+					</td>
+				</tr>
 				
 			</table>
 			
 		</section>
 		
 		<section class = "setup_faq_search">
-			<select class = "search">
+		<form name = "notice_list" action="notice_list.jsp" method = "post">
+			<select name="search" class = "search">
 				<option value = "title">제목</option>
 				<option value = "content">내용</option>
-				<option value = "title+content">제목+내용</option>
+				<option value = "titleContent">제목+내용</option>
 				<option value = "writer">글쓴이</option>
 			</select>
 			
 			<input type = "text" name = "search_text" class = "search_text">
-			<button type = "button" class = "btn_search">검색</button>
+			<button type = "submit" class = "btn_search">검색</button>
+			</form>
 			
-			
+			<%if(id != null){ %>
+			<%if(id.equals("manager")){ %>
+			<a href = "notice_write.jsp"><button type = "button" class = "btn_setup_faq_write">글쓰기</button></a>
+			<%}} %>
 		</section>
 	
 	</div>	

@@ -5,14 +5,14 @@
 	FaqDAO dao = new FaqDAO();
 	String fid = request.getParameter("fid");
 	
-	String id = null;
-	if(session.getAttribute("id") != null){
-		id = (String) session.getAttribute("id");
-	}
 	FaqVO vo = dao.getContent(fid);
 	
 	if(vo != null) dao.getUpdateHit(fid);
 	
+	String id = null;
+	if(session.getAttribute("id") != null){
+		id = (String) session.getAttribute("id");
+	}
 	
 %> 
 <!DOCTYPE html>
@@ -49,10 +49,11 @@
 							<span>파일없음</span>
 						<%} %>
 				<hr>
+				<%if(id != null) {%>
 				<% if(vo.getName().equals(id) || id.equals("manager")) {%>
 				<a href = "faq_update.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">수정</button></a>
 				<a href = "faq_delete.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">삭제</button></a>
-				<%} %>
+				<%}} %>
 				<a href = "faq_list.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
 				<a href = "../../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
 			</form>	

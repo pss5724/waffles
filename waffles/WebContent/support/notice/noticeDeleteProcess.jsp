@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.waffles.vo.*, com.waffles.dao.*,java.io.File" %>
 <%
-	String fid = request.getParameter("fid");
+	String nid = request.getParameter("nid");
 	
 	
 	
-	FaqDAO dao = new FaqDAO();
-	String fsfile = dao.getFsfile(fid);
-	boolean result = dao.getDeleteResult(fid);
+	NoticeDAO dao = new NoticeDAO();
+	String nsfile = dao.getNsfile(nid);
+	boolean result = dao.getDeleteResult(nid);
 	
 	if(result){
-		if(fsfile != null){
+		if(nsfile != null){
 	String savePath = request.getServletContext().getRealPath("/upload");
 	
 	
-	File file = new File(savePath+"/"+fsfile);
+	File file = new File(savePath+"/"+nsfile);
 	if(file.exists()){
 		if(file.delete()) System.out.println("파일삭제완료");
 	}
@@ -25,6 +25,6 @@
 	
 	
 	if(result){
-		response.sendRedirect("faq_list.jsp");
+		response.sendRedirect("notice_list.jsp");
 	}
 %>

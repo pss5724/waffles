@@ -17,23 +17,23 @@
 //   	System.out.println("화면UI이름=" + multi.getOriginalFileName("ffile") );
 //   	System.out.println("폴더저장이름=" + multi.getFilesystemName("ffile")  );
 
-  	FaqVO vo = new FaqVO();
-  	FaqDAO dao = new FaqDAO();
+  	NoticeVO vo = new NoticeVO();
+  	NoticeDAO dao = new NoticeDAO();
   	boolean result=false;
   	
-  	if(multi.getOriginalFileName("ffile") != null){
+  	if(multi.getOriginalFileName("nfile") != null){
   		//새로운 파일 선택
-  		vo.setFid(multi.getParameter("fid"));
-  		vo.setFtitle(multi.getParameter("ftitle"));
-  		vo.setFcontent(multi.getParameter("fcontent"));
-  		vo.setFfile(multi.getOriginalFileName("ffile"));
-  		vo.setFsfile(multi.getFilesystemName("ffile"));
+  		vo.setNid(multi.getParameter("nid"));
+  		vo.setNtitle(multi.getParameter("ntitle"));
+  		vo.setNcontent(multi.getParameter("ncontent"));
+  		vo.setNfile(multi.getOriginalFileName("nfile"));
+  		vo.setNsfile(multi.getFilesystemName("nfile"));
   		
   		result = dao.getUpdateResult(vo); // 파일 포함 업데이트
   		
   		if(result){
   	//기존파일을 upload 폴더에서 삭제
-  	String old_file_path = savePath+"/"+multi.getParameter("fsfile_old");
+  	String old_file_path = savePath+"/"+multi.getParameter("nsfile_old");
   	File old_file = new File(old_file_path);
   	
   	if(old_file.exists()){
@@ -49,9 +49,9 @@
   		
   	}else{
   		//기존 파일 유지
-  		vo.setFid(multi.getParameter("fid"));
-  		vo.setFtitle(multi.getParameter("ftitle"));
-  		vo.setFcontent(multi.getParameter("fcontent"));
+  		vo.setNid(multi.getParameter("nid"));
+  		vo.setNtitle(multi.getParameter("ntitle"));
+  		vo.setNcontent(multi.getParameter("ncontent"));
   		
   		result = dao.getUpdateResultNofile(vo); // 파일 포함하지 않은 업데이트
   	}
@@ -59,6 +59,6 @@
   	
   	
   	if(result){
-  		response.sendRedirect("faq_list.jsp");
+  		response.sendRedirect("notice_list.jsp");
   	}
  %>
