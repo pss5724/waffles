@@ -13,13 +13,8 @@ public class FaqDAO extends DAO{
 		
 		String sql = "";
 		
-		if(search == null) {
-			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
-				"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
-				"				      from(select * from waffle_faq order by fdate desc)) " + 
-				"						     where rno between ? and ?";
-		}
-		else if(search.equals("title")) {
+		
+		if(search.equals("title")) {
 			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
 					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
 					"				      from(select * from waffle_faq order by fdate desc) where ftitle like '%"+search_text+"%') " + 
@@ -135,12 +130,10 @@ public class FaqDAO extends DAO{
 	}
 	
 	public int targetPage(String pageNumber, String search, String search_text) {
-		String SQL = "";
+		String SQL = "select count(num) from(select rownum num from waffle_faq) where num >= ?";
 		
-		if(search == null) {
-			SQL = "select count(num) from(select rownum num from waffle_faq) where num >= ?";
-		}
-		else if(search.equals("title")) {
+		
+		if(search.equals("title")) {
 			SQL = "select count(num) from(select rownum num from waffle_faq where ftitle like '%"+search_text+"%' ) where num >= ?";
 		}
 		else if(search.equals("content")) {

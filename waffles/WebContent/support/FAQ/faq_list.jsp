@@ -4,17 +4,21 @@
 	request.setCharacterEncoding("utf-8");
 	FaqDAO dao = new FaqDAO();
 
+	
 	String search_text = request.getParameter("search_text");
 	String search = request.getParameter("search");
 	
 	
-	String pageNumber = "1";
+	String pageNumber = "1"; 
 	if(request.getParameter("pageNumber") != null) {
 		pageNumber = request.getParameter("pageNumber");
 	}
 	
-	ArrayList<FaqVO> list =  dao.getList(pageNumber,search,search_text);
+	ArrayList<FaqVO> list = dao.getList(pageNumber);
 	
+	if(search_text != null) {
+		list = dao.getList(pageNumber,search,search_text);
+	} 
 	
 	String id = null;
 	if(session.getAttribute("id") != null){
@@ -85,7 +89,12 @@
 					<%
 						int startPage = (Integer.parseInt(pageNumber) / 10) *10 +1; 
 						if(Integer.parseInt(pageNumber) % 10 == 0) startPage -= 10;
-						int targetPage = dao.targetPage(pageNumber, search, search_text);
+						int targetPage =0;
+						if(search_text == null || search_text.equals("")  || search_text.equals("null")) {
+							targetPage = dao.targetPage(pageNumber);
+						}else{
+							targetPage = dao.targetPage(pageNumber, search, search_text);
+						}
 						if(startPage != 1) {
 					%>
 						<li><a href="faq_list.jsp?pageNumber=<%= startPage -1 %>&search=<%= search %>&search_text=<%= search_text %>"><span ><</span></a></li>
