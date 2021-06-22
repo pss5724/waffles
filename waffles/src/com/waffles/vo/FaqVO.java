@@ -2,10 +2,35 @@ package com.waffles.vo;
 
 public class FaqVO {
 	int rno, fhit;
-	String fid, name, ftitle, fcontent, ffile, fsfile, fdate;
+	String fid, name, ftitle, fcontent, ffile, fsfile, fdate, pass;
+	int boardgroup, boardsequence, boardlevel;
 	
 	public int getRno() {
 		return rno;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public int getBoardgroup() {
+		return boardgroup;
+	}
+	public void setBoardgroup(int boardgroup) {
+		this.boardgroup = boardgroup;
+	}
+	public int getBoardsequence() {
+		return boardsequence;
+	}
+	public void setBoardsequence(int boardsequence) {
+		this.boardsequence = boardsequence;
+	}
+	public int getBoardlevel() {
+		return boardlevel;
+	}
+	public void setBoardlevel(int boardlevel) {
+		this.boardlevel = boardlevel;
 	}
 	public void setRno(int rno) {
 		this.rno = rno;

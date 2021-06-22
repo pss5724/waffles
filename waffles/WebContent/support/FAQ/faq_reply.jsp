@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import= "com.waffles.dao.CounselDAO, com.waffles.vo.CounselVO, java.util.ArrayList" %>
+<%@ page import= "com.waffles.dao.FaqDAO, com.waffles.vo.FaqVO, java.util.ArrayList" %>
 <%
 	request.setCharacterEncoding("utf-8");
 
@@ -7,7 +7,9 @@
 	if(session.getAttribute("id") != null){
 		id = (String) session.getAttribute("id");
 	}
-			
+	String fid = request.getParameter("fid");
+	FaqDAO dao = new FaqDAO();
+	FaqVO vo = dao.getContent(fid);
 %>
 <!DOCTYPE html>
 <html>
@@ -47,14 +49,12 @@
 	<div class = "content_setup_faq_write">
 		<section>
 			<div class = "title">문의하기</div>
-	
-			<form name = "faq_write" action = "faqWriteProcess.jsp" method = "post" class = "content_layout_setup_counsel" enctype="multipart/form-data">
+			<form name = "faq_write" action = "faqReplyProcess.jsp" method = "post" class = "content_layout_setup_counsel" enctype="multipart/form-data">
+			<input type="hidden" name="fid" value=<%= fid %>>
 				<ul>
 					<li>
 						<label> 작성자 </label>
 						<input type = "text" name = "name" id = "name" value="<%=id %>" readonly>
-						<input style="float: right; margin-right: 80px;" type = "password" name = "pass" id = "name">
-						<label style="float: right; width:100px;"> 비밀번호 </label>
 						<div></div>
 					</li>
 					<li>

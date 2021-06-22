@@ -1,8 +1,12 @@
 package com.waffles.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.waffles.vo.FaqVO;
+
 
 
 public class FaqDAO extends DAO{
@@ -15,26 +19,26 @@ public class FaqDAO extends DAO{
 		
 		
 		if(search.equals("title")) {
-			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
-					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
+			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate, pass " + 
+					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate,pass " + 
 					"				      from(select * from waffle_faq order by fdate desc) where ftitle like '%"+search_text+"%') " + 
 					"						     where rno between ? and ? ";
 		}
 		else if(search.equals("content")) {
-			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
-					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
+			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate,pass " + 
+					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate,pass " + 
 					"				      from(select * from waffle_faq order by fdate desc) where fcontent like '%"+search_text+"%') " + 
 					"						     where rno between ? and ?";
 		}
 		else if(search.equals("titleContent")) {
-			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
-					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
+			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate,pass " + 
+					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate,pass " + 
 					"				      from(select * from waffle_faq order by fdate desc) where fcontent like '%"+search_text+"%' or ftitle like '%"+search_text+"%') " + 
 					"						     where rno between ? and ? ";
 		}
 		else if(search.equals("writer")) {
-			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
-					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
+			sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate,pass " + 
+					"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate,pass " + 
 					"				      from(select * from waffle_faq order by fdate desc) where name like '%"+search_text+"%') " + 
 					"						     where rno between ? and ?";
 		}
@@ -59,6 +63,7 @@ public class FaqDAO extends DAO{
 				vo.setFcontent(rs.getString(5));
 				vo.setFhit(rs.getInt(6));
 				vo.setFdate(rs.getString(7));
+				vo.setPass(rs.getString(8));
 				
 				list.add(vo);
 			}
@@ -71,13 +76,10 @@ public class FaqDAO extends DAO{
 	public ArrayList<FaqVO> getList(String pageNumber) {
 		ArrayList<FaqVO> list = new ArrayList<FaqVO>();
 		
-		String sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate " + 
-				"						      from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate " + 
-				"				      from(select * from waffle_faq order by fdate desc)) " + 
-				"						     where rno between ? and ?";
-		
-		
-	
+		String sql = " select rno,fid,name,ftitle,fcontent,fhit,to_char(fdate,'yyyy-mm-dd') fdate, boardlevel, pass" +
+			         " from(select rownum rno,fid,name,ftitle,fcontent,fhit,fdate, boardgroup, boardsequence, boardlevel,pass " + 
+			         " from(select * from waffle_faq order by boardgroup desc, boardlevel asc)) " + 
+			         " where rno between ? and ? ";
 	
 		getPreparedStatement(sql);
 		
@@ -97,6 +99,8 @@ public class FaqDAO extends DAO{
 				vo.setFcontent(rs.getString(5));
 				vo.setFhit(rs.getInt(6));
 				vo.setFdate(rs.getString(7));
+				vo.setBoardlevel(rs.getInt(8));
+				vo.setPass(rs.getString(9));
 				
 				list.add(vo);
 			}
@@ -218,7 +222,7 @@ public class FaqDAO extends DAO{
 	//Update ---> ���� ó��
 		public boolean getUpdateResult(FaqVO vo){
 			boolean result = false;
-			String sql = "update waffle_faq set ftitle=?, fcontent=?, ffile=?, fsfile=? where fid=?";
+			String sql = "update waffle_faq set ftitle=?, fcontent=?, ffile=?, fsfile=?, pass=? where fid=?";
 			getPreparedStatement(sql);
 			
 			try {
@@ -226,7 +230,8 @@ public class FaqDAO extends DAO{
 				pstmt.setString(2, vo.getFcontent());
 				pstmt.setString(3, vo.getFfile());
 				pstmt.setString(4, vo.getFsfile());
-				pstmt.setString(5, vo.getFid());
+				pstmt.setString(5, vo.getPass());
+				pstmt.setString(6, vo.getFid());
 				
 				int value = pstmt.executeUpdate();
 				if(value != 0){
@@ -243,13 +248,14 @@ public class FaqDAO extends DAO{
 		//Update --> ����ó��(�������� ����)
 		public boolean getUpdateResultNofile(FaqVO vo){
 			boolean result = false;
-			String sql = "update waffle_faq set ftitle=?, fcontent=? where fid=?";
+			String sql = "update waffle_faq set ftitle=?, fcontent=?, pass=? where fid=?";
 			getPreparedStatement(sql);
 			
 			try {
 				pstmt.setString(1, vo.getFtitle());
 				pstmt.setString(2, vo.getFcontent());
-				pstmt.setString(3, vo.getFid());
+				pstmt.setString(3, vo.getPass());
+				pstmt.setString(4, vo.getFid());
 				
 				int value = pstmt.executeUpdate();
 				if(value != 0){
@@ -267,7 +273,13 @@ public class FaqDAO extends DAO{
 	// insert --> ���ǻ��� �۾���
 	public boolean getInsertResult(FaqVO vo) {
 		boolean result = false;
-		String sql="insert into waffle_faq values('f_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate)";
+		String sql = "";
+		
+		if(vo.getPass()==null || vo.getPass().equals("")) {
+			sql=" insert into waffle_faq values('f_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate,sequ_waffle_faq.nextval,0,0,'') ";
+		} else {
+			sql=" insert into waffle_faq values('f_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate,sequ_waffle_faq.nextval,0,0,?) ";
+		}
 		
 		getPreparedStatement(sql);
 		
@@ -277,6 +289,7 @@ public class FaqDAO extends DAO{
 			pstmt.setString(3, vo.getFcontent());
 			pstmt.setString(4, vo.getFfile());
 			pstmt.setString(5, vo.getFsfile());
+			pstmt.setString(6, vo.getPass());
 			
 			int value = pstmt.executeUpdate();
 			if(value !=0) {
@@ -293,6 +306,54 @@ public class FaqDAO extends DAO{
 		
 		return result;
 	}
+	public boolean getInsertReplyResult(FaqVO vo,FaqVO parent) {
+		boolean result = false;
+		String sql="insert into waffle_faq values('f_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate,?,?,?,?)";
+		
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getFtitle());
+			pstmt.setString(3, vo.getFcontent());
+			pstmt.setString(4, vo.getFfile());
+			pstmt.setString(5, vo.getFsfile());
+			pstmt.setInt(6, parent.getBoardgroup());
+			pstmt.setInt(7, parent.getBoardsequence()+1);
+			pstmt.setInt(8, parent.getBoardlevel()+1);
+			pstmt.setString(9, parent.getPass());
+			
+			
+			
+			int value = pstmt.executeUpdate();
+			if(value !=0) {
+				result = true;
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		
+		return result;
+	}
+	
+	public int getReplyupdate(FaqVO parent) {
+		String SQL = "UPDATE waffle_faq SET boardsequence = boardsequence + 1 WHERE boardgroup = ? AND boardsequence > ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, parent.getBoardgroup());
+			pstmt.setInt(2, parent.getBoardsequence());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	
 	
 	
 	//Update ---> ��ȸ�� ������Ʈ
@@ -315,7 +376,7 @@ public class FaqDAO extends DAO{
 	//Select ---> �� ����
 	public FaqVO getContent(String fid){
 		FaqVO vo = new FaqVO();
-		String sql = "select fid,name, ftitle, fcontent, fhit, to_char(fdate,'yyyy-mm-dd') fdate, ffile, fsfile "
+		String sql = "select fid,name, ftitle, fcontent, fhit, to_char(fdate,'yyyy-mm-dd') fdate, ffile, fsfile, boardgroup,boardsequence,boardlevel,pass"
 					+ " from waffle_faq where fid=?";
 		getPreparedStatement(sql);
 		
@@ -331,6 +392,10 @@ public class FaqDAO extends DAO{
 				vo.setFdate(rs.getString(6));
 				vo.setFfile(rs.getString(7));
 				vo.setFsfile(rs.getString(8));
+				vo.setBoardgroup(rs.getInt(9));
+				vo.setBoardsequence(rs.getInt(10));
+				vo.setBoardlevel(rs.getInt(11));
+				vo.setPass(rs.getString(12));
 			}
 			
 		} catch (Exception e) {

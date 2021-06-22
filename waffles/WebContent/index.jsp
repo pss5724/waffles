@@ -91,8 +91,9 @@
 			$(this).children().children().children("div").stop().animate({top:'110%'},300);
 		});
 		
-		
-		
+		$("#search_id").click(function() {
+			faq_write.submit();
+		});
 	});
 </script>
 <script type="text/javascript">
@@ -279,14 +280,14 @@
 				</ul>
 			</div>
 		</div>
-		<div style="cursor:pointer" onclick="window.location.href='#';">
+		<div style="cursor:pointer" onclick="window.location.href='http://localhost:9000/waffles/wafflestory/brand.jsp';">
 			<p>BRAND STORY</p>
 			<p>하루종일 수백개의 와플을 만들지만</p>
 			<p>고객님을 위한 단 하나의 와플을 만듭니다!</p>
 		</div>
 		<div>
 			<ul>
-				<li style="cursor:pointer" onclick="window.location.href='#';">
+				<li style="cursor:pointer" onclick="window.location.href='https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=beta2260&logNo=222363172424&parentCategoryNo=&categoryNo=17&viewDate=&isShowPopularPosts=true&from=search';">
 					<img src="http://localhost:9000/waffles/images/index/section/blog.jpg">
 					<div>
 					<p>와플대학 광주첨단2지구 캠퍼스 와플 맛집</p>
@@ -294,7 +295,7 @@
 					</div>
 				</li>
 				<li><div></div></li>
-				<li style="cursor:pointer" onclick="window.location.href='#';">
+				<li style="cursor:pointer" onclick="window.location.href='https://blog.naver.com/PostView.nhn?blogId=joobarious&logNo=222358269903&from=search&redirect=Log&widgetTypeCall=true&directAccess=false';">
 					<img src="http://localhost:9000/waffles/images/index/section/blog.jpg" id="im2">
 					<div>
 					<p>와플대학 메뉴 추천: 치즈범벅 생딸기와플 베리베리좋아요</p>
@@ -319,7 +320,7 @@
 								<div>
 									<p>초코범벅젤라또와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button><p>view</p></button>
+									<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%99%80%ED%94%8C&name=%EC%B4%88%EC%BD%94%EB%B2%94%EB%B2%85%EC%A0%A4%EB%9D%BC%EB%98%90%EC%99%80%ED%94%8C'"><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -329,9 +330,9 @@
 								<img src="http://localhost:9000/waffles/images/index/carosel/waffle2.png">
 								<span></span>
 								<div>
-									<p>초코범벅젤라또와플</p>
+									<p>애플시나몬와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button><p>view</p></button>
+									<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%99%80%ED%94%8C&name=%EC%95%A0%ED%94%8C%EC%8B%9C%EB%82%98%EB%AA%AC%EC%99%80%ED%94%8C'"><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -341,9 +342,9 @@
 							<img src="http://localhost:9000/waffles/images/index/carosel/waffle3.jpg">
 							<span></span>
 							<div>
-								<p>초코범벅젤라또와플</p>
+								<p>스노우와플</p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<button><p>view</p></button>
+								<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%99%80%ED%94%8C&name=%EC%8A%A4%EB%85%B8%EC%9A%B0%EC%99%80%ED%94%8C'"><p>view</p></button>
 							</div>
 						</div>
 						</div>
@@ -353,9 +354,9 @@
 								<img src="http://localhost:9000/waffles/images/index/carosel/waffle4.png">
 								<span></span>
 								<div>
-									<p>초코범벅젤라또와플</p>
+									<p>딸기와플</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button><p>view</p></button>
+									<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%99%80%ED%94%8C&name=%EB%94%B8%EA%B8%B0%EC%99%80%ED%94%8C'"><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -365,9 +366,9 @@
 								<img src="http://localhost:9000/waffles/images/index/carosel/coffee1.jpg">
 								<span></span>
 								<div>
-									<p>초코범벅젤라또와플</p>
+									<p>카페라떼</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button><p>view</p></button>
+									<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%BB%A4%ED%94%BC/%EB%9D%BC%EB%96%BC&name=%EC%B9%B4%ED%8E%98%EB%9D%BC%EB%96%BC'"><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -377,9 +378,9 @@
 								<img src="http://localhost:9000/waffles/images/index/carosel/coffee2.jpg">
 								<span></span>
 								<div>
-									<p>초코범벅젤라또와플</p>
+									<p>아메리카노</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button><p>view</p></button>
+									<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%BB%A4%ED%94%BC/%EB%9D%BC%EB%96%BC&name=%EC%95%84%EB%A9%94%EB%A6%AC%EC%B9%B4%EB%85%B8'"><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -389,9 +390,9 @@
 								<img src="http://localhost:9000/waffles/images/index/carosel/coffee3.jpg">
 								<span></span>
 								<div>
-									<p>초코범벅젤라또와플</p>
+									<p>브라운슈가라떼</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button><p>view</p></button>
+									<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%BB%A4%ED%94%BC/%EB%9D%BC%EB%96%BC&name=%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%88%EA%B0%80%EB%9D%BC%EB%96%BC'"><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -401,9 +402,9 @@
 								<img src="http://localhost:9000/waffles/images/index/carosel/coffee4.jpg">
 								<span></span>
 								<div>
-									<p>초코범벅젤라또와플</p>
+									<p>리얼초코라떼</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button><p>view</p></button>
+									<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%BB%A4%ED%94%BC/%EB%9D%BC%EB%96%BC&name=%EB%A6%AC%EC%96%BC%EC%B4%88%EC%BD%94%EB%9D%BC%EB%96%BC'"><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -413,9 +414,9 @@
 								<img src="http://localhost:9000/waffles/images/index/carosel/juice1.jpg">
 								<span></span>
 								<div>
-									<p>초코범벅젤라또와플</p>
+									<p>아쿠아 레몬에이드</p>
 									<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-									<button><p>view</p></button>
+									<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%A5%AC%EC%8A%A4/%EC%B0%A8&name=%EC%95%84%EC%BF%A0%EC%95%84%20%EB%A0%88%EB%AA%AC%EC%97%90%EC%9D%B4%EB%93%9C'"><p>view</p></button>
 								</div>
 							</div>
 						</div>
@@ -425,9 +426,9 @@
 							<img src="http://localhost:9000/waffles/images/index/carosel/juice2.jpg">
 							<span></span>
 							<div>
-								<p>초코범벅젤라또와플</p>
+								<p>자몽에이드</p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<button><p>view</p></button>
+								<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%A5%AC%EC%8A%A4/%EC%B0%A8&name=%EC%9E%90%EB%AA%BD%EC%97%90%EC%9D%B4%EB%93%9C'"><p>view</p></button>
 							</div>
 						</div>
 						</div>
@@ -437,9 +438,9 @@
 							<img src="http://localhost:9000/waffles/images/index/carosel/juice3.jpg">
 							<span></span>
 							<div>
-								<p>초코범벅젤라또와플</p>
+								<p>복숭아 아이스티</p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<button><p>view</p></button>
+								<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%A5%AC%EC%8A%A4/%EC%B0%A8&name=%EB%B3%B5%EC%88%AD%EC%95%84%20%EC%95%84%EC%9D%B4%EC%8A%A4%ED%8B%B0'"><p>view</p></button>
 							</div>
 						</div>
 						</div>
@@ -449,9 +450,9 @@
 							<img src="http://localhost:9000/waffles/images/index/carosel/juice4.jpg">
 							<span></span>
 							<div>
-								<p>초코범벅젤라또와플</p>
+								<p>복숭아자두스무디</p>
 								<div><img src="http://localhost:9000/waffles/images/index/carosel/icon_waffle.png"></div>
-								<button><p>view</p></button>
+								<button onclick="location.href='http://localhost:9000/waffles/menu/menu_information.jsp?kind=%EC%A5%AC%EC%8A%A4/%EC%B0%A8&name=%EB%B3%B5%EC%88%AD%EC%95%84%EC%9E%90%EB%91%90%EC%8A%A4%EB%AC%B4%EB%94%94'"><p>view</p></button>
 							</div>
 						</div>
 						</div>
@@ -478,7 +479,7 @@
 		</div>
 	</div>
 	<div class="indexBot">
-		<div id="p1" style="cursor:pointer" onclick="window.location.href='#';">
+		<div id="p1" style="cursor:pointer" onclick="window.location.href='http://localhost:9000/waffles/setup/setup_main.jsp'">
 			<p>창업안내</p>
 			<p>어려웠던 창업! 와플대학과 함께라면</p>
 			<p>행복한 고민이 시작됩니다.</p>	
@@ -488,8 +489,11 @@
 			<p>지금 가장 가까운</p>
 			<p>'와플대학 캠퍼스'를 찾아보세요.</p>
 			<div>
-				<input type="text" name="id" id="id" placeholder="매장이나 시/군 명 입력">
-				<a href="#"><img src="http://localhost:9000/waffles/images/index/section/search.png"></a> 
+				<form name = "faq_write" action = "./campus/nationwide.jsp" method = "post"> 
+					<input type="text" name="select_value" id="search_value" placeholder="매장이나 시/군 명 입력">
+					<input type="hidden" name="select" id="search_value" placeholder="매장이나 시/군 명 입력" value="areaName">
+					<a id="search_id"><img src="http://localhost:9000/waffles/images/index/section/search.png"></a>
+				</form>
 			</div>
 		</div>
 	</div>

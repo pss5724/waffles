@@ -17,14 +17,13 @@
 	
 	//파일명 확인
 
-
-
 	FaqVO vo = new FaqVO();
 	vo.setFtitle(multi.getParameter("ftitle"));
 	vo.setFcontent(multi.getParameter("fcontent"));
 	vo.setFfile(multi.getOriginalFileName("ffile"));
 	vo.setFsfile(multi.getFilesystemName("ffile"));
 	vo.setName(multi.getParameter("name"));
+	vo.setPass(multi.getParameter("pass"));
 	
 	FaqDAO dao = new FaqDAO();
 	boolean result = dao.getInsertResult(vo);

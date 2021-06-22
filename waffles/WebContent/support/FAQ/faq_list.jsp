@@ -76,13 +76,39 @@
 					<th> 날짜 </th>
 					<th> 조회수 </th>
 				</tr>
-				<% for(FaqVO vo : list) {%>
+				<% for(int i = 0; i<list.size(); i++) {%>
 				<tr>
-					<td><%= vo.getRno() %></td>
-					<td><a href="faq_content.jsp?fid=<%=vo.getFid()%>&rno=<%=vo.getRno()%>"><%=vo.getFtitle() %></a></td>
-					<td><%= vo.getName() %></td>
-					<td><%= vo.getFdate() %></td>
-					<td><%= vo.getFhit() %></td>
+					<td><%= list.get(i).getRno() %></td>
+					<td style="width: 500px; text-align: left; padding-left:10px;">
+					<% if(list.get(i).getPass() == null || list.get(i).getPass().equals("")) { %>
+						<% if(list.get(i).getBoardlevel() > 0) { %>
+							<% for(int j =0;j<list.get(i).getBoardlevel();j++) { %>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+							<% } %>
+							↳&nbsp;(답글)
+						<% } %>
+						<a href="faq_content.jsp?fid=<%=list.get(i).getFid()%>&rno=<%=list.get(i).getRno()%>">
+						<%=list.get(i).getFtitle() %>
+						</a>
+					<% } else { %>
+						<% if(list.get(i).getBoardlevel() > 0) { %>
+							<% for(int j =0;j<list.get(i).getBoardlevel();j++) { %>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+							<% } %>
+							↳&nbsp;(답글)
+						<% } %>
+							<%if(id.equals("manager")) { %>
+								<a href="faq_content.jsp?fid=<%=list.get(i).getFid()%>&rno=<%=list.get(i).getRno()%>">
+								(비밀글 입니다.)</a>
+							<% } else { %>
+								<a href="faq_content_pass.jsp?fid=<%=list.get(i).getFid()%>&rno=<%=list.get(i).getRno()%>">
+								(비밀글 입니다.)</a>
+							<% } %>
+					<% } %>
+					</td>
+					<td><%= list.get(i).getName() %></td>
+					<td><%= list.get(i).getFdate() %></td>
+					<td><%= list.get(i).getFhit() %></td>
 				</tr>
 				<%} %>
 				<tr>

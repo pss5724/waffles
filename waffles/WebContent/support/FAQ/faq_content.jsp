@@ -50,20 +50,25 @@
 					 <%=vo.getFdate() %>
 					</div>
 				</div>
-				<hr style="display:inline-block; width:100%;">
-				<div style="white-space:pre-wrap; width:50%; text-align:center; margin:auto;"> <%=vo.getFcontent() %>
+				<div style="display:inline-block; width:100%; height: 600px;">
+				<div style="margin:30px 0; height: 1px; background-color: gray; opacity: 0.5;"> </div>
+				<div style="white-space:pre-wrap; width:100%; text-align:left; margin:auto;"> <%=vo.getFcontent() %></div>
 				<% if(vo.getFsfile() != null){%>
-						<br>
-						<img src="http://localhost:9000/waffles/upload/<%=vo.getFsfile()%>" width="200px" height="200px">
-						<%} %>
+					<img src="http://localhost:9000/waffles/upload/<%=vo.getFsfile()%>" style="width:200px; height:200px; float: left; margin: 50px;">
+				<%} %>
 						
-						</div>
-				<hr>
+						
+				</div>
 				<%if(id != null) {%>
-				<% if(vo.getName().equals(id) || id.equals("manager")) {%>
+				<%	if(id.equals("manager")) { %>
+						<a href = "faq_reply.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">답글</button></a>
+						<a href = "faq_update.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">수정</button></a>
+						<a href = "faq_delete.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">삭제</button></a>
+				<% 	} else if(vo.getName().equals(id)) {%>
 				<a href = "faq_update.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">수정</button></a>
 				<a href = "faq_delete.jsp?fid=<%=vo.getFid()%>"><button type = "button" class = "btn_setup_faq">삭제</button></a>
-				<%}} %>
+	         	<%	} 
+				  } %>
 				<a href = "faq_list.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
 				<a href = "../../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
 			</form>	

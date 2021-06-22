@@ -15,7 +15,7 @@ public class MenuDAO extends DAO {
 	public ArrayList<MenuVO> getMenuList() {
 		ArrayList<MenuVO> list = new ArrayList<MenuVO>();
 		 
-		String sql = "SELECT KIND, IMG, NAME FROM MENU";
+		String sql = "SELECT KIND, IMG, NAME FROM MENU ORDER BY KIND";
 		getPreparedStatement(sql);
 		
 		try {

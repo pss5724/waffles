@@ -79,7 +79,7 @@
 					<p>전국의 와플대학을 검색해 보실 수 있습니다.</p>
 				</div>
 				<div>
-					<form name = "faq_write" action = "nationwide.jsp" method = "post">
+					<form name = "faq_write" action = "nationwide.jsp" method = "post"> 
 						<select name="select">
 							<option value="areaName">지역+캠퍼스명</option>
 							<option value="area">지역</option>

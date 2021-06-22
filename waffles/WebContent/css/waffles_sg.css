@@ -507,7 +507,7 @@ section.index>div.indexBot>div#p2>p:nth-child(1){
 section.index>div.indexBot>div#p2>div{
 	padding-top: 5px;
 }
-section.index>div.indexBot>div#p2>div>input{
+section.index>div.indexBot>div#p2>div>form>input{
 	padding:15px 0 15px 10px;
 	width: 220px;
 	height: 20px;
@@ -515,12 +515,12 @@ section.index>div.indexBot>div#p2>div>input{
 section.index>div.indexBot>div#p2>div>input:focus {
 	outline: none;	
 }
-section.index>div.indexBot>div#p2>div>a{
+section.index>div.indexBot>div#p2>div>form>a{
 	position: relative;
 	top: -1px;
 	right:7px;
 }
-section.index>div.indexBot>div#p2>div>a>img{
+section.index>div.indexBot>div#p2>div>form>a>img{
 	width:33px;
 	height:33px;
 	background-color: orange;		
