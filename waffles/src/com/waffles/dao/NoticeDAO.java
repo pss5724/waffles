@@ -118,7 +118,7 @@ public class NoticeDAO extends DAO{
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return rs.getInt(1) / 10 ;
+				return (rs.getInt(1)-2) / 10 ;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -159,7 +159,7 @@ public class NoticeDAO extends DAO{
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return rs.getInt(1) / 10 ;
+				return (rs.getInt(1)-2) / 10 ;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -198,7 +198,7 @@ public class NoticeDAO extends DAO{
 		return nsfile;
 	}
 	
-	//Delete -->»èÁ¦ Ã³¸®
+	//Delete -->ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 	public boolean getDeleteResult(String nid){
 		boolean result = false;
 		String sql = "delete from waffle_notice where nid=?";
@@ -219,7 +219,7 @@ public class NoticeDAO extends DAO{
 		return result;
 	}
 	
-	//Update ---> ¼öÁ¤ Ã³¸®
+	//Update ---> ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 		public boolean getUpdateResult(NoticeVO vo){
 			boolean result = false;
 			String sql = "update waffle_notice set ntitle=?, ncontent=?, nfile=?, nsfile=? where nid=?";
@@ -244,7 +244,7 @@ public class NoticeDAO extends DAO{
 			return result;
 		}
 		
-		//Update --> ¼öÁ¤Ã³¸®(±âÁ¸ÆÄÀÏ À¯Áö)
+		//Update --> ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 		public boolean getUpdateResultNofile(NoticeVO vo){
 			boolean result = false;
 			String sql = "update waffle_notice set ntitle=?, ncontent=? where nid=?";
@@ -268,7 +268,7 @@ public class NoticeDAO extends DAO{
 		}
 	
 	
-	// insert --> ¹®ÀÇ»çÇ× ±Û¾²±â
+	// insert --> ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½
 	public boolean getInsertResult(NoticeVO vo) {
 		boolean result = false;
 		String sql="insert into waffle_notice values('n_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate)";
@@ -300,7 +300,7 @@ public class NoticeDAO extends DAO{
 	
 	
 	
-	//Update ---> Á¶È¸¼ö ¾÷µ¥ÀÌÆ®
+	//Update ---> ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	public void getUpdateHit(String nid){
 		String sql = "update waffle_notice set nhit = nhit + 1 where nid=?";
 		getPreparedStatement(sql);
@@ -317,7 +317,7 @@ public class NoticeDAO extends DAO{
 	}
 	
 	
-	//Select ---> »ó¼¼ Á¤º¸
+	//Select ---> ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public NoticeVO getContent(String nid){
 		NoticeVO vo = new NoticeVO();
 		String sql = "select nid,name, ntitle, ncontent, nhit, to_char(ndate,'yyyy-mm-dd') ndate, nfile, nsfile "
@@ -345,7 +345,7 @@ public class NoticeDAO extends DAO{
 		return vo;
 	}
 	
-	//Select --> ÀüÃ¼ ¸®½ºÆ®
+	//Select --> ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½Æ®
 	public ArrayList<NoticeVO> getList(){
 		ArrayList<NoticeVO> list = new ArrayList<NoticeVO>();
 		String sql = "select rownum rno, nid, name, ntitle, nhit, to_char(ndate, 'yyyy-mm-dd') ndate "
