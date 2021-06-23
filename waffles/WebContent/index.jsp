@@ -274,9 +274,9 @@
 				<span>공지사항</span>
 				<div><a href="#">더보기 ></a></div>
 				<ul>
-					<li><a href="#">와플대학을 항상 찾아 주시는 분들 덕분에 30...</a></li>
-					<li><a href="#">와플대학을 항상 찾아 주시는 분들 덕분에 20...</a></li>
-					<li><a href="#">와플대학 190호 캠퍼스를 달성 하였습니다...</a></li>
+					<li><a href="http://localhost:9000/waffles/support/notice/notice_content.jsp?nid=n_25&rno=5">와플대학을 항상 찾아 주시는 분들 덕분에 30...</a></li>
+					<li><a href="http://localhost:9000/waffles/support/notice/notice_content.jsp?nid=n_24&rno=9">와플대학을 항상 찾아 주시는 분들 덕분에 20...</a></li>
+					<li><a href="http://localhost:9000/waffles/support/notice/notice_content.jsp?nid=n_22&rno">와플대학 190호 캠퍼스를 달성 하였습니다...</a></li>
 				</ul>
 			</div>
 		</div>
