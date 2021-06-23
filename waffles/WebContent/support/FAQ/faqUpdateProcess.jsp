@@ -50,6 +50,10 @@ if (multi.getOriginalFileName("ffile") != null) {
 }
 
 if (result) {
-	response.sendRedirect("faq_list.jsp");
-}
+%>
+	<script>
+		alert("성공적으로 글이 수정되었습니다");
+ 		location.href= "faq_list.jsp";
+		</script>
+<% }
 %>

@@ -12,7 +12,10 @@
 	
 	if(vo.getPass().equals(request.getParameter("pass"))) {
 		response.sendRedirect("faq_content.jsp?fid="+fid+"&rno="+rno);
-	} else {
-		response.sendRedirect("faq_list.jsp");
-	}
+	} else { %>
+		<script>
+		alert("비밀번호를 잘못 입력하셨습니다.");
+ 		location.href= "faq_list.jsp";
+		</script>
+<%	}
 %>

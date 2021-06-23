@@ -16,7 +16,7 @@
 	
 	File file = new File(savePath+"/"+fsfile);
 	if(file.exists()){
-		if(file.delete()) System.out.println("파일삭제완료");
+		file.delete();
 	}
 		}
 	}
@@ -24,7 +24,10 @@
 	
 	
 	
-	if(result){
-		response.sendRedirect("faq_list.jsp");
-	}
+	if(result){%>
+		<script>
+		alert("성공적으로 글이 삭제되었습니다");
+ 		location.href= "faq_list.jsp";
+		</script>
+	<%}
 %>

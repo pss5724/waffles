@@ -28,9 +28,14 @@
 	
 	NoticeDAO dao = new NoticeDAO();
 	boolean result = dao.getInsertResult(vo);
-	if(result){
 		response.sendRedirect("notice_list.jsp");
-	}
+	if(result){
+		%>
+		<script>
+		alert("성공적으로 글이 등록되었습니다");
+ 		location.href= "notice_list.jsp";
+		</script>
+<%	}
 	
 	
 %>

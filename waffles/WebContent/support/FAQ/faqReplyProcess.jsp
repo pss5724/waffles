@@ -29,8 +29,12 @@
 	dao.getReplyupdate(parent);
 	boolean result = dao.getInsertReplyResult(vo,parent);
 	if(result){
-		response.sendRedirect("faq_list.jsp");
-	}
+		%>
+		<script>
+		alert("성공적으로 답글이 등록되었습니다");
+ 		location.href= "faq_list.jsp";
+		</script>
+<%	}
 	
 	
 %>
