@@ -97,11 +97,11 @@
 							<% } %>
 							↳&nbsp;(답글)
 						<% } %>
-							<%if(id.equals("manager")) { %>
-								<a href="faq_content.jsp?fid=<%=list.get(i).getFid()%>&rno=<%=list.get(i).getRno()%>">
+							<%if(id == null || !id.equals("manager")) { %>
+								<a href="faq_content_pass.jsp?fid=<%=list.get(i).getFid()%>&rno=<%=list.get(i).getRno()%>">
 								(비밀글 입니다.)</a>
 							<% } else { %>
-								<a href="faq_content_pass.jsp?fid=<%=list.get(i).getFid()%>&rno=<%=list.get(i).getRno()%>">
+								<a href="faq_content.jsp?fid=<%=list.get(i).getFid()%>&rno=<%=list.get(i).getRno()%>">
 								(비밀글 입니다.)</a>
 							<% } %>
 					<% } %>
