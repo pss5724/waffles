@@ -7,6 +7,7 @@
 	if(session.getAttribute("id") != null){
 		id = (String) session.getAttribute("id");
 	}
+	if(id != null){
 			
 %>
 <!DOCTYPE html>
@@ -89,3 +90,9 @@
 	<jsp:include page = "../../footer.jsp"></jsp:include>
 </body>
 </html>
+<% }else{%>
+	<script>
+		window.alert("로그인 후 사용이 가능합니다.");
+		location.href="http://localhost:9000/waffles/login/login.jsp";
+	</script>
+<% }%>
