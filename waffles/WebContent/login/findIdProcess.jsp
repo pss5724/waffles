@@ -32,9 +32,15 @@
 	<div class = "content_idfind">
 		<section>
 			<img src = "../images/setup/step1.PNG">
-			<h1 class = "title_idfind"> 아이디 찾기 성공 </h1>
+			<h1 class = "title_idfind"> 아이디 찾기 </h1>
+			
+			<% if(vo.getId() != null) { %>
 			<h3>찾으시는 아이디는</h3>
-			<div><%= vo.getId() %></div>
+			<div class = "find_id_check1"><%= vo.getId() %></div>
+			<%} else { %>
+			<div class = "find_id_check2">찾으시는 아이디 값이 없습니다.</div>
+			<% } %>
+			
 			<a href = "login.jsp"><button type = "button" class = "btn_loginsuccess">로그인하기</button></a>
 			<a href = "../index.jsp"><button type = "button" class = "btn_loginsuccess">홈으로</button></a>
 		</section>

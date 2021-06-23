@@ -137,12 +137,21 @@ setup_faq_write, setup_faq_update
 		height : 40px;
 	}
 	
-	.content_idfind>section>div {
+	.content_idfind>section .find_id_check1 {
 		border : 1px solid gray;
-		font-size : 30px;
+		font-size : 28px;
 		font-weight : 400;
 		width : 30%;
 		margin : 15px 0 0 420px;
+		border-radius : 8px;
+	}
+	
+	.content_idfind>section .find_id_check2 {
+		border : 1px solid gray;
+		font-size : 28px;
+		font-weight : 400;
+		width : 50%;
+		margin : 15px 0 0 300px;
 		border-radius : 8px;
 	}
 	
@@ -281,6 +290,7 @@ setup_faq_write, setup_faq_update
 		text-align : left;
 		margin : 5px 0 10px 0;
 	}
+	
 	
 	/* form */
 	.content_layout_id, .content_layout_pass {
