@@ -349,7 +349,7 @@ public class MemberDAO extends DAO {
 			
 		} 
 		else if(search.equals("id")){
-			SQL = "select count(num) from(select rownum num from waffle_counsel where id like '%"+search_text+"%') where num >= ?";
+			SQL = "select count(num) from(select rownum num from waffle_member where id like '%"+search_text+"%') where num >= ?";
 			
 		}
 		
