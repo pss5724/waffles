@@ -289,7 +289,10 @@ public class FaqDAO extends DAO{
 			pstmt.setString(3, vo.getFcontent());
 			pstmt.setString(4, vo.getFfile());
 			pstmt.setString(5, vo.getFsfile());
-			pstmt.setString(6, vo.getPass());
+			if(vo.getPass()==null || vo.getPass().equals("")) {
+			}else {
+				pstmt.setString(6, vo.getPass());
+			}
 			
 			int value = pstmt.executeUpdate();
 			if(value !=0) {
