@@ -73,7 +73,7 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="http://localhost:9000/waffles/admin/adminindex.jsp">메인</a>
 					<li><a href="http://localhost:9000/waffles/admin/menu/menuList.jsp">메뉴관리</a></li>
-					<li><a href="#">회원관리</a></li>
+					<li><a href="http://localhost:9000/waffles/admin/member/member_list.jsp">회원관리</a></li>
 					<li><a href="http://localhost:9000/waffles/admin/counsel/counselList.jsp">창업상담내역
 					<span id="unread" class="label label-info" style="position: relative; bottom: 2px; background-color:#c59d5f;"></span></a></li>
 				</ul>

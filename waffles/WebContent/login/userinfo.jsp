@@ -6,7 +6,6 @@
 	//회원 정보 받아오기
 	String id = (String) session.getAttribute("id");
 	
-	System.out.println(id);
 	
 	MemberDAO dao = new MemberDAO();
 	MemberVO vo = dao.getInfo(id);
@@ -142,7 +141,11 @@
 					
 					<li>
 						<button type = "button" id = "modifyBtn" class = "btn_modify_2">정보수정</button>
-						<a href = "#"><button type = "button" class = "btn_modify_2">회원탈퇴</button></a>
+						<%if(vo.getChoice() == 0){ %>
+						<a href = "signOutProcess.jsp?id=<%=id%>"><button type = "button" class = "btn_modify_2">탈퇴신청</button></a>
+						<%}else{ %>
+						<a href = "signOutCanselProcess.jsp?id=<%=id%>"><button type = "button" class = "btn_modify_2">탈퇴취소</button></a>
+						<%} %>
 						<a href = "../index.jsp"><button type = "button" class = "btn_modify_1">홈으로</button></a>
 					</li>
 				
