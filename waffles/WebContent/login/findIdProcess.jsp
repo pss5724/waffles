@@ -36,9 +36,9 @@
 			
 			<% if(vo.getId() != null) { %>
 			<h3>찾으시는 아이디는</h3>
-			<div class = "find_id_check1"><%= vo.getId() %></div>
+			<div class = "find_id_check1" style="width:500px; position:relative; left:290px; margin:60px;"><%= vo.getId() %></div>
 			<%} else { %>
-			<div class = "find_id_check2">찾으시는 아이디 값이 없습니다.</div>
+			<div class = "find_id_check2" style="width:500px; position:relative; left:290px; margin:60px;">찾으시는 아이디 값이 없습니다.</div>
 			<% } %>
 			
 			<a href = "login.jsp"><button type = "button" class = "btn_loginsuccess">로그인하기</button></a>
