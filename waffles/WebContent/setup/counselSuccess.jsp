@@ -8,6 +8,8 @@
 		if(session.getAttribute("id") != null){
 			id = (String) session.getAttribute("id");
 		}
+		
+		System.out.println(id);
 %>
 <!DOCTYPE html>
 <html>
@@ -21,8 +23,8 @@
 <body>
 	<!-- header -->
 	<jsp:include page = "../header.jsp">
-	<jsp:param name="mainlabel" value="로그인" />
-	<jsp:param name="sublabel" value=" Home > 로그인 "/>
+	<jsp:param name="mainlabel" value="창업상담" />
+	<jsp:param name="sublabel" value=" Home > 창업안내 > 창업상담 "/>
 	</jsp:include>
 	
 	

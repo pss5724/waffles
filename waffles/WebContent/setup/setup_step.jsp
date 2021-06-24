@@ -83,7 +83,7 @@
 		<div class = "line"></div>
 			
 		<section>
-			<div> 33m2 (10평) 창업 비용 </div>
+			<div> 33m<sup>2</sup> (10평) 창업 비용 </div>
 			<table>
 				<tr>
 					<th>구분</th>
