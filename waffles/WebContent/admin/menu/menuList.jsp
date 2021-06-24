@@ -119,7 +119,7 @@
 					<td><%= vo.getKind() %></td>
 					<td><a href = "http://localhost:9000/waffles/admin/menu/menu_content.jsp?cid=<%=vo.getName() %>&pnum=<%= pageNumber %>"><%= vo.getName() %></a></td>
 					<td><a href = "http://localhost:9000/waffles/admin/menu/menu_content.jsp?cid=<%=vo.getName() %>&pnum=<%= pageNumber %>"><%= vo.getImg() %></a></td>
-					<td class="menuExplain"><a href = "http://localhost:9000/waffles/admin/menu/menu_content.jsp?cid=<%=vo.getName() %>&pnum=<%= pageNumber %>"><%= vo.getExplain() %></a></td>
+					<td class="menuExplain" style="width: 480px;"><a href = "http://localhost:9000/waffles/admin/menu/menu_content.jsp?cid=<%=vo.getName() %>&pnum=<%= pageNumber %>"><%= vo.getExplain() %></a></td>
 					<td><%= vo.getIngredient() %></td>
 				</tr>
 				<% } %>

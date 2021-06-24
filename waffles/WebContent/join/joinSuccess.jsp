@@ -21,7 +21,7 @@
 	
 	<!-- content -->
 	<div class = "content_joinsuccess">
-		<section class = "join_success">
+		<section class = "join_success" style="margin:100px 0;">
 			<img src = "../images/setup/step1.PNG">
 			<h1 class = "title_join_success"> 회원가입 성공!! </h1>
 			<h3> 회원가입에 성공하셨습니다. </h3>

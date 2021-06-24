@@ -28,7 +28,7 @@
 	
 	<!-- content -->
 	<div class = "content_loginsuccess">
-		<section class = "login_success">
+		<section class = "login_success" style="margin:100px 0;">
 			<img src = "../images/setup/step1.PNG">
 			<h1 class = "title_login_success"> 로그인 성공!! </h1>
 			<h3> 로그인에 성공하셨습니다. </h3>

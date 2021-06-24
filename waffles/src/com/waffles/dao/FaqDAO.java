@@ -275,7 +275,7 @@ public class FaqDAO extends DAO{
 		boolean result = false;
 		String sql = "";
 		
-		if(vo.getPass()==null || vo.getPass().equals("")) {
+		if(vo.getPass()==null || vo.getPass().equals("") || vo.getPass().equals("null")) {
 			sql=" insert into waffle_faq values('f_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate,sequ_waffle_faq.nextval,0,0,'') ";
 		} else {
 			sql=" insert into waffle_faq values('f_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate,sequ_waffle_faq.nextval,0,0,?) ";
@@ -289,7 +289,7 @@ public class FaqDAO extends DAO{
 			pstmt.setString(3, vo.getFcontent());
 			pstmt.setString(4, vo.getFfile());
 			pstmt.setString(5, vo.getFsfile());
-			if(vo.getPass()==null || vo.getPass().equals("")) {
+			if(vo.getPass()==null || vo.getPass().equals("")  || vo.getPass().equals("null")) {
 			}else {
 				pstmt.setString(6, vo.getPass());
 			}

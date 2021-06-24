@@ -117,7 +117,7 @@
 				<tr>
 					<td><%= vo.getNum() %></td>
 					<td><a href = "http://localhost:9000/waffles/admin/counsel/counsel_content.jsp?cid=<%=vo.getCid() %>&pnum=<%= pageNumber %>"><%= vo.getName() %></a></td>
-					<td><a href = "http://localhost:9000/waffles/admin/counsel/counsel_content.jsp?cid=<%=vo.getCid() %>&pnum=<%= pageNumber %>"><%= vo.getLocal() %></a></td>
+					<td style="width:400px;"><a href = "http://localhost:9000/waffles/admin/counsel/counsel_content.jsp?cid=<%=vo.getCid() %>&pnum=<%= pageNumber %>"><%= vo.getLocal() %></a></td>
 					<td><%= vo.getSubmittime() %></td>
 					<td><%= vo.getViews() %></td>
 				</tr>
