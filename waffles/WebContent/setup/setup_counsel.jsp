@@ -24,23 +24,23 @@
 				$("#name").focus();
 				return false;
 			} else if ($("#hp1").val() == "choice") {
-				alert("핸드폰1 번호를 입력해주세요");
+				alert("핸드폰 번호를 입력해주세요");
 				$("#hp1").focus();
 				return false;
 			} else if($("#hp2").val() == "") {
-				alert("핸드폰2 번호를 입력해주세요");
+				alert("핸드폰 번호를 입력해주세요");
 				$("#hp2").focus();
 				return false;
 			} else if($("#hp3").val() == "") {
-				alert("핸드폰3 번호를 입력해주세요");
+				alert("핸드폰 번호를 입력해주세요");
 				$("#hp3").focus();
 				return false;	
 			} else if($("#email1").val() == "") {
-				alert("email1을 입력해주세요");
+				alert("email을 입력해주세요");
 				$("#email1").focus();
 				return false;
 			} else if ($("#email2").val() == "") {
-				alert("email2,3을 입력해주세요");
+				alert("email을 입력해주세요");
 				$("#email3").focus();
 				return false;
 			} else if($("#local").val() == "") {
@@ -55,7 +55,7 @@
 		/* 이메일 체크 */
 		$("#email3").change(function() {
 			if($("#email3").val() == "선택") {
-				alert("주소 선택해주세요");
+				alert("이메일 주소를 선택해주세요");
 				$("#email2").val("");
 				$("#email3").focus();
 				return false;
