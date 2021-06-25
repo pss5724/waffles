@@ -57,7 +57,7 @@
 			<form name = "notice_write" action="noticeWriteProcess.jsp" method = "post" enctype="multipart/form-data">
 				<table class = "content_layout_setup_faq_write">
 						<tr>
-						<th>직성자</th>
+						<th>작성자</th>
 						<td><input type = "text" name = "name" id = "name" value="와플대학관리자" readonly></td>
 					</tr>
 					<tr>
