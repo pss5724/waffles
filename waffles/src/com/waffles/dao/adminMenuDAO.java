@@ -38,9 +38,9 @@ public class adminMenuDAO extends DAO {
 	public ArrayList<MenuVO> getcounselList(String pageNumber) {
 		ArrayList<MenuVO> list = new ArrayList<MenuVO>();
 		 
-		String sql = " select * from(select rownum num,kind,name,img,explain,ingredient " +
-	                 " from(select * from menu order by rownum desc)) " +
-					 " where num between ? and ? ";
+		String sql = " select * from(select rownum num,kind,name,img,explain,ingredient,insertdate " +
+	                 " from(select * from menu order by kind, insertdate desc)) " +
+					 " where num between ? and ?";
 		getPreparedStatement(sql);
 		
 		try {
@@ -74,13 +74,13 @@ public class adminMenuDAO extends DAO {
 		if(search.equals("name")) {
 		
 			sql = " select * from(select rownum num,kind,name,img,explain,ingredient " +
-				" from(select * from menu order by rownum desc)" +
+				" from(select * from menu order by kind, insertdate desc)" +
 				" where name like ?) " +
 				" where num between ? and ? ";
 			target_text = "%"+search_text+"%";
 		} else {
 			sql = " select * from(select rownum num,kind,name,img,explain,ingredient " +
-					" from(select * from menu order by rownum desc)" +
+					" from(select * from menu order by kind, insertdate desc)" +
 					" where kind like ?) " +
 					" where num between ? and ? ";
 			target_text = "%"+search_text+"%";
@@ -133,7 +133,11 @@ public class adminMenuDAO extends DAO {
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return (rs.getInt(1)-2) / 10 ;
+				if(!pageNumber.contentEquals("1")) {
+					return (rs.getInt(1)-2) / 10 ;
+					} else {
+				    return (rs.getInt(1)-1) / 10 ;
+					}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -165,7 +169,11 @@ public class adminMenuDAO extends DAO {
 			pstmt.setInt(2, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return (rs.getInt(1)-2) / 10 ;
+				if(!pageNumber.contentEquals("1")) {
+					return (rs.getInt(1)-2) / 10 ;
+					} else {
+				    return (rs.getInt(1)-1) / 10 ;
+					}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

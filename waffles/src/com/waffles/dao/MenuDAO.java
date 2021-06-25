@@ -15,7 +15,7 @@ public class MenuDAO extends DAO {
 	public ArrayList<MenuVO> getMenuList() {
 		ArrayList<MenuVO> list = new ArrayList<MenuVO>();
 		 
-		String sql = "SELECT KIND, IMG, NAME FROM MENU ORDER BY KIND";
+		String sql = "SELECT KIND, IMG, NAME FROM MENU ORDER BY KIND, INSERTDATE DESC";
 		getPreparedStatement(sql);
 		
 		try {
@@ -61,7 +61,7 @@ public class MenuDAO extends DAO {
 		public ArrayList<MenuVO> getMenuList(String kind) {
 			ArrayList<MenuVO> list = new ArrayList<MenuVO>();
 			
-			String sql = "SELECT IMG, NAME FROM MENU WHERE KIND=?";
+			String sql = "SELECT IMG, NAME FROM MENU WHERE KIND=? ORDER BY INSERTDATE DESC";
 			getPreparedStatement(sql);
 			
 			try {
@@ -128,7 +128,7 @@ public class MenuDAO extends DAO {
 	}
 	public boolean getInsertResult(MenuVO vo) {
 		boolean result = false;
-		String sql = " insert into menu values(?, ?, ?, ?, ?)";
+		String sql = " insert into menu values(?, ?, ?, ?, ?, sysdate)";
 		getPreparedStatement(sql);
 		
 		try {

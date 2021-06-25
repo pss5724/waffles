@@ -7,6 +7,9 @@
 	
 	FaqDAO dao = new FaqDAO();
 	FaqVO vo = dao.getContent(fid);	
+	if(vo.getPass() == null) {
+		vo.setPass("");
+	}
 	String content = vo.getFcontent().replace("<br>","\r\n");
 %> 
 <!DOCTYPE html>
@@ -55,7 +58,7 @@
 	</jsp:include>
 	<div class = "content_setup_faq_write">
 		<section>
-			<div class = "title">문의하기</div>
+			<div class = "title">문의수정</div>
 	
 			<form name = "faq_write" action = "faqUpdateProcess.jsp" method = "post" class = "content_layout_setup_counsel" enctype="multipart/form-data">
 				<input type="hidden" name= "fid" value=<%= fid %>>
@@ -69,7 +72,7 @@
 					</li>
 					<li>
 						<label> 제목 </label>
-						<input type = "text" name = "ftitle" id = "ftitle" style="width:800px; height: 30px;" value=<%= vo.getFtitle() %>>
+						<input type = "text" name = "ftitle" id = "ftitle" style="width:800px; height: 30px;" value = '<%= vo.getFtitle() %>'>
 						<div></div>
 					</li>
 					
@@ -84,7 +87,6 @@
 					</li>
 					<li style="text-align:center; display: block;">
 						<button type = "submit" class = "btn_setup_faq">수정하기</button>
-						<button type = "reset" class = "btn_setup_faq">초기화</button>
 						<a href = "faq_list.jsp"><button type = "button" class = "btn_setup_faq">목록</button></a>
 						<a href = "../../index.jsp"><button type = "button" class = "btn_setup_faq">홈으로</button></a>
 					</li>

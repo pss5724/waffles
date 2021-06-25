@@ -118,7 +118,11 @@ public class NoticeDAO extends DAO{
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return (rs.getInt(1)-2) / 10 ;
+				if(!pageNumber.contentEquals("1")) {
+					return (rs.getInt(1)-2) / 10 ;
+					} else {
+				    return (rs.getInt(1)-1) / 10 ;
+					}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -159,7 +163,11 @@ public class NoticeDAO extends DAO{
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return (rs.getInt(1)-2) / 10 ;
+				if(!pageNumber.contentEquals("1")) {
+					return (rs.getInt(1)-2) / 10 ;
+					} else {
+				    return (rs.getInt(1)-1) / 10 ;
+					}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -271,7 +279,7 @@ public class NoticeDAO extends DAO{
 	// insert --> ���ǻ��� �۾���
 	public boolean getInsertResult(NoticeVO vo) {
 		boolean result = false;
-		String sql="insert into waffle_notice values('n_'||sequ_waffle_faq.nextval,?,?,?,?,?,0,sysdate)";
+		String sql="insert into waffle_notice values('n_'||sequ_waffle_notice.nextval,?,?,?,?,?,0,sysdate)";
 		
 		getPreparedStatement(sql);
 		

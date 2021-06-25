@@ -142,7 +142,11 @@ public class CounselDAO extends DAO {
 			pstmt.setInt(1, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return (rs.getInt(1)-2) / 10 ;
+				if(!pageNumber.contentEquals("1")) {
+					return (rs.getInt(1)-2) / 10 ;
+					} else {
+				    return (rs.getInt(1)-1) / 10 ;
+					}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -174,7 +178,11 @@ public class CounselDAO extends DAO {
 			pstmt.setInt(2, (Integer.parseInt(pageNumber) -1) * 10);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return (rs.getInt(1)-2) / 10 ;
+				if(!pageNumber.contentEquals("1")) {
+					return (rs.getInt(1)-2) / 10 ;
+					} else {
+				    return (rs.getInt(1)-1) / 10 ;
+					}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
